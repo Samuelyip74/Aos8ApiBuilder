@@ -10,21 +10,21 @@ class VlanEndpoint(BaseEndpoint):
             response.output = parse_output_json(response.output)
         return response
 
-    def create_vlan(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500) -> ApiResult:
+    def create(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500) -> ApiResult:
         description = description or f"VLAN_{vlan_id}"
         response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+name+{description}+mtu+{mtu}")
         if response.output:
             response.output = parse_output_json(response.output)
         return response
     
-    def edit_vlan(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500) -> ApiResult:
+    def edit(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500) -> ApiResult:
         description = description or f"VLAN_{vlan_id}"
         response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+name+{description}+mtu+{mtu}")
         if response.output:
             response.output = parse_output_json(response.output)
         return response
     
-    def delete_vlan(self, vlan_id: int) -> ApiResult:
+    def delete(self, vlan_id: int) -> ApiResult:
         response = self._client.get(f"/cli/aos?cmd=no+vlan+{vlan_id}")
         if response.output:
             response.output = parse_output_json(response.output)
