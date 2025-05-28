@@ -1,6 +1,6 @@
-import requests
+import httpx
+from models import ApiResult
 from endpoints.vlan import VlanEndpoint
-
 
 class AosApiClient:
     def __init__(self, username: str, password: str, base_url: str, verify_ssl: bool = False, debug: bool = False):
@@ -8,33 +8,36 @@ class AosApiClient:
         self.password = password
         self.base_url = base_url.rstrip('/')
         self.debug = debug
-        self.session = requests.Session()
-        self.session.verify = verify_ssl
-        self.session.headers.update({
-            "User-Agent": "AOSApiClient/1.0",
-            "Accept": "application/vnd.alcatellucentaos+json"
-        })
+        self._client = httpx.Client(
+            base_url=self.base_url,
+            verify=verify_ssl,
+            timeout=httpx.Timeout(10.0),
+            headers={
+                "Accept": "application/vnd.alcatellucentaos+json",
+                "User-Agent": "AOSApiClient/1.0"
+            }
+        )
         self._login()
 
-        # Attach modular endpoint wrappers
         self.vlan = VlanEndpoint(self)
 
     def _login(self):
-        url = f"{self.base_url}/auth/?&username={self.username}&password={self.password}"
+        url = f"/auth/"
+        params = {
+            "username": self.username,
+            "password": self.password,
+        }
+        response = self._client.get(url, params=params)
         if self.debug:
-            print(f"🔐 Logging in: {url}")
-        response = self.session.get(url)
-        if self.debug:
-            print("🔐 Login response:", response.status_code, response.text)
+            print(f"🔐 Login response {response.status_code}: {response.text}")
         if response.status_code != 200:
             raise Exception("Login failed")
-        if "wv_sess" not in [c.name for c in self.session.cookies]:
+        if "wv_sess" not in self._client.cookies:
             raise Exception("Login succeeded but 'wv_sess' cookie not found")
 
-    def _request(self, method: str, path: str, **kwargs) -> requests.Response:
-        url = f"{self.base_url}/{path.lstrip('/')}"
+    def _request(self, method: str, path: str, **kwargs) -> httpx.Response:
         if self.debug:
-            print(f"🌐 Request: {method} {url}")
+            print(f"➡️ {method} {path}")
             if "params" in kwargs:
                 print("Params:", kwargs["params"])
             if "data" in kwargs:
@@ -42,33 +45,49 @@ class AosApiClient:
             if "json" in kwargs:
                 print("JSON:", kwargs["json"])
 
-        response = self.session.request(method, url, **kwargs)
+        response = self._client.request(method, path, **kwargs)
 
         if response.status_code == 401:
-            print("🔁 401 Unauthorized, retrying after login...")
+            print("🔁 401 Unauthorized. Re-authenticating...")
             self._login()
-            response = self.session.request(method, url, **kwargs)
+            response = self._client.request(method, path, **kwargs)
 
         if self.debug:
-            print("⬅️ Response:", response.status_code)
-            print(response.text)
+            print("⬅️ Response:", response.status_code, response.text)
 
-        response.raise_for_status()
-        return response
+        return self._handle_response(response)
+    
+    def _handle_response(self, response: httpx.Response) -> ApiResult:
+        try:
+            result = response.json()
+        except ValueError:
+            return ApiResult(success=False, diag=response.status_code, error="Non-JSON response", output=response.text)
 
-    def get(self, path: str, **kwargs) -> requests.Response:
+        r = result.get("result", {})
+        diag = r.get("diag", 0)
+        success = diag == 200
+
+        return ApiResult(
+            success=success,
+            diag=diag,
+            error=r.get("error"),
+            output=r.get("output"),
+            data=r.get("data")
+        )   
+
+    def get(self, path: str, **kwargs) -> httpx.Response:
         return self._request("GET", path, **kwargs)
 
-    def post(self, path: str, data: dict = None, **kwargs) -> requests.Response:
+    def post(self, path: str, data: dict = None, **kwargs) -> httpx.Response:
         kwargs.setdefault("data", data)
         return self._request("POST", path, **kwargs)
 
-    def put(self, path: str, data: dict = None, **kwargs) -> requests.Response:
+    def put(self, path: str, data: dict = None, **kwargs) -> httpx.Response:
         kwargs.setdefault("data", data)
         return self._request("PUT", path, **kwargs)
 
-    def delete(self, path: str, **kwargs) -> requests.Response:
+    def delete(self, path: str, **kwargs) -> httpx.Response:
         return self._request("DELETE", path, **kwargs)
 
     def close(self):
-        self.session.close()
+        self._client.close()
