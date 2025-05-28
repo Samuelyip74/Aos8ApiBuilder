@@ -73,8 +73,9 @@ VLAN API:
 
 VPA API:
 - vpa.list
-- vpa.add_port_to_vlan
-- vpa.remove_port_from_vlan
+- vpa.create
+- vpa.edit
+- vpa.delete
 
 ---
 
