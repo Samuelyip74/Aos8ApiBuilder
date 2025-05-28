@@ -1,6 +1,8 @@
 import httpx
 from models import ApiResult
 from endpoints.vlan import VlanEndpoint
+from endpoints.vpa import VlanPortAssociation
+
 
 class AosApiClient:
     def __init__(self, username: str, password: str, base_url: str, verify_ssl: bool = False, debug: bool = False):
@@ -20,6 +22,7 @@ class AosApiClient:
         self._login()
 
         self.vlan = VlanEndpoint(self)
+        self.vpa = VlanPortAssociation(self)
 
     def _login(self):
         url = f"/auth/"
