@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: aos8_api
-Version: 8.9.3
+Version: 8.9.3.post1
 Summary: OmniSwitch RestFUL API for Python
 Author-email: Samuel Yip <kahyean.yip@gmail.com>
 Requires-Python: >=3.8
@@ -22,8 +22,10 @@ Dynamic: license-file
 
 ## ✨ Supported APIs
 
-- VLAN API
-- VPA API
+- VLAN 
+- VPA
+- IP
+
 
 ---
 
@@ -80,13 +82,29 @@ Dynamic: license-file
 
 ## 📚 Available Methods
 
-VLAN API:
+Interface:
+- interface.list
+- interface.admin_enable
+- interface.admin_disable
+- interface.autoneg_enable
+- interface.autoneg_disable
+- interface.epp_enable
+- interface.epp_disable
+- interface.set_speed
+
+VLAN:
 - vlan.list
 - vlan.create
 - vlan.edit
 - vlan.delete
 
-VPA API:
+VPA:
+- vpa.list
+- vpa.create
+- vpa.edit
+- vpa.delete
+
+IP:
 - vpa.list
 - vpa.create
 - vpa.edit
@@ -98,7 +116,8 @@ VPA API:
 
 | Version          | Date       | Notes                       |
 |------------------|------------|-----------------------------|
-| v8.9 R03         | 2025-05-28 | Initial release             |
+| v8.9.03          | 2025-05-28 | Initial release             |
+| v8.9.03post1     | 2025-05-28 | Interface, IP API added     |
 
 
 ---

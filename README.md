@@ -75,6 +75,7 @@ Interface:
 - interface.autoneg_disable
 - interface.epp_enable
 - interface.epp_disable
+- interface.set_speed
 
 VLAN:
 - vlan.list
@@ -100,7 +101,8 @@ IP:
 
 | Version          | Date       | Notes                       |
 |------------------|------------|-----------------------------|
-| v8.9 R03         | 2025-05-28 | Initial release             |
+| v8.9.03          | 2025-05-28 | Initial release             |
+| v8.9.03post1     | 2025-05-28 | Interface, IP API added     |
 
 
 ---
