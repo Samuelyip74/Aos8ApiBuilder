@@ -4,6 +4,8 @@ from endpoints.vlan import VlanEndpoint
 from endpoints.vpa import VlanPortAssociation
 from endpoints.ip import IPInterfaceEndpoint
 from endpoints.system import SystemEndpoint
+from endpoints.interface import InterfaceEndpoint
+
 
 class AosApiClient:
     def __init__(self, username: str, password: str, base_url: str, verify_ssl: bool = False, debug: bool = False):
@@ -26,6 +28,7 @@ class AosApiClient:
         self.vpa = VlanPortAssociation(self)
         self.ip = IPInterfaceEndpoint(self)
         self.system = SystemEndpoint(self)
+        self.interface = InterfaceEndpoint(self)
 
 
     def _login(self):

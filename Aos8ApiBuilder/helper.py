@@ -56,6 +56,100 @@ def parse_output_json(output: str):
 
     return vlan_list
 
+def parse_interface_status(cli_output: str) -> List[Dict[str, str]]:
+    lines = cli_output.strip().splitlines()
+
+    # Skip header lines
+    data_lines = []
+    in_data = False
+    for line in lines:
+        if re.match(r"^\s*\d+/\d+/\d+", line):  # Data starts with a port format like 1/1/1
+            in_data = True
+        if in_data:
+            data_lines.append(line.strip())
+
+    parsed = []
+    for line in data_lines:
+        # The fields are space-separated but the speed values can be variable, so we use fixed-width slicing
+        # Based on observed pattern, tweak if needed
+        parts = re.split(r'\s{2,}', line)
+        if len(parts) < 13:
+            continue
+
+        parsed.append({
+            "port": parts[0],
+            "admin_status": parts[1],
+            "auto_nego": parts[2],
+            "det_speed": parts[3],
+            "det_duplex": parts[4],
+            "det_pause": parts[5],
+            "det_fec": parts[6],
+            "cfg_speed": parts[7],
+            "cfg_duplex": parts[8],
+            "cfg_pause": parts[9],
+            "cfg_fec": parts[10],
+            "link_trap": parts[11],
+            "eee": parts[12],
+        })
+
+    return parsed
+
+def parse_interface_detail(cli_output: str) -> Dict[str, str]:
+    data = {}
+    rx_section = {}
+    tx_section = {}
+
+    lines = cli_output.strip().splitlines()
+    current_section = "general"
+
+    for line in lines:
+        line = line.strip()
+
+        # Skip prompt
+        if line.startswith("ACSW"):
+            continue
+
+        # Detect section change
+        if line.startswith("Rx"):
+            current_section = "rx"
+            continue
+        elif line.startswith("Tx"):
+            current_section = "tx"
+            continue
+
+        # Key-value parsing
+        if ":" in line:
+            parts = line.split(":")
+            key = parts[0].strip()
+            value = ":".join(parts[1:]).strip()
+
+            # Handle comma-separated continuation values
+            value = value.rstrip(",")
+
+            # Merge multi-field lines (e.g., BandWidth + Duplex)
+            if "," in value:
+                sub_parts = [v.strip() for v in value.split(",")]
+                for sub_part in sub_parts:
+                    if ":" in sub_part:
+                        sub_key, sub_val = [x.strip() for x in sub_part.split(":", 1)]
+                        key = key + " / " + sub_key
+                        value = sub_val
+
+            # Assign based on section
+            if current_section == "rx":
+                rx_section[key] = value
+            elif current_section == "tx":
+                tx_section[key] = value
+            else:
+                data[key] = value
+
+    # Merge sections
+    if rx_section:
+        data["Rx"] = rx_section
+    if tx_section:
+        data["Tx"] = tx_section
+
+    return data
 
 def parse_vlan_output_json(output: str):
     lines = output.strip().splitlines()
@@ -74,7 +168,6 @@ def parse_vlan_output_json(output: str):
         vlan_list.append(entry)
 
     return vlan_list
-
 
 def parse_ip_interface_output(cli_output: str) -> List[Dict[str, str]]:
     """
