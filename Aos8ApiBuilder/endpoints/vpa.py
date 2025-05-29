@@ -5,15 +5,15 @@ from models import ApiResult
 class VlanPortAssociation(BaseEndpoint):
     def list(self, vlan_id:str) -> ApiResult:
         response = self._client.get(f"/cli/aos?cmd=show+vlan+{vlan_id}+members")
-        if response.output:
+        if response.success:
             response.output = parse_output_json(response.output)
         return response
 
     def create(self, port_id:str, vlan_id:str, mode:str = "untagged") -> ApiResult:
         response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+members+port+{port_id}+{mode}")
-        if response.output:
-            response.output = parse_output_json(response.output)
-        return response
+        if response.success:
+            result = self.list()
+        return result
     
     def edit(self, port_id:str, vlan_id:str, mode:str = "untagged") -> ApiResult:
         response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+members+port+{port_id}+{mode}")
