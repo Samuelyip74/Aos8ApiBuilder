@@ -43,24 +43,60 @@ class InterfaceEndpoint(BaseEndpoint):
         # 1. Send the config command
         cmd = f"interfaces+port+{port}+{parameter}+{value}"
         response = self._client.get(f"/cli/aos?cmd={cmd}")
+        if response.success:
+            # 2. Build list of ports affected
+            affected_ports = self._expand_port_range(port)
 
-        # 2. Build list of ports affected
-        affected_ports = self._expand_port_range(port)
-
-        # 3. Fetch and parse the status for each affected port
-        parsed_results = []
-        for p in affected_ports:
-            show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
-            if show_resp.success:
-                parsed = parse_interface_detail(show_resp.output)
-                parsed_results.append(parsed)
-        response.output = parsed_results
+            # 3. Fetch and parse the status for each affected port
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+            return response
         return response
 
-    def enable(self, port: str) -> ApiResult:
+
+    def set_speed(self, target: str, speed: str) -> ApiResult:
+        """Set interface speed: 10 | 100 | 1000 | 2500 | 10000 | 40000 | 100000 | 2000 | 4000 | 8000 | auto | max 100/1000/4000/8000"""
+        allowed_speeds = {
+            "10", "100", "1000", "2500", "10000", "40000", "100000",
+            "2000", "4000", "8000", "auto",
+            "max 100", "max 1000", "max 4000", "max 8000"
+        }
+
+        if speed not in allowed_speeds:
+            raise ValueError(f"Invalid speed value: {speed}")
+
+        # If speed is a "max" setting, split the string
+        if speed.startswith("max "):
+            cmd = f"interfaces+port+{target}+speed+max+{speed.split()[1]}"
+        else:
+            cmd = f"interfaces+port+{target}+speed+{speed}"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+        if response.success:
+            # 2. Build list of ports affected
+            affected_ports = self._expand_port_range(target)
+
+            # 3. Fetch and parse the status for each affected port
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+
+            response.output = parsed_results
+            return response
+        return response
+
+    def admin_enable(self, port: str) -> ApiResult:
         return self.set_interface(port, "admin-state", "enable")
 
-    def disable(self, port: str) -> ApiResult:
+    def admin_disable(self, port: str) -> ApiResult:
         return self.set_interface(port, "admin-state", "disable")
 
     def autoneg_enable(self, port: str) -> ApiResult:

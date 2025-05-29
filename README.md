@@ -67,6 +67,15 @@
 
 ## 📚 Available Methods
 
+Interface:
+- interface.list
+- interface.admin_enable
+- interface.admin_disable
+- interface.autoneg_enable
+- interface.autoneg_disable
+- interface.epp_enable
+- interface.epp_disable
+
 VLAN:
 - vlan.list
 - vlan.create
