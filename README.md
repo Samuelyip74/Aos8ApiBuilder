@@ -7,8 +7,10 @@
 
 ## ✨ Supported APIs
 
-- VLAN API
-- VPA API
+- VLAN 
+- VPA
+- IP
+
 
 ---
 
@@ -65,13 +67,19 @@
 
 ## 📚 Available Methods
 
-VLAN API:
+VLAN:
 - vlan.list
 - vlan.create
 - vlan.edit
 - vlan.delete
 
-VPA API:
+VPA:
+- vpa.list
+- vpa.create
+- vpa.edit
+- vpa.delete
+
+IP:
 - vpa.list
 - vpa.create
 - vpa.edit
