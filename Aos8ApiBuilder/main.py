@@ -12,7 +12,7 @@ client = (
 # This will automatically re-authenticate on 401
 # response = client.vlan.create_vlan(1001, "vlan-1001")
 # response = client.vlan.list()
-result = client.vlan.delete(vlan_id=1000)
+result = client.system.set_location("ALE Demo Lab")
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.output)
