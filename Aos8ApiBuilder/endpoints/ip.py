@@ -49,8 +49,8 @@ class IPInterfaceEndpoint(BaseEndpoint):
             cmd += "+primary" if primary else "+no+primary"
 
         response = self._client.get(f"/cli/aos?cmd={cmd}")
-        if response.output:
-            response.output = parse_ip_interface_output(response.output)
+        if response.success:
+            return self.list()
         return response
     
     def edit(
@@ -92,13 +92,13 @@ class IPInterfaceEndpoint(BaseEndpoint):
             cmd += "+primary" if primary else "+no+primary"
 
         response = self._client.get(f"/cli/aos?cmd={cmd}")
-        if response.output:
-            response.output = parse_ip_interface_output(response.output)
-        return response    
+        if response.success:
+            return self.list()
+        return response 
 
     def delete(self, if_name: str) -> ApiResult:
         cmd = f"no+ip+interface+{if_name}"
         response = self._client.get(f"/cli/aos?cmd={cmd}")
-        if response.output:
-            response.output = parse_ip_interface_output(response.output)
+        if response.success:
+            return self.list()
         return response

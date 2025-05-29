@@ -12,17 +12,17 @@ class VlanPortAssociation(BaseEndpoint):
     def create(self, port_id:str, vlan_id:str, mode:str = "untagged") -> ApiResult:
         response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+members+port+{port_id}+{mode}")
         if response.success:
-            result = self.list()
-        return result
+            return self.list()
+        return response
     
     def edit(self, port_id:str, vlan_id:str, mode:str = "untagged") -> ApiResult:
         response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+members+port+{port_id}+{mode}")
-        if response.output:
-            response.output = parse_output_json(response.output)
-        return response    
+        if response.success:
+            return self.list()
+        return response 
     
     def delete(self, port_id:str, vlan_id:str, mode:str = "untagged") -> ApiResult:
         response = self._client.get(f"/cli/aos?cmd=no+vlan+{vlan_id}+members+port+{port_id}")
-        if response.output:
-            response.output = parse_output_json(response.output)
+        if response.success:
+            return self.list()
         return response
