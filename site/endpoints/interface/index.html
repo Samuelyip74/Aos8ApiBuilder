@@ -535,6 +535,81 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.clear_violation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">clear_violation</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">is_linkagg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.clear_violation" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Clears all the MAC address violation logs for a specified port or link aggregate.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port in the format &lsquo;chassis/slot/port[-port2]&rsquo; or linkagg ID/range like &lsquo;1-2&rsquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>is_linkagg</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, clears violation for a linkagg; otherwise, clears for port(s).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.epp_disable" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">epp_disable</span><span class="p">(</span><span class="n">port</span><span class="p">)</span></code>
 
@@ -1051,6 +1126,105 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_eee" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_eee</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_eee" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enables or disables Energy Efficient Ethernet (EEE) on the specified port(s) or slot.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range of ports)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>state</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo; to turn on EEE, &ldquo;disable&rdquo; to turn it off.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If state is not &ldquo;enable&rdquo; or &ldquo;disable&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">set_flood_limit</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">traffic_type</span><span class="p">,</span> <span class="n">rate_mode</span><span class="p">,</span> <span class="n">rate_value</span><span class="p">,</span> <span class="n">low_threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
@@ -1262,6 +1436,105 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
               –
               <div class="doc-md-description">
                 <p>If any argument is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_hybrid_mode" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_hybrid_mode</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_hybrid_mode" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the mode of a combo port to either fiber or copper.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range of ports)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mode</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;fiber&#39;, &#39;copper&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;fiber&rdquo; or &ldquo;copper&rdquo;</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If mode is not &ldquo;fiber&rdquo; or &ldquo;copper&rdquo;.</p>
               </div>
             </li>
         </ul>
@@ -1550,6 +1823,83 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_loopback" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_loopback</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_loopback" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enables or disables loopback mode for the specified front-panel port.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The front-panel port(s) in the format:
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range of ports)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>enable</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>True</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>True to enable loopback, False to disable using the &lsquo;no&rsquo; form.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_max_frame_size" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">set_max_frame_size</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span></code>
 
@@ -1631,6 +1981,95 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
               –
               <div class="doc-md-description">
                 <p>If the target or size is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_portgroup_speed" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_portgroup_speed</span><span class="p">(</span><span class="n">port_group_number</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span> <span class="n">group_range</span><span class="p">,</span> <span class="n">speed</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_portgroup_speed" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the speed of the ports within a port group.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port_group_number</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The port group number (e.g., 1, 2, 3&hellip;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>slot</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The chassis/slot identifier (e.g., &ldquo;1/1&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>group_range</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The group or group range (e.g., &ldquo;1&rdquo;, &ldquo;2-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>speed</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;auto&#39;, &#39;25G&#39;, &#39;10G&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>The desired speed for the port group (&ldquo;auto&rdquo;, &ldquo;25G&rdquo;, or &ldquo;10G&rdquo;).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
               </div>
             </li>
         </ul>
@@ -1728,6 +2167,89 @@ or &ldquo;max 100&rdquo;/&rdquo;max 1000&rdquo;/etc.</p>
               –
               <div class="doc-md-description">
                 <p>If the speed value is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_violation_recovery_maximum" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_violation_recovery_maximum</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_violation_recovery_maximum" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the maximum number of recovery attempts for MAC address violation recovery.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>scope</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;global&#39;, &#39;slot&#39;, &#39;port&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;global&rdquo; applies to all ports, &ldquo;slot&rdquo; applies to a chassis/slot, &ldquo;port&rdquo; applies to a port or range.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>value</code></b>
+                  (<code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="typing.Literal">Literal</span>[&#39;infinite&#39;, &#39;default&#39;]]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Integer (0–50), &ldquo;infinite&rdquo;, or &ldquo;default&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional. Required for &ldquo;slot&rdquo; or &ldquo;port&rdquo;. E.g., &lsquo;1/1&rsquo; (slot), &lsquo;1/1/1&rsquo;, or &lsquo;1/1/1-3&rsquo; (ports).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
               </div>
             </li>
         </ul>
@@ -1928,6 +2450,81 @@ This timer delays the notification of a link-down event.</p>
               –
               <div class="doc-md-description">
                 <p>If value is negative or target is improperly formatted.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_capability" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">show_interface_capability</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">capability</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_capability" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed status or capability of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>capability</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve capability info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
               </div>
             </li>
         </ul>

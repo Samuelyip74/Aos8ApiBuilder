@@ -1,5 +1,5 @@
 from helper import parse_interface_status, parse_interface_detail, parse_violation_output_to_json, parse_violation_recovery_configuration
-from helper import parse_interfaces_capability
+from helper import parse_interfaces_capability, parse_interface_accounting, parse_interface_counters, parse_interface_counters_errors
 from typing import Optional,List, Dict, Union, Literal
 from endpoints.base import BaseEndpoint
 from models import ApiResult
@@ -739,7 +739,7 @@ class InterfaceEndpoint(BaseEndpoint):
             response.output = parsed_results
         return response
 
-    def show_interface_capability(self, port: str, capability: bool = False) -> Optional[dict]:
+    def show_interface_capability(self, port: str) -> ApiResult:
         """
         Retrieve detailed status or capability of a specific port or port range.
 
@@ -763,6 +763,81 @@ class InterfaceEndpoint(BaseEndpoint):
                     parsed_results.append(parsed)
             response.output = parsed_results
         return response
+    
+    def show_interface_accounting(self, port: str) -> ApiResult:
+        """
+        Retrieve detailed status or accounting of a specific port or port range.
+
+        Args:
+            port: Port identifier string, e.g., "1/1/1", "1/1/1-1/1/4", or "1/1".
+            accounting: If True, retrieve accounting info instead of detailed status.
+
+        Returns:
+            A dictionary (or list of dicts) of parsed interface data, or None if request fails.
+        """
+        cmd = f"show+interfaces+port+{port}+accounting"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+        if response.success:
+            affected_ports = self._expand_port_range(port) if '-' in port else [port]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}+accounting")
+                if show_resp.success:
+                    parsed = parse_interface_accounting(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response    
+    
+    def show_interface_counters(self, port: str) -> ApiResult:
+        """
+        Retrieve detailed status or counter of a specific port or port range.
+
+        Args:
+            port: Port identifier string, e.g., "1/1/1", "1/1/1-1/1/4", or "1/1".
+            accounting: If True, retrieve counter info instead of detailed status.
+
+        Returns:
+            A dictionary (or list of dicts) of parsed interface data, or None if request fails.
+        """
+        cmd = f"show+interfaces+port+{port}+counters"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+        if response.success:
+            affected_ports = self._expand_port_range(port) if '-' in port else [port]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}+counters")
+                if show_resp.success:
+                    parsed = parse_interface_counters(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response       
+
+    def show_interface_counters_errors(self, port: str) -> ApiResult:
+        """
+        Retrieve detailed error counters of a specific port or port range.
+
+        Args:
+            port: Port identifier string, e.g., "1/1/1", "1/1/1-1/1/4", or "1/1".
+            counter errors: If True, retrieve error counter info instead of detailed status.
+
+        Returns:
+            A dictionary (or list of dicts) of parsed interface data, or None if request fails.
+        """
+        cmd = f"show+interfaces+port+{port}+counters+errors"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+        if response.success:
+            affected_ports = self._expand_port_range(port) if '-' in port else [port]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}+counters+errors")
+                if show_resp.success:
+                    parsed = parse_interface_counters_errors(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response         
 
     def clear_statistics(self, target: str, stat_type: str, cli_only: bool = False) -> ApiResult:
         """

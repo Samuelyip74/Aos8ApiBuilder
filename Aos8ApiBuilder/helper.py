@@ -323,3 +323,83 @@ def parse_interfaces_capability(cli_output: str) -> List[Dict[str, str]]:
 
     return list(cap_entries.values())
 
+
+def parse_interface_accounting(output: str) -> Dict[str, int]:
+    """
+    Parses the CLI output of 'show interfaces port <port> accounting' into a dictionary.
+
+    Args:
+        output: CLI output as a string.
+
+    Returns:
+        Dictionary mapping each metric to its integer value.
+    """
+    metrics = {}
+    lines = output.splitlines()
+
+    # Skip the port line (e.g., "1/1/2:")
+    for line in lines[1:]:
+        # Normalize line: remove trailing commas and split on commas
+        parts = [p.strip().rstrip(',') for p in line.strip().split(',') if p.strip()]
+        for part in parts:
+            # Match patterns like: "Rx Undersize             =                    0"
+            match = re.match(r"(.+?)=\s*(\d+)", part)
+            if match:
+                key = match.group(1).strip().replace(" ", "_")
+                value = int(match.group(2))
+                metrics[key] = value
+
+    return metrics
+
+def parse_interface_counters(output: str) -> Dict[str, int]:
+    """
+    Parses 'show interfaces port <port> counters' CLI output into a dictionary.
+
+    Args:
+        output: CLI raw string from the command.
+
+    Returns:
+        Dictionary of counters with their values.
+    """
+    counters = {}
+    lines = output.splitlines()
+
+    for line in lines:
+        # Remove trailing commas, split by commas, and clean up
+        parts = [p.strip().rstrip(',') for p in line.strip().split(',') if p.strip()]
+        for part in parts:
+            match = re.match(r"(.+?)=\s*([\d]+)", part)
+            if match:
+                key = match.group(1).strip().replace(" ", "_")
+                value = int(match.group(2))
+                counters[key] = value
+
+    return counters
+
+def parse_interface_counters_errors(output: str) -> Dict[str, float]:
+    """
+    Parses 'show interfaces port <port> counters errors' CLI output into a dictionary.
+
+    Args:
+        output: CLI output string.
+
+    Returns:
+        Dictionary with error counter names and numeric values (float or int).
+    """
+    errors = {}
+    lines = output.splitlines()
+
+    for line in lines:
+        # Split on commas
+        parts = [part.strip() for part in line.split(',') if part.strip()]
+        for part in parts:
+            match = re.match(r"(.+?)\s*=\s*([\d.Ee+-]+)", part)
+            if match:
+                key = match.group(1).strip().replace(" ", "_")
+                value_str = match.group(2)
+                value = float(value_str) if 'e' in value_str.lower() or '.' in value_str else int(value_str)
+                errors[key] = value
+
+    return errors
+
+
