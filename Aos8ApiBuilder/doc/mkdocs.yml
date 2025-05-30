@@ -1,4 +1,5 @@
 site_name: Aos8APIBuilder for Python Documentation
+site_url: https://Samuelyip74.github.io/Aos8ApiBuilder/
 site_dir: ../../site
 docs_dir: docs
 

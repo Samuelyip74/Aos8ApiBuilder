@@ -65,35 +65,9 @@
         print(f"❌ VLAN creation failed (diag={result.diag}): {result.error}")
 ```
 
-## 📚 Available Methods
+## 📚 Documentation
 
-Interface:
-- interface.list
-- interface.admin_enable
-- interface.admin_disable
-- interface.autoneg_enable
-- interface.autoneg_disable
-- interface.epp_enable
-- interface.epp_disable
-- interface.set_speed
-
-VLAN:
-- vlan.list
-- vlan.create
-- vlan.edit
-- vlan.delete
-
-VPA:
-- vpa.list
-- vpa.create
-- vpa.edit
-- vpa.delete
-
-IP:
-- vpa.list
-- vpa.create
-- vpa.edit
-- vpa.delete
+Please check out the details documentation at https://samuelyip74.github.io/Aos8ApiBuilder/intro/#
 
 ---
 
