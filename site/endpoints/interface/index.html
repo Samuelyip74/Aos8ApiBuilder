@@ -2465,8 +2465,80 @@ This timer delays the notification of a link-down event.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_accounting" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">show_interface_accounting</span><span class="p">(</span><span class="n">port</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_accounting" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed status or accounting of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>accounting</code></b>
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve accounting info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_capability" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">show_interface_capability</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">capability</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">show_interface_capability</span><span class="p">(</span><span class="n">port</span><span class="p">)</span></code>
 
 <a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_capability" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -2496,9 +2568,6 @@ This timer delays the notification of a link-down event.</p>
             </li>
             <li>
               <b><code>capability</code></b>
-                  (<code><span title="bool">bool</span></code>, default:
-                      <code>False</code>
-)
               –
               <div class="doc-md-description">
                 <p>If True, retrieve capability info instead of detailed status.</p>
@@ -2521,7 +2590,152 @@ This timer delays the notification of a link-down event.</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">show_interface_counters</span><span class="p">(</span><span class="n">port</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed status or counter of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>accounting</code></b>
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve counter info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters_errors" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">show_interface_counters_errors</span><span class="p">(</span><span class="n">port</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters_errors" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed error counters of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>counter</code></b>
+                  (<code><span title="errors">errors</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve error counter info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
               –
               <div class="doc-md-description">
                 <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>

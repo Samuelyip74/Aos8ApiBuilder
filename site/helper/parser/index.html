@@ -132,6 +132,201 @@
 <div class="doc doc-object doc-function">
 
 
+<h2 id="Aos8ApiBuilder.helper.parse_interface_accounting" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_interface_accounting</span><span class="p">(</span><span class="n">output</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.helper.parse_interface_accounting" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parses the CLI output of &lsquo;show interfaces port <port> accounting&rsquo; into a dictionary.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>output</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>CLI output as a string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="int">int</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>Dictionary mapping each metric to its integer value.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="Aos8ApiBuilder.helper.parse_interface_counters" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_interface_counters</span><span class="p">(</span><span class="n">output</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.helper.parse_interface_counters" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parses &lsquo;show interfaces port <port> counters&rsquo; CLI output into a dictionary.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>output</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>CLI raw string from the command.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="int">int</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>Dictionary of counters with their values.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="Aos8ApiBuilder.helper.parse_interface_counters_errors" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">parse_interface_counters_errors</span><span class="p">(</span><span class="n">output</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.helper.parse_interface_counters_errors" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Parses &lsquo;show interfaces port <port> counters errors&rsquo; CLI output into a dictionary.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>output</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>CLI output string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="float">float</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>Dictionary with error counter names and numeric values (float or int).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h2 id="Aos8ApiBuilder.helper.parse_interface_detail" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">parse_interface_detail</span><span class="p">(</span><span class="n">cli_output</span><span class="p">)</span></code>
 
