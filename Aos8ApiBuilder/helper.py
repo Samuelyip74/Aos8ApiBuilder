@@ -195,3 +195,84 @@ def parse_ip_interface_output(cli_output: str) -> List[Dict[str, str]]:
             })
 
     return interfaces
+
+def parse_violation_output_to_json(output: str) -> List[Dict]:
+    lines = output.strip().splitlines()
+
+    # Skip header and find data lines
+    data_lines = [
+        line.strip() for line in lines
+        if re.match(r"^\d+/\d+/\d+", line.strip())  # Matches lines starting with port format
+    ]
+
+    parsed = []
+    for line in data_lines:
+        # Example: "1/1/23    AG         admin down          lps shutdown    0     300         10/1 0"
+        parts = re.split(r'\s{2,}', line.strip())
+        if len(parts) < 7:
+            continue  # Skip if line is malformed
+
+        # Unpack parts
+        port, source, action, reason, wtr, time, max_remain = parts[:7]
+
+        # Handle max/remainder split (e.g., "10/1 0" may come split)
+        if '/' in max_remain:
+            max_violations, remaining = max_remain.split('/')
+        elif len(parts) >= 8 and '/' in parts[6]:
+            max_violations, remaining = parts[6].split('/')
+        else:
+            max_violations = remaining = None
+
+        parsed.append({
+            "port": port,
+            "source": source,
+            "action": action,
+            "reason": reason,
+            "wait_to_restore": int(wtr),
+            "recovery_time": int(time),
+            "max_violations": int(max_violations) if max_violations is not None else None,
+            "remaining_violations": int(remaining) if remaining is not None else None
+        })
+
+    return parsed
+
+def parse_violation_recovery_configuration(cli_output: str) -> Dict[str, Any]:
+    result = {
+        "global": {},
+        "ports": []
+    }
+
+    lines = cli_output.strip().splitlines()
+
+    # Parse global values
+    for line in lines:
+        if "Global Violation Trap" in line:
+            match = re.search(r"Global Violation Trap\s*:\s*(\w+)", line)
+            if match:
+                result["global"]["trap"] = match.group(1)
+        elif "Global Recovery Maximum" in line:
+            match = re.search(r"Global Recovery Maximum\s*:\s*(\d+)", line)
+            if match:
+                result["global"]["recovery_maximum"] = int(match.group(1))
+        elif "Global Recovery Time" in line:
+            match = re.search(r"Global Recovery Time\s*:\s*(\d+)", line)
+            if match:
+                result["global"]["recovery_time"] = int(match.group(1))
+
+    # Parse port-specific values
+    port_data_started = False
+    for line in lines:
+        if re.match(r"^\s*Port\s+Recovery Max\s+Recovery Time", line):
+            port_data_started = True
+            continue
+        if port_data_started and re.match(r"^\s*\d+/\d+/\d+", line):
+            parts = line.strip().split()
+            if len(parts) >= 3:
+                port_entry = {
+                    "port": parts[0],
+                    "recovery_maximum": int(parts[1]),
+                    "recovery_time": int(parts[2])
+                }
+                result["ports"].append(port_entry)
+
+    return result

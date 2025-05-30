@@ -1,4 +1,4 @@
-from helper import parse_interface_status, parse_interface_detail
+from helper import parse_interface_status, parse_interface_detail, parse_violation_output_to_json, parse_violation_recovery_configuration
 from typing import Optional,List, Dict, Union, Literal
 from endpoints.base import BaseEndpoint
 from models import ApiResult
@@ -519,6 +519,221 @@ class InterfaceEndpoint(BaseEndpoint):
                 show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
                 if show_resp.success:
                     parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_eee(
+        self,
+        target: str,
+        state: Literal["enable", "disable"]
+    ) -> ApiResult:
+        """
+        Enables or disables Energy Efficient Ethernet (EEE) on the specified port(s) or slot.
+
+        Args:
+            target: The interface scope. Accepts:
+                - "slot x/y"
+                - "port x/y/z"
+                - "port x/y/z-a" (range of ports)
+            state: "enable" to turn on EEE, "disable" to turn it off.
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If state is not "enable" or "disable".
+        """
+        if state not in {"enable", "disable"}:
+            raise ValueError("State must be 'enable' or 'disable'")
+
+        target = target.replace(" ", "+")
+        cmd = f"interfaces+{target}+eee+{state}"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_hybrid_mode(
+        self,
+        target: str,
+        mode: Literal["fiber", "copper"]
+    ) -> ApiResult:
+        """
+        Configures the mode of a combo port to either fiber or copper.
+
+        Args:
+            target: The interface scope. Accepts:
+                - "slot x/y"
+                - "port x/y/z"
+                - "port x/y/z-a" (range of ports)
+            mode: "fiber" or "copper"
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If mode is not "fiber" or "copper".
+        """
+        if mode not in {"fiber", "copper"}:
+            raise ValueError("Mode must be 'fiber' or 'copper'")
+
+        target = target.replace(" ", "+")
+        cmd = f"interfaces+{target}+hybrid-mode+{mode}"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+    
+    def set_loopback(
+        self,
+        port: str,
+        enable: bool = True
+    ) -> ApiResult:
+        """
+        Enables or disables loopback mode for the specified front-panel port.
+
+        Args:
+            port: The front-panel port(s) in the format:
+                - "port x/y/z"
+                - "port x/y/z-a" (range of ports)
+            enable: True to enable loopback, False to disable using the 'no' form.
+
+        Returns:
+            ApiResult from the CLI API.
+        """
+        port = port.replace(" ", "+")
+        cmd = f"{'' if enable else 'no+'}interfaces+{port}+loopback"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success:
+            affected_ports = self._expand_port_range(port) if '-' in port else [port]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_portgroup_speed(
+        self,
+        port_group_number: int,
+        slot: str,
+        group_range: str,
+        speed: Literal["auto", "25G", "10G"]
+    ) -> ApiResult:
+        """
+        Configures the speed of the ports within a port group.
+
+        Args:
+            port_group_number: The port group number (e.g., 1, 2, 3...).
+            slot: The chassis/slot identifier (e.g., "1/1").
+            group_range: The group or group range (e.g., "1", "2-4").
+            speed: The desired speed for the port group ("auto", "25G", or "10G").
+
+        Returns:
+            ApiResult from the CLI API.
+        """
+        cmd = f"interfaces+portgroup+port-group-number+{port_group_number}+{slot}/{group_range}+speed+{speed}"
+        return self._client.get(f"/cli/aos?cmd={cmd}")
+
+    def clear_violation(
+        self,
+        target: str,
+        is_linkagg: bool = False
+    ) -> ApiResult:
+        """
+        Clears all the MAC address violation logs for a specified port or link aggregate.
+
+        Args:
+            target: Port in the format 'chassis/slot/port[-port2]' or linkagg ID/range like '1-2'.
+            is_linkagg: If True, clears violation for a linkagg; otherwise, clears for port(s).
+
+        Returns:
+            ApiResult from the CLI API.
+        """
+        if is_linkagg:
+            cmd = f"clear+violation+linkagg+{target}"
+        else:
+            cmd = f"clear+violation+port+{target}"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+violation+port+{p}")
+                if show_resp.success:
+                    parsed = parse_violation_output_to_json(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_violation_recovery_maximum(
+        self,
+        scope: Literal["global", "slot", "port"],
+        value: Union[int, Literal["infinite", "default"]],
+        target: Optional[str] = None
+    ) -> ApiResult:
+        """
+        Configures the maximum number of recovery attempts for MAC address violation recovery.
+
+        Args:
+            scope: "global" applies to all ports, "slot" applies to a chassis/slot, "port" applies to a port or range.
+            value: Integer (0–50), "infinite", or "default".
+            target: Optional. Required for "slot" or "port". E.g., '1/1' (slot), '1/1/1', or '1/1/1-3' (ports).
+
+        Returns:
+            ApiResult from the CLI API.
+        """
+        if scope == "global":
+            if target is not None:
+                raise ValueError("Global scope should not have a target.")
+            if value == "default":
+                raise ValueError("Value 'default' is not allowed for global scope.")
+            cmd = f"violation+recovery-maximum+{value}"
+        elif scope == "slot":
+            if not target:
+                raise ValueError("Slot scope requires a chassis/slot target (e.g., '1/1').")
+            cmd = f"violation+slot+{target}+recovery-maximum+{value}"
+        elif scope == "port":
+            if not target:
+                raise ValueError("Port scope requires a chassis/slot/port target (e.g., '1/1/1').")
+            cmd = f"violation+port+{target}+recovery-maximum+{value}"
+        else:
+            raise ValueError(f"Unknown scope: {scope}")
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+violation-recovery-configuration+port+{p}")
+                if show_resp.success:
+                    parsed = parse_violation_recovery_configuration(show_resp.output)
                     parsed_results.append(parsed)
             response.output = parsed_results
         return response
