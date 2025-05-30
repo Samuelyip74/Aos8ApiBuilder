@@ -7,10 +7,11 @@
 
 ## ✨ Supported APIs
 
+- System
+- Interface
 - VLAN 
 - VPA
 - IP
-
 
 ---
 
