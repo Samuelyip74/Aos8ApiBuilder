@@ -4,8 +4,21 @@ from endpoints.base import BaseEndpoint
 from models import ApiResult
 
 class InterfaceEndpoint(BaseEndpoint):
+    """
+    Provides interface-related configuration and status management endpoints
+    for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.
+    """
 
     def _expand_port_range(self, port_range: str) -> list[str]:
+        """
+        Expand a port range string into a list of individual port identifiers.
+
+        Args:
+            port_range: A string like "1/1/1-3" or "1/1/1".
+
+        Returns:
+            A list of individual port identifiers, e.g., ["1/1/1", "1/1/2", "1/1/3"].
+        """
         if '-' not in port_range:
             return [port_range]
         
@@ -13,13 +26,28 @@ class InterfaceEndpoint(BaseEndpoint):
         start, end = map(int, start_end.split('-'))
         return [f"{prefix}/{i}" for i in range(start, end + 1)]
 
-    def list(self):
+    def list(self) -> ApiResult:
+        """
+        Retrieve the status of all interfaces.
+
+        Returns:
+            An `ApiResult` with parsed interface status list if available.
+        """
         response = self._client.get("/cli/aos?cmd=show+interfaces+status")
         if response.output:
             response.output = parse_interface_status(response.output)
         return response
 
-    def get_interface(self, port:str):
+    def get_interface(self, port: str) -> Optional[dict]:
+        """
+        Retrieve detailed status of a specific port.
+
+        Args:
+            port: Port identifier string, e.g., "1/1/1".
+
+        Returns:
+            A dictionary of parsed interface details or None if the request fails.
+        """
         response = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{port}")
         if response.success:
             return parse_interface_detail(response.output)
@@ -27,27 +55,25 @@ class InterfaceEndpoint(BaseEndpoint):
 
     def set_interface(self, port: str, parameter: str, value: str) -> ApiResult:
         """
-        Set admin-state, autoneg, or epp on a given port or range,
-        and return the updated interface status as a list of parsed results.
+        Set an interface parameter and return updated status for all affected ports.
 
-        :param port: e.g., "1/1/1" or "1/1/1-3"
-        :param parameter: "admin-state", "autoneg", or "epp"
-        :param value: "enable" or "disable"
-        :return: List of parsed interface details (one per port)
+        Args:
+            port: Port or range string, e.g., "1/1/1" or "1/1/1-3".
+            parameter: One of "admin-state", "autoneg", or "epp".
+            value: "enable" or "disable".
+
+        Returns:
+            An `ApiResult` with a list of updated interface statuses.
         """
         if parameter not in {"admin-state", "autoneg", "epp"}:
             raise ValueError("Invalid parameter: choose from 'admin-state', 'autoneg', or 'epp'")
         if value not in {"enable", "disable"}:
             raise ValueError("Invalid value: choose from 'enable' or 'disable'")
 
-        # 1. Send the config command
         cmd = f"interfaces+port+{port}+{parameter}+{value}"
         response = self._client.get(f"/cli/aos?cmd={cmd}")
         if response.success:
-            # 2. Build list of ports affected
             affected_ports = self._expand_port_range(port)
-
-            # 3. Fetch and parse the status for each affected port
             parsed_results = []
             for p in affected_ports:
                 show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
@@ -55,12 +81,23 @@ class InterfaceEndpoint(BaseEndpoint):
                     parsed = parse_interface_detail(show_resp.output)
                     parsed_results.append(parsed)
             response.output = parsed_results
-            return response
         return response
 
-
     def set_speed(self, target: str, speed: str) -> ApiResult:
-        """Set interface speed: 10 | 100 | 1000 | 2500 | 10000 | 40000 | 100000 | 2000 | 4000 | 8000 | auto | max 100/1000/4000/8000"""
+        """
+        Set the speed for one or more interfaces.
+
+        Args:
+            target: Port or range string, e.g., "1/1/1" or "1/1/1-3".
+            speed: Allowed values include "10", "100", ..., "100000", "auto",
+                or "max 100"/"max 1000"/etc.
+
+        Returns:
+            An `ApiResult` with updated interface status per affected port.
+
+        Raises:
+            ValueError: If the speed value is invalid.
+        """
         allowed_speeds = {
             "10", "100", "1000", "2500", "10000", "40000", "100000",
             "2000", "4000", "8000", "auto",
@@ -70,7 +107,6 @@ class InterfaceEndpoint(BaseEndpoint):
         if speed not in allowed_speeds:
             raise ValueError(f"Invalid speed value: {speed}")
 
-        # If speed is a "max" setting, split the string
         if speed.startswith("max "):
             cmd = f"interfaces+port+{target}+speed+max+{speed.split()[1]}"
         else:
@@ -78,35 +114,84 @@ class InterfaceEndpoint(BaseEndpoint):
 
         response = self._client.get(f"/cli/aos?cmd={cmd}")
         if response.success:
-            # 2. Build list of ports affected
             affected_ports = self._expand_port_range(target)
-
-            # 3. Fetch and parse the status for each affected port
             parsed_results = []
             for p in affected_ports:
                 show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
                 if show_resp.success:
                     parsed = parse_interface_detail(show_resp.output)
                     parsed_results.append(parsed)
-
             response.output = parsed_results
-            return response
         return response
 
     def admin_enable(self, port: str) -> ApiResult:
+        """
+        Enable administrative state of the interface.
+
+        Args:
+            port: Port or range string.
+
+        Returns:
+            `ApiResult` with updated interface status.
+        """
         return self.set_interface(port, "admin-state", "enable")
 
     def admin_disable(self, port: str) -> ApiResult:
+        """
+        Disable administrative state of the interface.
+
+        Args:
+            port: Port or range string.
+
+        Returns:
+            `ApiResult` with updated interface status.
+        """
         return self.set_interface(port, "admin-state", "disable")
 
     def autoneg_enable(self, port: str) -> ApiResult:
+        """
+        Enable auto-negotiation on the interface.
+
+        Args:
+            port: Port or range string.
+
+        Returns:
+            `ApiResult` with updated interface status.
+        """
         return self.set_interface(port, "autoneg", "enable")
 
     def autoneg_disable(self, port: str) -> ApiResult:
+        """
+        Disable auto-negotiation on the interface.
+
+        Args:
+            port: Port or range string.
+
+        Returns:
+            `ApiResult` with updated interface status.
+        """
         return self.set_interface(port, "autoneg", "disable")
 
     def epp_enable(self, port: str) -> ApiResult:
+        """
+        Enable EPP on the interface.
+
+        Args:
+            port: Port or range string.
+
+        Returns:
+            `ApiResult` with updated interface status.
+        """
         return self.set_interface(port, "epp", "enable")
 
     def epp_disable(self, port: str) -> ApiResult:
+        """
+        Disable EPP on the interface.
+
+        Args:
+            port: Port or range string.
+
+        Returns:
+            `ApiResult` with updated interface status.
+        """
         return self.set_interface(port, "epp", "disable")

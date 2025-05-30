@@ -37,7 +37,7 @@
 
 ## 📦 Usage Guide
 
-### Step 1: Create a global instance of Authenticator object in auth_instance.py
+### Step 1: Create an object of AosApiClient
 
 
 ```python
@@ -63,7 +63,7 @@
         print("✅ Vlan operation successfully")
     else:
         print(f"❌ VLAN creation failed (diag={result.diag}): {result.error}")
-
+```
 
 ## 📚 Available Methods
 

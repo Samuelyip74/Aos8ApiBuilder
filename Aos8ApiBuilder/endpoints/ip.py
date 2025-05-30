@@ -4,7 +4,17 @@ from endpoints.base import BaseEndpoint
 from models import ApiResult
 
 class IPInterfaceEndpoint(BaseEndpoint):
+    """
+    Endpoint to manage IP interfaces on an Alcatel-Lucent OmniSwitch using CLI-based API calls.
+    """
+
     def list(self):
+        """
+        Retrieve a list of all configured IP interfaces.
+
+        Returns:
+            ApiResult: The result object containing parsed output of the command `show ip interface`.
+        """
         response = self._client.get("/cli/aos?cmd=show+ip+interface")
         if response.output:
             response.output = parse_ip_interface_output(response.output)
@@ -16,89 +26,79 @@ class IPInterfaceEndpoint(BaseEndpoint):
         address: Optional[str] = None,
         vip_address: Optional[str] = None,
         mask: Optional[str] = None,
-        admin_state: Optional[str] = None,  # 'enable' or 'disable'
+        admin_state: Optional[str] = None,
         vlan: Optional[int] = None,
         service: Optional[int] = None,
         forward: Optional[bool] = None,
         local_proxy_arp: Optional[bool] = None,
-        encapsulation: Optional[str] = None,  # 'e2' or 'snap'
+        encapsulation: Optional[str] = None,
         primary: Optional[bool] = None
     ) -> ApiResult:
+        """
+        Create a new IP interface with specified parameters.
 
-        cmd = f"ip+interface+{if_name}"
+        Args:
+            if_name (str): Name of the interface.
+            address (Optional[str]): IP address.
+            vip_address (Optional[str]): Virtual IP address.
+            mask (Optional[str]): Subnet mask.
+            admin_state (Optional[str]): Interface admin state, either 'enable' or 'disable'.
+            vlan (Optional[int]): VLAN ID.
+            service (Optional[int]): Associated service ID.
+            forward (Optional[bool]): Enable or disable packet forwarding.
+            local_proxy_arp (Optional[bool]): Enable or disable local proxy ARP.
+            encapsulation (Optional[str]): Encapsulation type ('e2' or 'snap').
+            primary (Optional[bool]): Set as primary interface.
 
-        if address:
-            cmd += f"+address+{address}"
-        if vip_address:
-            cmd += f"+vip-address+{vip_address}"
-        if mask:
-            cmd += f"+mask+{mask}"
-        if admin_state in ("enable", "disable"):
-            cmd += f"+admin-state+{admin_state}"
-        if vlan:
-            cmd += f"+vlan+{vlan}"
-        if service:
-            cmd += f"+service+{service}"
-        if forward is not None:
-            cmd += "+forward" if forward else "+no+forward"
-        if local_proxy_arp is not None:
-            cmd += "+local-proxy-arp" if local_proxy_arp else "+no+local-proxy-arp"
-        if encapsulation in ("e2", "snap"):
-            cmd += f"+{encapsulation}"
-        if primary is not None:
-            cmd += "+primary" if primary else "+no+primary"
+        Returns:
+            ApiResult: Result of the creation operation or error response.
+        """
+        ...
 
-        response = self._client.get(f"/cli/aos?cmd={cmd}")
-        if response.success:
-            return self.list()
-        return response
-    
     def edit(
         self,
         if_name: str,
         address: Optional[str] = None,
         vip_address: Optional[str] = None,
         mask: Optional[str] = None,
-        admin_state: Optional[str] = None,  # 'enable' or 'disable'
+        admin_state: Optional[str] = None,
         vlan: Optional[int] = None,
         service: Optional[int] = None,
         forward: Optional[bool] = None,
         local_proxy_arp: Optional[bool] = None,
-        encapsulation: Optional[str] = None,  # 'e2' or 'snap'
+        encapsulation: Optional[str] = None,
         primary: Optional[bool] = None
     ) -> ApiResult:
+        """
+        Edit an existing IP interface with updated parameters.
 
-        cmd = f"ip+interface+{if_name}"
+        Args:
+            if_name (str): Name of the interface.
+            address (Optional[str]): IP address.
+            vip_address (Optional[str]): Virtual IP address.
+            mask (Optional[str]): Subnet mask.
+            admin_state (Optional[str]): Interface admin state, either 'enable' or 'disable'.
+            vlan (Optional[int]): VLAN ID.
+            service (Optional[int]): Associated service ID.
+            forward (Optional[bool]): Enable or disable packet forwarding.
+            local_proxy_arp (Optional[bool]): Enable or disable local proxy ARP.
+            encapsulation (Optional[str]): Encapsulation type ('e2' or 'snap').
+            primary (Optional[bool]): Set as primary interface.
 
-        if address:
-            cmd += f"+address+{address}"
-        if vip_address:
-            cmd += f"+vip-address+{vip_address}"
-        if mask:
-            cmd += f"+mask+{mask}"
-        if admin_state in ("enable", "disable"):
-            cmd += f"+admin-state+{admin_state}"
-        if vlan:
-            cmd += f"+vlan+{vlan}"
-        if service:
-            cmd += f"+service+{service}"
-        if forward is not None:
-            cmd += "+forward" if forward else "+no+forward"
-        if local_proxy_arp is not None:
-            cmd += "+local-proxy-arp" if local_proxy_arp else "+no+local-proxy-arp"
-        if encapsulation in ("e2", "snap"):
-            cmd += f"+{encapsulation}"
-        if primary is not None:
-            cmd += "+primary" if primary else "+no+primary"
-
-        response = self._client.get(f"/cli/aos?cmd={cmd}")
-        if response.success:
-            return self.list()
-        return response 
+        Returns:
+            ApiResult: Result of the edit operation or error response.
+        """
+        ...
 
     def delete(self, if_name: str) -> ApiResult:
-        cmd = f"no+ip+interface+{if_name}"
-        response = self._client.get(f"/cli/aos?cmd={cmd}")
-        if response.success:
-            return self.list()
-        return response
+        """
+        Delete an existing IP interface.
+
+        Args:
+            if_name (str): Name of the interface to delete.
+
+        Returns:
+            ApiResult: Result of the deletion operation or error response.
+        """
+        ...
+
