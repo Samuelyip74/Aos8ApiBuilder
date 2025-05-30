@@ -867,6 +867,94 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ddm_status" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_ddm_status</span><span class="p">(</span><span class="n">state</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ddm_status" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the Digital Diagnostics Monitoring (DDM) administrative status.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>state</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo; to turn on DDM monitoring; &ldquo;disable&rdquo; to turn it off.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If an invalid state is provided.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_duplex" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">set_duplex</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span></code>
 
@@ -963,6 +1051,328 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_flood_limit</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">traffic_type</span><span class="p">,</span> <span class="n">rate_mode</span><span class="p">,</span> <span class="n">rate_value</span><span class="p">,</span> <span class="n">low_threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configure flood limit settings for broadcast, multicast, unknown unicast, or all traffic types.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>traffic_type</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;bcast&rdquo;, &ldquo;mcast&rdquo;, &ldquo;uucast&rdquo;, &ldquo;all&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>rate_mode</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;pps&rdquo;, &ldquo;mbps&rdquo;, &ldquo;cap%&rdquo;, &ldquo;enable&rdquo;, &ldquo;disable&rdquo;, &ldquo;default&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>rate_value</code></b>
+                  (<code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;, &#39;default&#39;]]</code>)
+              –
+              <div class="doc-md-description">
+                <p>The value for the selected rate_mode, or &ldquo;enable&rdquo;/&rdquo;disable&rdquo;/&rdquo;default&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>low_threshold</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional low threshold value (must be lower than rate_value, when applicable).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If input validation fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit_action" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_flood_limit_action</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">traffic_type</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit_action" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configure the action taken when flood rate limits are violated for a given traffic type.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>traffic_type</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;bcast&#39;, &#39;mcast&#39;, &#39;uucast&#39;, &#39;all&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;bcast&rdquo;, &ldquo;mcast&rdquo;, &ldquo;uucast&rdquo;, &ldquo;all&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>action</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;shutdown&#39;, &#39;trap&#39;, &#39;default&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;shutdown&rdquo;, &ldquo;trap&rdquo;, &ldquo;default&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If any argument is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ingress_bandwidth" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_ingress_bandwidth</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ingress_bandwidth" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures ingress bandwidth settings on the specified slot or port(s).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>action</code></b>
+                  (<code><span title="typing.Union">Union</span>[<span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;], <span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo;, &ldquo;disable&rdquo;, or an integer Mbps value.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If invalid action value.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_interface" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">set_interface</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
 
@@ -1029,6 +1439,198 @@ for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.</p>
               –
               <div class="doc-md-description">
                 <p>An <code>ApiResult</code> with a list of updated interface statuses.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_link_trap" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_link_trap</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_link_trap" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enables or disables link trap messages on the specified interface(s).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/2/1&rdquo;, &ldquo;1/1/1-6&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>state</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo; to generate trap messages when port changes state, &ldquo;disable&rdquo; otherwise.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If an invalid state is provided.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_max_frame_size" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_max_frame_size</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_max_frame_size" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configure the maximum frame size on a port or slot.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target slot (e.g. &ldquo;1/3&rdquo;) or port/port-range (e.g. &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>size</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Frame size in bytes (valid range: 1518 to 9216).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult of the CLI command.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If the target or size is invalid.</p>
               </div>
             </li>
         </ul>
@@ -1126,6 +1728,206 @@ or &ldquo;max 100&rdquo;/&rdquo;max 1000&rdquo;/etc.</p>
               –
               <div class="doc-md-description">
                 <p>If the speed value is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_restore" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_wait_to_restore</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_restore" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the wait-to-restore timer for the specified slot or port(s).
+This timer delays the notification of a link-up event.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The target interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>value</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Wait-to-restore timer in seconds (0 disables the timer).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If value is negative or target is improperly formatted.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_shutdown" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_wait_to_shutdown</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_shutdown" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the wait-to-shutdown timer for the specified slot or port(s).
+This timer delays the notification of a link-down event.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The target interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>value</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Wait-to-shutdown timer in seconds (0 disables the timer).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If value is negative or target is improperly formatted.</p>
               </div>
             </li>
         </ul>
