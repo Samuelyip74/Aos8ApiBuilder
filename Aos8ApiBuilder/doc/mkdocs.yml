@@ -1,19 +1,44 @@
 site_name: Aos8APIBuilder for Python Documentation
 site_dir: ../../site
 docs_dir: docs
+
 theme:
-  name: material
+  name: readthedocs
 
 plugins:
   - search
   - mkdocstrings:
       handlers:
         python:
-          paths: ["..", "../.."]  # Add both current and parent of parent as search paths
+          paths: ["..", "../.."]
           options:
-            docstring_style: google          
+            docstring_style: google
+            show_root_heading: false
+            show_source: false            
 
 markdown_extensions:
-  - admonition
+  - smarty
   - toc:
       permalink: true
+  - sane_lists
+
+nav:
+  - Aos8APIBuilder Classes:
+      - Introduction: intro.md
+      - Aos8ApiBuilder:
+          - ApiBuilder: api/ApiBuilder.md
+          - ApiClient: api/ApiClient.md
+          - Models: api/models.md
+      - API Endpoints:
+          - System: endpoints/system.md     
+          - Interface: endpoints/interface.md     
+          - VLAN: endpoints/vlan.md          
+          - VPA: endpoints/vpa.md          
+          - IP: endpoints/ip.md   
+      - Helper:   
+          - Parser: helper/parser.md     
+
+
+
+watch:
+  - ../../Aos8APIBuilder
