@@ -1,4 +1,5 @@
 from helper import parse_interface_status, parse_interface_detail, parse_violation_output_to_json, parse_violation_recovery_configuration
+from helper import parse_interfaces_capability
 from typing import Optional,List, Dict, Union, Literal
 from endpoints.base import BaseEndpoint
 from models import ApiResult
@@ -738,6 +739,30 @@ class InterfaceEndpoint(BaseEndpoint):
             response.output = parsed_results
         return response
 
+    def show_interface_capability(self, port: str, capability: bool = False) -> Optional[dict]:
+        """
+        Retrieve detailed status or capability of a specific port or port range.
+
+        Args:
+            port: Port identifier string, e.g., "1/1/1", "1/1/1-1/1/4", or "1/1".
+            capability: If True, retrieve capability info instead of detailed status.
+
+        Returns:
+            A dictionary (or list of dicts) of parsed interface data, or None if request fails.
+        """
+        cmd = f"show+interfaces+port+{port}+capability"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+        if response.success:
+            affected_ports = self._expand_port_range(port) if '-' in port else [port]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}+capability")
+                if show_resp.success:
+                    parsed = parse_interfaces_capability(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
 
     def clear_statistics(self, target: str, stat_type: str, cli_only: bool = False) -> ApiResult:
         """

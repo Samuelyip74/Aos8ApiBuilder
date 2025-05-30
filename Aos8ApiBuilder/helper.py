@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict, Union
+from typing import List, Dict, Union, Any
 
 
 def parse_system_output_json(cli_output: str) -> Dict[str, Union[str, dict]]:
@@ -276,3 +276,50 @@ def parse_violation_recovery_configuration(cli_output: str) -> Dict[str, Any]:
                 result["ports"].append(port_entry)
 
     return result
+
+import re
+from typing import List, Dict
+
+def parse_interfaces_capability(cli_output: str) -> List[Dict[str, str]]:
+    lines = cli_output.strip().splitlines()
+    result = []
+    
+    # Skip headers
+    header_regex = re.compile(r"^\s*Ch/Slot/Port\s+AutoNeg\s+Pause\s+Crossover", re.IGNORECASE)
+    cap_entries = {}
+    
+    for line in lines:
+        line = line.strip()
+        if not line or header_regex.match(line):
+            continue
+
+        parts = line.split()
+
+        # Match CAP lines
+        if len(parts) >= 9 and parts[1] == "CAP":
+            port_id = parts[0]
+            cap_entries[port_id] = {
+                "port": port_id,
+                "autoneg_cap": parts[2],
+                "pause_cap": parts[3],
+                "crossover_cap": parts[4],
+                "speed_cap": parts[5],
+                "duplex_cap": parts[6],
+                "macsec_cap": parts[7],
+                "macsec_256_cap": parts[8]
+            }
+
+        # Match DEF lines
+        elif len(parts) >= 6 and parts[1] == "DEF":
+            port_id = parts[0]
+            if port_id in cap_entries:
+                cap_entries[port_id].update({
+                    "autoneg_default": parts[2],
+                    "pause_default": parts[3],
+                    "crossover_default": parts[4],
+                    "speed_default": parts[5],
+                    "duplex_default": parts[6] if len(parts) > 6 else None
+                })
+
+    return list(cap_entries.values())
+
