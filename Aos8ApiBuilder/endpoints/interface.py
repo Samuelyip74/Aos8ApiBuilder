@@ -439,6 +439,91 @@ class InterfaceEndpoint(BaseEndpoint):
 
         return self._client.get(f"/cli/aos?cmd={cmd}")
 
+    def set_wait_to_restore(
+        self,
+        target: str,
+        value: int,
+    ) -> ApiResult:
+        """
+        Configures the wait-to-restore timer for the specified slot or port(s).
+        This timer delays the notification of a link-up event.
+
+        Args:
+            target: The target interface scope. Accepts:
+                - "slot x/y"
+                - "port x/y/z"
+                - "port x/y/z-a" (range)
+            value: Wait-to-restore timer in seconds (0 disables the timer).
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If value is negative or target is improperly formatted.
+        """
+        if value < 0:
+            raise ValueError("wait-to-restore value must be >= 0")
+
+        # Normalize spacing for CLI
+        target = target.replace(" ", "+")
+        cmd = f"interfaces+{target}+wait-to-restore+{value}"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_wait_to_shutdown(
+        self,
+        target: str,
+        value: int,
+    ) -> ApiResult:
+        """
+        Configures the wait-to-shutdown timer for the specified slot or port(s).
+        This timer delays the notification of a link-down event.
+
+        Args:
+            target: The target interface scope. Accepts:
+                - "slot x/y"
+                - "port x/y/z"
+                - "port x/y/z-a" (range)
+            value: Wait-to-shutdown timer in seconds (0 disables the timer).
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If value is negative or target is improperly formatted.
+        """
+        if value < 0:
+            raise ValueError("wait-to-shutdown value must be >= 0")
+
+        # Normalize spacing for CLI
+        target = target.replace(" ", "+")
+        cmd = f"interfaces+{target}+wait-to-shutdown+{value}"
+        
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+
     def clear_statistics(self, target: str, stat_type: str, cli_only: bool = False) -> ApiResult:
         """
         Clear interface statistics counters (Layer 2 or TDR).
