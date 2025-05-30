@@ -124,7 +124,6 @@ class InterfaceEndpoint(BaseEndpoint):
             response.output = parsed_results
         return response
 
-
     def set_alias(self, port: str, alias: str) -> ApiResult:
         """
         Set or clear the alias (description) for a single port.
@@ -199,6 +198,45 @@ class InterfaceEndpoint(BaseEndpoint):
             response.output = parsed_results
         return response
     
+    def set_max_frame_size(self, target: str, size: int) -> ApiResult:
+        """
+        Configure the maximum frame size on a port or slot.
+
+        Args:
+            target: Target slot (e.g. "1/3") or port/port-range (e.g. "1/3/1", "1/3/1-4").
+            size: Frame size in bytes (valid range: 1518 to 9216).
+
+        Returns:
+            ApiResult of the CLI command.
+        
+        Raises:
+            ValueError: If the target or size is invalid.
+        """
+        if not (1518 <= size <= 9216):
+            raise ValueError("Frame size must be between 1518 and 9216 bytes")
+
+        if '-' in target or target.count('/') == 2:
+            # Port or port range
+            cmd = f"interfaces+port+{target}+max-frame-size+{size}"
+        elif target.count('/') == 1:
+            # Slot-level
+            cmd = f"interfaces+slot+{target}+max-frame-size+{size}"
+        else:
+            raise ValueError("Invalid target format. Must be port (1/3/1), port range (1/3/1-4), or slot (1/3)")
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+        
+        if response.success and "port" in cmd:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
     def clear_statistics(self, target: str, stat_type: str, cli_only: bool = False) -> ApiResult:
         """
         Clear interface statistics counters (Layer 2 or TDR).
@@ -232,7 +270,6 @@ class InterfaceEndpoint(BaseEndpoint):
             base_cmd += "+cli"
 
         return self._client.get(f"/cli/aos?cmd={base_cmd}")
-
 
     def admin_enable(self, port: str) -> ApiResult:
         """

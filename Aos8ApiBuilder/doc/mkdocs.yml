@@ -26,6 +26,7 @@ markdown_extensions:
 nav:
   - Aos8APIBuilder Classes:
       - Introduction: intro.md
+      - Getting Started: getting-started.md
       - Aos8ApiBuilder:
           - ApiBuilder: api/ApiBuilder.md
           - ApiClient: api/ApiClient.md
