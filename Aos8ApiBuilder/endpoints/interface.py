@@ -1,5 +1,5 @@
 from helper import parse_interface_status, parse_interface_detail
-from typing import Optional,List, Dict
+from typing import Optional,List, Dict, Union, Literal
 from endpoints.base import BaseEndpoint
 from models import ApiResult
 
@@ -236,6 +236,208 @@ class InterfaceEndpoint(BaseEndpoint):
                     parsed_results.append(parsed)
             response.output = parsed_results
         return response
+
+    def set_flood_limit(
+        self,
+        target: str,
+        traffic_type: str,
+        rate_mode: str,
+        rate_value: Union[int, Literal["enable", "disable", "default"]],
+        low_threshold: Optional[int] = None
+    ) -> ApiResult:
+        """
+        Configure flood limit settings for broadcast, multicast, unknown unicast, or all traffic types.
+
+        Args:
+            target: Slot (e.g., "1/3") or port/port-range (e.g., "1/3/1", "1/3/1-4").
+            traffic_type: One of: "bcast", "mcast", "uucast", "all".
+            rate_mode: One of: "pps", "mbps", "cap%", "enable", "disable", "default".
+            rate_value: The value for the selected rate_mode, or "enable"/"disable"/"default".
+            low_threshold: Optional low threshold value (must be lower than rate_value, when applicable).
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If input validation fails.
+        """
+        valid_traffic = {"bcast", "mcast", "uucast", "all"}
+        valid_modes = {"pps", "mbps", "cap%", "enable", "disable", "default"}
+
+        if traffic_type not in valid_traffic:
+            raise ValueError(f"Invalid traffic_type. Must be one of {valid_traffic}")
+        if rate_mode not in valid_modes:
+            raise ValueError(f"Invalid rate_mode. Must be one of {valid_modes}")
+        if rate_mode in {"pps", "mbps", "cap%"} and not isinstance(rate_value, int):
+            raise ValueError(f"rate_value must be int for rate_mode={rate_mode}")
+        if rate_mode in {"enable", "disable", "default"} and not isinstance(rate_value, str):
+            raise ValueError(f"rate_value must be 'enable', 'disable', or 'default' for mode={rate_mode}")
+        if rate_mode == "cap%":
+            rate_mode = "cap"
+
+        base_cmd = (
+            f"interfaces+{'port' if target.count('/') == 2 or '-' in target else 'slot'}+{target}+"
+            f"flood-limit+{traffic_type}+rate+{rate_mode}+{rate_value}"
+        )
+
+        if low_threshold is not None:
+            if not isinstance(low_threshold, int):
+                raise ValueError("low_threshold must be an integer")
+            base_cmd += f"+low-threshold+{low_threshold}"
+
+        response = self._client.get(f"/cli/aos?cmd={base_cmd}")
+
+        if response.success and "port" in base_cmd:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_flood_limit_action(
+        self,
+        target: str,
+        traffic_type: Literal["bcast", "mcast", "uucast", "all"],
+        action: Literal["shutdown", "trap", "default"]
+    ) -> ApiResult:
+        """
+        Configure the action taken when flood rate limits are violated for a given traffic type.
+
+        Args:
+            target: Slot (e.g., "1/3") or port/port-range (e.g., "1/3/1", "1/3/1-4").
+            traffic_type: One of: "bcast", "mcast", "uucast", "all".
+            action: One of: "shutdown", "trap", "default".
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If any argument is invalid.
+        """
+        valid_traffic = {"bcast", "mcast", "uucast", "all"}
+        valid_actions = {"shutdown", "trap", "default"}
+
+        if traffic_type not in valid_traffic:
+            raise ValueError(f"Invalid traffic_type. Must be one of {valid_traffic}")
+        if action not in valid_actions:
+            raise ValueError(f"Invalid action. Must be one of {valid_actions}")
+
+        target_type = "port" if target.count("/") == 2 or "-" in target else "slot"
+        cmd = f"interfaces+{target_type}+{target}+flood-limit+{traffic_type}+action+{action}"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success and "port" in cmd:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+    
+    def set_ingress_bandwidth(
+        self,
+        target: str,
+        action: Union[Literal["enable", "disable"], int]
+    ) -> ApiResult:
+        """
+        Configures ingress bandwidth settings on the specified slot or port(s).
+
+        Args:
+            target: Target slot (e.g., "1/3") or port/port-range (e.g., "1/3/1", "1/3/1-4").
+            action: "enable", "disable", or an integer Mbps value.
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If invalid action value.
+        """
+        target_type = "port" if target.count("/") == 2 or "-" in target else "slot"
+
+        if isinstance(action, str):
+            if action not in {"enable", "disable"}:
+                raise ValueError("Action must be 'enable', 'disable', or an integer Mbps value.")
+            cmd = f"interfaces+{target_type}+{target}+ingress-bandwidth+{action}"
+        elif isinstance(action, int):
+            if not (1 <= action <= 100000):  # Example: Assume max reasonable limit
+                raise ValueError("Mbps value must be a positive integer.")
+            cmd = f"interfaces+{target_type}+{target}+ingress-bandwidth+mbps+{action}"
+        else:
+            raise ValueError("Invalid action type. Must be 'enable', 'disable', or int.")
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success and "port" in cmd:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_link_trap(self, target: str, state: Literal["enable", "disable"]) -> ApiResult:
+        """
+        Enables or disables link trap messages on the specified interface(s).
+
+        Args:
+            target: Target slot (e.g., "1/3") or port/port-range (e.g., "1/2/1", "1/1/1-6").
+            state: "enable" to generate trap messages when port changes state, "disable" otherwise.
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If an invalid state is provided.
+        """
+        if state not in {"enable", "disable"}:
+            raise ValueError("State must be 'enable' or 'disable'")
+
+        target_type = "port" if target.count("/") == 2 or "-" in target else "slot"
+        cmd = f"interfaces+{target_type}+{target}+link-trap+{state}"
+
+        response = self._client.get(f"/cli/aos?cmd={cmd}")
+
+        if response.success and "port" in cmd:
+            affected_ports = self._expand_port_range(target) if '-' in target else [target]
+            parsed_results = []
+            for p in affected_ports:
+                show_resp = self._client.get(f"/cli/aos?cmd=show+interfaces+port+{p}")
+                if show_resp.success:
+                    parsed = parse_interface_detail(show_resp.output)
+                    parsed_results.append(parsed)
+            response.output = parsed_results
+        return response
+
+    def set_ddm_status(self, state: Literal["enable", "disable"]) -> ApiResult:
+        """
+        Configures the Digital Diagnostics Monitoring (DDM) administrative status.
+
+        Args:
+            state: "enable" to turn on DDM monitoring; "disable" to turn it off.
+
+        Returns:
+            ApiResult from the CLI API.
+
+        Raises:
+            ValueError: If an invalid state is provided.
+        """
+        if state not in {"enable", "disable"}:
+            raise ValueError("State must be 'enable' or 'disable'")
+
+        cmd = f"interfaces+ddm+{state}"
+
+        return self._client.get(f"/cli/aos?cmd={cmd}")
 
     def clear_statistics(self, target: str, stat_type: str, cli_only: bool = False) -> ApiResult:
         """
