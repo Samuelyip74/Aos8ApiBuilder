@@ -9,10 +9,10 @@ client = (
     .build()
 )
 
-result = client.interface.show_interface_counters_errors("1/1/2")
+result = client.vlan.list()
 if result.success:
     print("✅ Operation successfully")
-    pprint.pprint(result.output)
+    pprint.pprint(result.data)
 else:
     print(f"❌ Operation failed (diag={result.diag}): {result.error}")
 

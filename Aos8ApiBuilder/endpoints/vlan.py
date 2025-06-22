@@ -4,17 +4,39 @@ from endpoints.base import BaseEndpoint
 from models import ApiResult
 
 class VlanEndpoint(BaseEndpoint):
-    """Endpoint for managing VLAN configuration via the AOS CLI API."""
+    """Endpoint for managing VLAN configuration via the AOS RESTFUL API."""
 
-    def list(self):
-        """Retrieve the list of VLANs.
+
+    def list(self, vlan_type: int = 5, limit: int = 200):
+        """
+        Retrieve the list of VLANs using the MIB-based REST API.
+
+        Args:
+            vlan_type (int): VLAN type filter (default 5 for Ethernet VLAN).
+            limit (int): Maximum number of results to return.
 
         Returns:
             ApiResult: Parsed VLAN data from the switch.
         """
-        response = self._client.get("/cli/aos?cmd=show+vlan")
-        if response.output:
-            response.output = parse_vlan_output_json(response.output)
+        params = {
+            "domain": "mib",
+            "urn": "vlanTable",
+            "mibObject0": "vlanNumber",
+            "mibObject1": "vlanDescription",
+            "mibObject2": "vlanAdmStatus",
+            "mibObject3": "vlanType",
+            "mibObject4": "vlanOperStatus",
+            "mibObject5": "vlanMtu",
+            "mibObject6": "vlanRouterStatus",
+            "mibObject7": "vlanSrcLearningStatus",
+            "filterObject": "vlanType",
+            "filterOperation": "==",
+            "filterValue": str(vlan_type),
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
         return response
 
     def create(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500) -> ApiResult:
