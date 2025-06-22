@@ -39,23 +39,25 @@ class VlanEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
 
-    def create(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500) -> ApiResult:
-        """Create a new VLAN with optional description and MTU.
-
-        Args:
-            vlan_id (int): VLAN ID to create.
-            description (Optional[str], optional): VLAN name/description. Defaults to "VLAN_{vlan_id}".
-            mtu (int, optional): MTU size for the VLAN. Defaults to 1500.
+    def create(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500, AdmStatus = 1) -> ApiResult:
+        """
+        Create VLAN info using a POST request with specific MIB object filters.
 
         Returns:
-            ApiResult: API response, including the updated VLAN list if successful.
+            ApiResult: VLAN data from the switch.
         """
-        description = description or f"VLAN_{vlan_id}"
-        response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+name+{description}")
+        url = "/?domain=mib&urn=vlanTable"
+        form_data = {
+            "mibObject0": f"vlanNumber:|{str(vlan_id)}",
+            "mibObject1": f"vlanDescription:{description}",
+            "mibObject2": f"vlanAdmStatus:{str(AdmStatus)}",
+            "mibObject3": f"vlanMtu:{str(mtu)}",
+            "mibObject4": "vlanStatus:4"
+        }
+
+        response = self._client.post(url, data=form_data)
         if response.success:
-            response = self._client.get(f"/cli/aos?cmd=vlan+{vlan_id}+mtu-ip+{mtu}")
-            if response.success:
-                return self.list()
+            return self.list()
         return response
 
     def edit(self, vlan_id: int, description: Optional[str] = None, mtu: int = 1500) -> ApiResult:

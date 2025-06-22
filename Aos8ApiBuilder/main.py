@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.vlan.list()
+result = client.vlan.create(vlan_id=3, description="vlan_3", AdmStatus=2)
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
