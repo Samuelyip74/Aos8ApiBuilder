@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.vlan.delete(vlan_id=3)
+result = client.vlan.edit(vlan_id=3, description="vlan_3")
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
