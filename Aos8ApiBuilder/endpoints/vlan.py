@@ -80,16 +80,19 @@ class VlanEndpoint(BaseEndpoint):
         return response
 
     def delete(self, vlan_id: int) -> ApiResult:
-        """Delete a VLAN by its ID.
-
-        Args:
-            vlan_id (int): The VLAN ID to remove.
+        """
+        Delete VLAN using a POST request with specific MIB object filters.
 
         Returns:
-            ApiResult: API response, including the updated VLAN list if successful.
+            ApiResult: VLAN data from the switch.
         """
-        response = self._client.get(f"/cli/aos?cmd=no+vlan+{vlan_id}")
+        url = "/?domain=mib&urn=vlanTable"
+        form_data = {
+            "mibObject0": f"vlanNumber:|{str(vlan_id)}",
+            "mibObject1": "vlanStatus:6"
+        }
+
+        response = self._client.post(url, data=form_data)
         if response.success:
             return self.list()
         return response
-
