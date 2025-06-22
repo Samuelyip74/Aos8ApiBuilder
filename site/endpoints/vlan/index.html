@@ -144,7 +144,7 @@
               Bases: <code><span title="endpoints.base.BaseEndpoint">BaseEndpoint</span></code></p>
 
 
-        <p>Endpoint for managing VLAN configuration via the AOS CLI API.</p>
+        <p>Endpoint for managing VLAN configuration via the AOS RESTFUL API.</p>
 
 
 
@@ -169,59 +169,15 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.create" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mtu</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span></code>
+            <code class="highlight language-python">create(vlan_id, description=None, mtu=1500, AdmStatus=1, vlanSrcLearningStatus=1)</code>
 
 <a href="#Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.create" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Create a new VLAN with optional description and MTU.</p>
+        <p>Create VLAN info using a POST request with specific MIB object filters.</p>
 
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>vlan_id</code></b>
-                  (<code><span title="int">int</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>VLAN ID to create.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>description</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>VLAN name/description. Defaults to &ldquo;VLAN_{vlan_id}&rdquo;.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>mtu</code></b>
-                  (<code><span title="int">int</span></code>, default:
-                      <code>1500</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>MTU size for the VLAN. Defaults to 1500.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 <table class="field-list">
   <colgroup>
@@ -237,7 +193,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>API response, including the updated VLAN list if successful.</p>
+                <p>VLAN data from the switch.</p>
               </div>
             </li>
         </ul>
@@ -254,39 +210,15 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.delete" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">)</span></code>
+            <code class="highlight language-python">delete(vlan_id)</code>
 
 <a href="#Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.delete" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Delete a VLAN by its ID.</p>
+        <p>Delete VLAN using a POST request with specific MIB object filters.</p>
 
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>vlan_id</code></b>
-                  (<code><span title="int">int</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>The VLAN ID to remove.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 <table class="field-list">
   <colgroup>
@@ -302,7 +234,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>API response, including the updated VLAN list if successful.</p>
+                <p>VLAN data from the switch.</p>
               </div>
             </li>
         </ul>
@@ -319,59 +251,15 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.edit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">edit</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mtu</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span></code>
+            <code class="highlight language-python">edit(vlan_id, description=None, mtu=1500, AdmStatus=1, vlanSrcLearningStatus=1)</code>
 
 <a href="#Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.edit" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Edit an existing VLAN&rsquo;s description and MTU.</p>
+        <p>Edit VLAN info using a POST request with specific MIB object filters.</p>
 
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>vlan_id</code></b>
-                  (<code><span title="int">int</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>VLAN ID to modify.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>description</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>New VLAN name/description. Defaults to &ldquo;VLAN_{vlan_id}&rdquo;.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>mtu</code></b>
-                  (<code><span title="int">int</span></code>, default:
-                      <code>1500</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Updated MTU size. Defaults to 1500.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 <table class="field-list">
   <colgroup>
@@ -387,7 +275,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>API response, including the updated VLAN list if successful.</p>
+                <p>VLAN data from the switch.</p>
               </div>
             </li>
         </ul>
@@ -404,15 +292,51 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.list" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">list</span><span class="p">()</span></code>
+            <code class="highlight language-python">list(vlan_type=5, limit=200)</code>
 
 <a href="#Aos8ApiBuilder.endpoints.vlan.VlanEndpoint.list" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Retrieve the list of VLANs.</p>
+        <p>Retrieve the list of VLANs using the MIB-based REST API.</p>
 
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>vlan_type</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>5</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>VLAN type filter (default 5 for Ethernet VLAN).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <table class="field-list">
   <colgroup>
