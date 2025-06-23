@@ -8,16 +8,89 @@ class IPInterfaceEndpoint(BaseEndpoint):
     Endpoint to manage IP interfaces on an Alcatel-Lucent OmniSwitch using CLI-based API calls.
     """
 
-    def list(self):
+    def list(self, limit: int = 200) -> ApiResult:
         """
-        Retrieve a list of all configured IP interfaces.
+        Retrieve all IP interfaces using MIB-based GET with full object mapping.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
 
         Returns:
-            ApiResult: The result object containing parsed output of the command `show ip interface`.
+            dict: Dictionary of IP interface entries, keyed by ifIndex.
         """
-        response = self._client.get("/cli/aos?cmd=show+ip+interface")
-        if response.output:
-            response.output = parse_ip_interface_output(response.output)
+        params = {
+            "domain": "mib",
+            "urn": "alaIpInterfaceTable",
+            "limit": str(limit),
+            "ignoreError": "true",
+            "function": "slotPort_ifindex|ifindex_slotPort|chassisSlot_vcIfIndex",
+            "object": "alaIpInterfacePortIfindex|alaIpInterfaceArpNiSlot,0,alaIpInterfaceArpNiChassis|ifindex_slotPort_1"
+        }
+
+        # Add all 33 MIB objects
+        mib_objects = [
+            "ifIndex",
+            "alaIpInterfaceName",
+            "alaIpInterfaceAddress",
+            "alaIpInterfaceMask",
+            "alaIpInterfaceBcastAddr",
+            "alaIpInterfaceDeviceType",
+            "alaIpInterfaceTag",
+            "alaIpInterfacePortIfindex",
+            "alaIpInterfaceEncap",
+            "alaIpInterfaceVlanID",
+            "alaIpInterfaceIpForward",
+            "alaIpInterfaceAdminState",
+            "alaIpInterfaceOperState",
+            "alaIpInterfaceOperReason",
+            "alaIpInterfaceRouterMac",
+            "alaIpInterfaceDhcpStatus",
+            "alaIpInterfaceLocalProxyArp",
+            "alaIpInterfaceDhcpOption60String",
+            "alaIpInterfaceMtu",
+            "alaIpInterfaceArpNiSlot",
+            "alaIpInterfaceArpNiChassis",
+            "alaIpInterfaceArpCount",
+            "alaIpInterfacePrimCfg",
+            "alaIpInterfacePrimAct",
+            "alaIpInterfaceVipAddress",
+            "alaIpInterfaceTunnelSrcAddressType",
+            "alaIpInterfaceTunnelSrc",
+            "alaIpInterfaceTunnelDstAddressType",
+            "alaIpInterfaceTunnelDst",
+            "alaIpInterfaceDhcpVsiAcceptFilterString",
+            "alaIpInterfaceDhcpIpRelease",
+            "alaIpInterfaceDhcpIpRenew",
+            "alaIpInterfaceDhcpServerPreference"
+        ]
+
+        for i, obj in enumerate(mib_objects):
+            params[f"mibObject{i}"] = obj
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def create_interface(self, name: str) -> ApiResult:
+        """
+        Create a new IP interface with the given name.
+
+        Args:
+            name (str): The logical name of the interface (e.g., 'int-999').
+
+        Returns:
+            ApiResult: The API response.
+        """
+        url = "/?domain=mib&urn=alaIpItfConfigTable"
+
+        form_data = {
+            "mibObject0-T1": f"alaIpItfConfigName:{name}",
+            "mibObject1-T1": "alaIpItfConfigRowStatus:4"
+        }
+
+        response = self._client.post(url, data=form_data)
+        if response.success:
+            response = self.list()
+            return response
         return response
 
     def create(

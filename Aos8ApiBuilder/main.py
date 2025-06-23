@@ -9,13 +9,13 @@ client = (
     .build()
 )
 
-result = client.vpa.list_by_vlan(vlan_id=12)
-print(result)
-# if result.success:
-#     print("✅ Operation successfully")
-#     pprint.pprint(result.data)
-# else:
-#     print(f"❌ Operation failed (diag={result.diag}): {result.error}")
+result = client.ip.create_interface("int-999")
+
+if result.success:
+    print("✅ Operation successfully")
+    pprint.pprint(result.data)
+else:
+    print(f"❌ Operation failed (diag={result.diag}): {result.error}")
 
  
 
