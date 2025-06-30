@@ -178,7 +178,6 @@ class IPInterfaceEndpoint(BaseEndpoint):
                 form_data["mibObject9"] = f"alaIpInterfaceVlanID:{str(vlan_id)}"
 
             if ifindex is not None:
-                print(form_data)
                 response = self._client.post(url, data=form_data)
                 if response.success:
                     response = self.list()
