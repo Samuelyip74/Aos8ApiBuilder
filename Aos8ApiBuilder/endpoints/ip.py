@@ -111,40 +111,80 @@ class IPInterfaceEndpoint(BaseEndpoint):
             return response
         return response
 
-    def create(
+    def create_IP_Interface(
         self,
-        if_name: str,
+        name: str,
         address: Optional[str] = None,
-        vip_address: Optional[str] = None,
         mask: Optional[str] = None,
-        admin_state: Optional[str] = None,
-        vlan: Optional[int] = None,
-        service: Optional[int] = None,
-        forward: Optional[bool] = None,
-        local_proxy_arp: Optional[bool] = None,
-        encapsulation: Optional[str] = None,
-        primary: Optional[bool] = None
+        device: str = "Vlan",
+        vlan_id: Optional[int] = None,
+        local_proxy_arp: Optional[bool] = False,
+        encapsulation: Optional[str] = "e2",
+        primary: Optional[bool] = False
     ) -> ApiResult:
         """
         Create a new IP interface with specified parameters.
 
         Args:
-            if_name (str): Name of the interface.
+            ifindex (str): ifindex of the interface.
             address (Optional[str]): IP address.
-            vip_address (Optional[str]): Virtual IP address.
             mask (Optional[str]): Subnet mask.
-            admin_state (Optional[str]): Interface admin state, either 'enable' or 'disable'.
             vlan (Optional[int]): VLAN ID.
             service (Optional[int]): Associated service ID.
-            forward (Optional[bool]): Enable or disable packet forwarding.
-            local_proxy_arp (Optional[bool]): Enable or disable local proxy ARP.
             encapsulation (Optional[str]): Encapsulation type ('e2' or 'snap').
             primary (Optional[bool]): Set as primary interface.
 
         Returns:
-            ApiResult: Result of the creation operation or error response.
+            ApiResult: Result of the creation operation or error response.            
         """
-        ...
+        ifindex = None
+        response = self.create_name_interface(name)
+        if response.success:
+
+            ifindex = self._get_ip_ifindex(name)
+            url = "/?domain=mib&urn=alaIpInterfaceTable"
+
+            encapsulation_map = {
+                '1': 'e2',
+                '2': 'snap'
+            }
+            encapsulation = encapsulation_map.get(device, '1')
+
+            device_type_map = {
+                '1': 'Vlan',
+                '2': 'GRE',
+                '3': 'IPIP',            
+            }        
+            device_type = device_type_map.get(device, '1')
+
+            primary_config_map = {
+                '0': False,
+                '1': True,
+            }        
+            primary_config = primary_config_map.get(primary, '0')                      
+
+            form_data = {
+                "mibObject0": f"ifIndex:{ifindex}",
+                "mibObject1": f"alaIpInterfaceAddress:{address}",
+                "mibObject2": f"alaIpInterfaceMask:{mask}",            
+                "mibObject3": f"alaIpInterfaceDeviceType:{device_type}",  
+                "mibObject4": "alaIpInterfacePortIfindex:0",
+                "mibObject5": f"alaIpInterfaceEncap:{encapsulation}",            
+                "mibObject6": f"alaIpInterfaceIpForward:1",                        
+                "mibObject8": f"alaIpInterfacePrimCfg:{primary_config}",                        
+            }
+                # Conditionally add VLAN ID if provided
+            if vlan_id is not None:
+                form_data["mibObject9"] = f"alaIpInterfaceVlanID:{str(vlan_id)}"
+
+            if ifindex is not None:
+                print(form_data)
+                response = self._client.post(url, data=form_data)
+                if response.success:
+                    response = self.list()
+                    return response
+                return response
+        return response
 
     def edit(
         self,
