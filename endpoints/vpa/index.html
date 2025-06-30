@@ -169,14 +169,14 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.create" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create</span><span class="p">(</span><span class="n">port_id</span><span class="p">,</span> <span class="n">vlan_id</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;untagged&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python">create(port_id, vlan_id, mode='untagged')</code>
 
 <a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.create" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Add a port to a VLAN with the specified tagging mode.</p>
+        <p>Add a port to a VLAN with the specified tagging mode via MIB POST API.</p>
 
 
 <table class="field-list">
@@ -194,7 +194,7 @@
                   (<code><span title="str">str</span></code>)
               –
               <div class="doc-md-description">
-                <p>Port identifier (e.g., &ldquo;1/1&rdquo;).</p>
+                <p>Port identifier (e.g., &ldquo;1/1/22&rdquo;).</p>
               </div>
             </li>
             <li>
@@ -212,7 +212,7 @@
 )
               –
               <div class="doc-md-description">
-                <p>Tagging mode for the port (&ldquo;untagged&rdquo; or &ldquo;tagged&rdquo;). Defaults to &ldquo;untagged&rdquo;.</p>
+                <p>&ldquo;untagged&rdquo; or &ldquo;tagged&rdquo;. Defaults to &ldquo;untagged&rdquo;.</p>
               </div>
             </li>
         </ul>
@@ -235,7 +235,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>API response, including updated VLAN membership if successful.</p>
+                <p>Retrieve all port associations for a given VLAN using a GET request.</p>
               </div>
             </li>
         </ul>
@@ -252,7 +252,7 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.delete" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">port_id</span><span class="p">,</span> <span class="n">vlan_id</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;untagged&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python">delete(port_id, vlan_id)</code>
 
 <a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.delete" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -288,16 +288,6 @@
                 <p>VLAN ID to disassociate from the port.</p>
               </div>
             </li>
-            <li>
-              <b><code>mode</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>&#39;untagged&#39;</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>(Unused) tagging mode hint for clarity. Defaults to &ldquo;untagged&rdquo;.</p>
-              </div>
-            </li>
         </ul>
       </td>
     </tr>
@@ -318,7 +308,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>API response, including updated VLAN membership if successful.</p>
+                <p>Retrieve all port associations for a given VLAN using a GET request.</p>
               </div>
             </li>
         </ul>
@@ -335,7 +325,7 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.edit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">edit</span><span class="p">(</span><span class="n">port_id</span><span class="p">,</span> <span class="n">vlan_id</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;untagged&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python">edit(port_id, vlan_id, mode='untagged')</code>
 
 <a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.edit" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -401,7 +391,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>API response, including updated VLAN membership if successful.</p>
+                <p>Retrieve all port associations for a given VLAN using a GET request.</p>
               </div>
             </li>
         </ul>
@@ -417,15 +407,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.list" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">list</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">)</span></code>
+<h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.list_by_vlan" class="doc doc-heading">
+            <code class="highlight language-python">list_by_vlan(vlan_id)</code>
 
-<a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.list" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.list_by_vlan" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>List all ports associated with a given VLAN.</p>
+        <p>Retrieve all port associations for a given VLAN using a GET request.</p>
 
 
 <table class="field-list">
@@ -440,10 +430,10 @@
         <ul class="first simple">
             <li>
               <b><code>vlan_id</code></b>
-                  (<code><span title="str">str</span></code>)
+                  (<code><span title="int">int</span></code>)
               –
               <div class="doc-md-description">
-                <p>The VLAN ID whose member ports are to be listed.</p>
+                <p>VLAN ID to filter the VPA table.</p>
               </div>
             </li>
         </ul>
@@ -463,10 +453,9 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
+<b><code>ApiResult</code></b>              –
               <div class="doc-md-description">
-                <p>API response with parsed list of port members in the VLAN.</p>
+                <p>Parsed data from the VPA table for the specified VLAN.</p>
               </div>
             </li>
         </ul>

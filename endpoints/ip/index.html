@@ -168,10 +168,10 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create</span><span class="p">(</span><span class="n">if_name</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vip_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">admin_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vlan</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">service</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">forward</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">local_proxy_arp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encapsulation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">primary</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_IP_Interface" class="doc doc-heading">
+            <code class="highlight language-python">create_IP_Interface(name, address=None, mask=None, device='Vlan', vlan_id=None, encap='e2')</code>
 
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_IP_Interface" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
@@ -190,11 +190,11 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>if_name</code></b>
+              <b><code>ifindex</code></b>
                   (<code><span title="str">str</span></code>)
               –
               <div class="doc-md-description">
-                <p>Name of the interface.</p>
+                <p>ifindex of the interface.</p>
               </div>
             </li>
             <li>
@@ -208,13 +208,242 @@
               </div>
             </li>
             <li>
-              <b><code>vip_address</code></b>
+              <b><code>mask</code></b>
                   (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
                       <code>None</code>
 )
               –
               <div class="doc-md-description">
-                <p>Virtual IP address.</p>
+                <p>Subnet mask.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>vlan</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>VLAN ID.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>service</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Associated service ID.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>encapsulation</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Encapsulation type (&lsquo;e2&rsquo; or &lsquo;snap&rsquo;).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Result of the creation operation or error response.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_name_interface" class="doc doc-heading">
+            <code class="highlight language-python">create_name_interface(name)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_name_interface" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create a new IP interface with the given name.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>name</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The logical name of the interface (e.g., &lsquo;int-999&rsquo;).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>The API response.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.delete" class="doc doc-heading">
+            <code class="highlight language-python">delete(name)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.delete" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Delete an existing IP interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>name</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The logical name of the interface (e.g., &lsquo;int-999&rsquo;).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Result of the deletion operation or error response.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.edit_IP_Interface" class="doc doc-heading">
+            <code class="highlight language-python">edit_IP_Interface(ifindex, address=None, mask=None, device=None, vlan_id=None, forward=None, local_proxy_arp=None, encapsulation=None, primary=None)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.edit_IP_Interface" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create a new IP interface with specified parameters.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>ifindex</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>ifindex of the interface.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>address</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>IP address.</p>
               </div>
             </li>
             <li>
@@ -228,20 +457,8 @@
               </div>
             </li>
             <li>
-              <b><code>admin_state</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Interface admin state, either &lsquo;enable&rsquo; or &lsquo;disable&rsquo;.</p>
-              </div>
-            </li>
-            <li>
               <b><code>vlan</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>, default:
-                      <code>None</code>
-)
+                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>)
               –
               <div class="doc-md-description">
                 <p>VLAN ID.</p>
@@ -249,32 +466,10 @@
             </li>
             <li>
               <b><code>service</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>, default:
-                      <code>None</code>
-)
+                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>)
               –
               <div class="doc-md-description">
                 <p>Associated service ID.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>forward</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="bool">bool</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Enable or disable packet forwarding.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>local_proxy_arp</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="bool">bool</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Enable or disable local proxy ARP.</p>
               </div>
             </li>
             <li>
@@ -333,246 +528,42 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.delete" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">if_name</span><span class="p">)</span></code>
-
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.delete" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Delete an existing IP interface.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>if_name</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Name of the interface to delete.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Result of the deletion operation or error response.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.edit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">edit</span><span class="p">(</span><span class="n">if_name</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vip_address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">admin_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vlan</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">service</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">forward</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">local_proxy_arp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encapsulation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">primary</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
-
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.edit" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Edit an existing IP interface with updated parameters.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>if_name</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Name of the interface.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>address</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>IP address.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>vip_address</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Virtual IP address.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>mask</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Subnet mask.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>admin_state</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Interface admin state, either &lsquo;enable&rsquo; or &lsquo;disable&rsquo;.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>vlan</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>VLAN ID.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>service</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Associated service ID.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>forward</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="bool">bool</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Enable or disable packet forwarding.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>local_proxy_arp</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="bool">bool</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Enable or disable local proxy ARP.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>encapsulation</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Encapsulation type (&lsquo;e2&rsquo; or &lsquo;snap&rsquo;).</p>
-              </div>
-            </li>
-            <li>
-              <b><code>primary</code></b>
-                  (<code><span title="typing.Optional">Optional</span>[<span title="bool">bool</span>]</code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>Set as primary interface.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Result of the edit operation or error response.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
 <h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.list" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">list</span><span class="p">()</span></code>
+            <code class="highlight language-python">list(limit=200)</code>
 
 <a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.list" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Retrieve a list of all configured IP interfaces.</p>
+        <p>Retrieve all IP interfaces using MIB-based GET with full object mapping.</p>
 
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <table class="field-list">
   <colgroup>
@@ -585,9 +576,10 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>              –
+<b><code>dict</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
               <div class="doc-md-description">
-                <p>The result object containing parsed output of the command <code>show ip interface</code>.</p>
+                <p>Dictionary of IP interface entries, keyed by ifIndex.</p>
               </div>
             </li>
         </ul>
