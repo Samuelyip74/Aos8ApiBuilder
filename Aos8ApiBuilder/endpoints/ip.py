@@ -8,6 +8,24 @@ class IPInterfaceEndpoint(BaseEndpoint):
     Endpoint to manage IP interfaces on an Alcatel-Lucent OmniSwitch using CLI-based API calls.
     """
 
+    def _get_ip_ifindex(self, name: str) -> str:
+        """
+        Retrieves IP interface configuration using a MIB-based POST request.
+
+        Args:
+            limit (int): Maximum number of records to return (default: 200)
+
+        Returns:
+            IP Interface  - ifindex, or None if not found
+        """
+        response = self.list()
+        rows = response.data["rows"]
+        for item in rows.values():
+            slot_port = item.get("alaIpInterfaceName", "")
+            if slot_port == name:
+                return item.get("ifIndex")
+        return None
+
     def list(self, limit: int = 200) -> ApiResult:
         """
         Retrieve all IP interfaces using MIB-based GET with full object mapping.
@@ -70,7 +88,7 @@ class IPInterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
 
-    def create_interface(self, name: str) -> ApiResult:
+    def create_name_interface(self, name: str) -> ApiResult:
         """
         Create a new IP interface with the given name.
 
@@ -163,15 +181,26 @@ class IPInterfaceEndpoint(BaseEndpoint):
         """
         ...
 
-    def delete(self, if_name: str) -> ApiResult:
+    def delete(self, name: str) -> ApiResult:
         """
         Delete an existing IP interface.
 
         Args:
-            if_name (str): Name of the interface to delete.
+            name (str): The logical name of the interface (e.g., 'int-999').
 
         Returns:
             ApiResult: Result of the deletion operation or error response.
         """
-        ...
+        url = "/?domain=mib&urn=alaIpItfConfigTable"
+
+        form_data = {
+            "mibObject0-T1": f"alaIpItfConfigName:{name}",
+            "mibObject1-T1": "alaIpItfConfigRowStatus:6"
+        }
+
+        response = self._client.post(url, data=form_data)
+        if response.success:
+            response = self.list()
+            return response
+        return response
 

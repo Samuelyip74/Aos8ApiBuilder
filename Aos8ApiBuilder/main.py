@@ -9,13 +9,13 @@ client = (
     .build()
 )
 
-result = client.ip.create_interface("int-999")
-
-if result.success:
-    print("✅ Operation successfully")
-    pprint.pprint(result.data)
-else:
-    print(f"❌ Operation failed (diag={result.diag}): {result.error}")
+result = client.ip._get_ip_ifindex("int-vl1")
+print(result)
+# if result.success:
+#     print("✅ Operation successfully")
+#     pprint.pprint(result.data)
+# else:
+#     print(f"❌ Operation failed (diag={result.diag}): {result.error}")
 
  
 
