@@ -130,7 +130,6 @@ class IPInterfaceEndpoint(BaseEndpoint):
             vlan (Optional[int]): VLAN ID.
             service (Optional[int]): Associated service ID.
             encapsulation (Optional[str]): Encapsulation type ('e2' or 'snap').
-            primary (Optional[bool]): Set as primary interface.
 
         Returns:
             ApiResult: Result of the creation operation or error response.            
