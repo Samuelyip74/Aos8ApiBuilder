@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.mvrp.mvrpPortConfig()
+result = client.mvrp.mvrp_Vlan_Restriction()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
