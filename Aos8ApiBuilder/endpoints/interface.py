@@ -65,7 +65,114 @@ class InterfaceEndpoint(BaseEndpoint):
 
         response = self._client.get("/", params=params)
         return response
+    
+    def status(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve detailed ESM port operational status using the MIB-based REST API.
 
+        Args:
+            limit (int): Maximum number of results to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed data from the switch response.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "esmConfTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "esmPortAutoSpeed",
+            "mibObject2": "esmPortAutoDuplexMode",
+            "mibObject3": "esmLinkStateChangeTime",
+            "mibObject4": "esmLinkStateChangeCount",
+            "mibObject5": "esmPortFecOperMode",
+            "mibObject6": "esmPortOperationalHybridType",
+            "mibObject7": "esmPortCfgHybridActiveType",
+            "mibObject8": "esmPortDownReason",
+            "ifTable-ifIndex-0": "ifIndex",
+            "ifTable-ifIndex-1": "ifOperStatus",
+            "ifTable-ifIndex-2": "ifAdminStatus",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response    
+
+    def status_extended(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve ESM port performance and ingress settings using MIB GET.
+
+        Args:
+            limit (int): Maximum number of results to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed data containing max frame size, speed, ingress rate limits, etc.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "esmConfTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "esmPortCfgMaxFrameSize",
+            "mibObject2": "esmPortIfg",
+            "mibObject3": "esmPortCfgSpeed",
+            "mibObject4": "esmPortCfgHybridMode",
+            "mibObject5": "esmPortCfgDuplexMode",
+            "mibObject6": "esmPortIngressRateLimitEnable",
+            "mibObject7": "esmPortIngressRateLimit",
+            "mibObject8": "esmPortIngressRateLimitBurst",
+            "mibObject9": "esmPortFecMode",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def flood_control(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve broadcast, unicast, and multicast storm control settings.
+
+        Args:
+            limit (int): Maximum number of results to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed storm control data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "esmConfTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "esmPortBcastRateLimitType",
+            "mibObject2": "esmPortBcastRateLimit",
+            "mibObject3": "esmPortMinBcastRateLimit",
+            "mibObject4": "esmPortBcastRateLimitEnable",
+            "mibObject5": "esmPortBcastStormState",
+            "mibObject6": "esmPortBcastThresholdAction",
+            "mibObject7": "esmPortUucastRateLimitType",
+            "mibObject8": "esmPortUucastRateLimit",
+            "mibObject9": "esmPortMinUucastRateLimit",
+            "mibObject10": "esmPortUucastRateLimitEnable",
+            "mibObject11": "esmPortUucastStormState",
+            "mibObject12": "esmPortUucastThresholdAction",
+            "mibObject13": "esmPortMcastRateLimitType",
+            "mibObject14": "esmPortMcastRateLimit",
+            "mibObject15": "esmPortMinMcastRateLimit",
+            "mibObject16": "esmPortMcastRateLimitEnable",
+            "mibObject17": "esmPortMcastStormState",
+            "mibObject18": "esmPortMcastThresholdAction",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+    
     def get_interface(self, port: str) -> Optional[dict]:
         """
         Retrieve detailed status of a specific port.

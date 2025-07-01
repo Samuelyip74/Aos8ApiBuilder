@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.interface.list()
+result = client.interface.status_extended()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
