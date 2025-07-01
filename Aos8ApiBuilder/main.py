@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.interface.TDRConfig()
+result = client.interface.PortMappingConfig()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)

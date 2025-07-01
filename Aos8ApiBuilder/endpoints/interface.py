@@ -687,7 +687,7 @@ class InterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
 
-    def PTPPortConfig(self, limit: int = 200) -> ApiResult:
+    def ptpPortConfig(self, limit: int = 200) -> ApiResult:
         """
         Retrieve PTP administrative status for all switch ports.
 
@@ -711,7 +711,7 @@ class InterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
 
-    def TDRStats(self, limit: int = 200) -> ApiResult:
+    def tdrStats(self, limit: int = 200) -> ApiResult:
         """
         Retrieve cable diagnostics for all Ethernet switch ports.
 
@@ -740,6 +740,56 @@ class InterfaceEndpoint(BaseEndpoint):
             "mibObject13": "esmTdrPortTest",
             "function": "slotPort_ifindex",
             "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def portMappingConfig(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve port mapping table entries.
+
+        Args:
+            limit (int): Maximum number of results to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed port mapping data.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "portMappingTable",
+            "mibObject0": "pmapSessionNumber",
+            "mibObject1": "pmapPortIfIndex",
+            "mibObject2": "pmapPortType",
+            "function": "slotPort_ifindex",
+            "object": "pmapPortIfIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def portMappingSession(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve entries from the Port Mapping Session Table.
+
+        Args:
+            limit (int): Maximum number of results to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed port mapping session data.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "portMappingSessionTable",
+            "mibObject0": "pmapSessionNumber",
+            "mibObject1": "pmapSessionDirection",
+            "mibObject2": "pmapSessionStatus",
+            "mibObject3": "pmapSessionDynProxyARP",
+            "mibObject4": "pmapSessionUnknownUnicastFloodStatus",
             "limit": str(limit),
             "ignoreError": "true"
         }
