@@ -668,6 +668,85 @@ class InterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
 
+    def globalPTPConfig(self) -> ApiResult:
+        """
+        Retrieve the global PTP (Precision Time Protocol) configuration.
+
+        Returns:
+            ApiResult: Parsed PTP configuration data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaPtpConfiguration",
+            "mibObject0": "alaPtpConfigAdminStatus",
+            "mibObject1": "alaPtpConfigPriority",
+            "mibObject2": "alaPtpLoopBackPort1",
+            "mibObject3": "alaPtpLoopBackPort2"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def PTPPortConfig(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve PTP administrative status for all switch ports.
+
+        Args:
+            limit (int): Maximum number of entries to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed PTP port configuration data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaPtpPortTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "alaPtpPortAdminStatus",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def TDRStats(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve cable diagnostics for all Ethernet switch ports.
+
+        Args:
+            limit (int): Maximum number of entries to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed TDR port diagnostics data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "esmTdrPortTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "esmTdrPortValidPairs",
+            "mibObject2": "esmTdrPortCableState",
+            "mibObject3": "esmTdrPortFuzzLength",
+            "mibObject4": "esmTdrPortPair1State",
+            "mibObject5": "esmTdrPortPair1Length",
+            "mibObject6": "esmTdrPortPair2State",
+            "mibObject7": "esmTdrPortPair2Length",
+            "mibObject8": "esmTdrPortPair3State",
+            "mibObject9": "esmTdrPortPair3Length",
+            "mibObject10": "esmTdrPortPair4State",
+            "mibObject11": "esmTdrPortPair4Length",
+            "mibObject12": "esmTdrPortResult",
+            "mibObject13": "esmTdrPortTest",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
     def get_interface(self, port: str) -> Optional[dict]:
         """
         Retrieve detailed status of a specific port.

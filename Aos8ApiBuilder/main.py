@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.interface.link_monitoring_statistic()
+result = client.interface.TDRConfig()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
