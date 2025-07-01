@@ -7,7 +7,7 @@ from models import ApiResult
 class InterfaceEndpoint(BaseEndpoint):
     """
     Provides interface-related configuration and status management endpoints
-    for Alcatel-Lucent OmniSwitch using AOS CLI commands via API client.
+    for Alcatel-Lucent OmniSwitch using MIB-based REST API.
     """
 
     def _expand_port_range(self, port_range: str) -> list[str]:
@@ -27,16 +27,43 @@ class InterfaceEndpoint(BaseEndpoint):
         start, end = map(int, start_end.split('-'))
         return [f"{prefix}/{i}" for i in range(start, end + 1)]
 
-    def list(self) -> ApiResult:
+    def list(self, limit: int = 200) -> ApiResult:
         """
-        Retrieve the status of all interfaces.
+        Retrieve the list of ESM port configurations using the MIB-based REST API.
+
+        Args:
+            limit (int): Maximum number of results to return.
 
         Returns:
-            An `ApiResult` with parsed interface status list if available.
+            ApiResult: Parsed ESM port config data from the switch.
         """
-        response = self._client.get("/cli/aos?cmd=show+interfaces+status")
-        if response.output:
-            response.output = parse_interface_status(response.output)
+        params = {
+            "domain": "mib",
+            "urn": "esmConfTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "esmPortAlias",
+            "mibObject2": "esmPortGbicType",
+            "mibObject3": "esmPortEPPEnable",
+            "mibObject4": "esmPortInterfaceType",
+            "mibObject5": "esmPortCfgAutoNegotiation",
+            "mibObject6": "esmPortLinkUpDownTrapEnable",
+            "mibObject7": "esmPortCfgPause",
+            "mibObject8": "esmPortIsFiberChannelCapable",
+            "mibObject9": "ifType",
+            "mibObject10": "esmPortEEEEnable",
+            "mibObject11": "esmPortMacsecSupported",
+            "mibObject12": "esmPortMacsec256bit",
+            "ifTable-ifIndex-0": "ifIndex",
+            "ifTable-ifIndex-1": "ifOperStatus",
+            "ifTable-ifIndex-2": "ifAdminStatus",
+            "alaPortXTable-ifIndex-0": "ifIndex",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
         return response
 
     def get_interface(self, port: str) -> Optional[dict]:
