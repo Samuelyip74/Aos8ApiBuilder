@@ -399,6 +399,24 @@ class InterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
 
+    def globalPVR(self) -> ApiResult:
+        """
+        Retrieve global PVR configuration values.
+
+        Returns:
+            ApiResult: Parsed global PVR configuration from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaPvrGlobalConfigObjects",
+            "mibObject0": "alaPvrGlobalTrapEnable",
+            "mibObject1": "alaPvrGlobalRetryTime",
+            "mibObject2": "alaPvrGlobalRecoveryMax"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+    
     def recovery_port_config(self, limit: int = 200) -> ApiResult:
         """
         Retrieve PVR configuration for each interface using MIB-based GET.

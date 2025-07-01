@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.interface.port_violation_status()
+result = client.interface.globalPVR()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
