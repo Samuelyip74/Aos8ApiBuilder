@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.interface.PortMappingConfig()
+result = client.mvrp.mvrpPortConfig()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)

@@ -5,7 +5,7 @@ from endpoints.vpa import VlanPortAssociation
 from endpoints.ip import IPInterfaceEndpoint
 from endpoints.system import SystemEndpoint
 from endpoints.interface import InterfaceEndpoint
-
+from endpoints.mvrp import MvrpEndpoint
 
 class AosApiClient:
     """
@@ -46,6 +46,7 @@ class AosApiClient:
         self.ip = IPInterfaceEndpoint(self)
         self.system = SystemEndpoint(self)
         self.interface = InterfaceEndpoint(self)
+        self.mvrp = MvrpEndpoint(self)
 
     def _login(self):
         """
