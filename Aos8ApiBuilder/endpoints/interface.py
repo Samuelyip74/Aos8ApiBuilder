@@ -474,6 +474,200 @@ class InterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
     
+    def port_mirroring_sessions(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve mirror session configuration and status from the switch.
+
+        Args:
+            limit (int): Maximum number of sessions to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed mirror session data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "mirrorTable",
+            "mibObject0": "mirrorSessionNumber",
+            "mibObject1": "mirrorStatus",
+            "mibObject2": "mirrorUnblockedVLAN",
+            "mibObject3": "mirrorTaggedVLAN",
+            "mibObject4": "mirrorSessOperStatus",
+            "function": "slotPort_ifindex",
+            "object": "mirrorSrcMirroredIf",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def port_mirroring_source(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve source port configuration for mirror sessions.
+
+        Args:
+            limit (int): Maximum number of source entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed mirror source port configuration from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "mirrorSrcTable",
+            "mibObject0": "mirrorSessionNumber",
+            "mibObject1": "mirrorSrcMirroredIf",
+            "mibObject2": "mirrorSrcDirection",
+            "mibObject3": "mirrorSrcStatus",
+            "function": "slotPort_ifindex",
+            "object": "mirrorSrcMirroredIf",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def port_mirroring_destination(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve mirror destination port configuration.
+
+        Args:
+            limit (int): Maximum number of destination entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed mirror destination configuration from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "mirrorDstTable",
+            "mibObject0": "mirrorSessionNumber",
+            "mibObject1": "mirrorDstMirroringIf",
+            "mibObject2": "mirrorDstAdminStatus",
+            "function": "slotPort_ifindex",
+            "object": "mirrorDstMirroringIf",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def port_monitoring_config(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve monitor source port configuration from the switch.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed monitor source port data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "monitorSrcTable",
+            "mibObject0": "monitorSessionNumber",
+            "mibObject1": "monitorSrcIfindex",
+            "mibObject2": "monitorSrcDirection",
+            "mibObject3": "monitorSrcStatus",
+            "function": "slotPort_ifindex",
+            "object": "monitorSrcIfindex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+    
+    def port_monitoring_session(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve monitor session information.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed monitor session configuration from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "monitorTable",
+            "mibObject0": "monitorSessionNumber",
+            "mibObject1": "monitorFileName",
+            "mibObject2": "monitorFileSize",
+            "mibObject3": "monitorFileOverWrite",
+            "mibObject4": "monitorStatus",
+            "mibObject5": "monitorTimeout",
+            "mibObject6": "monitorCaptureType",
+            "mibObject7": "monitorScreenStatus",
+            "mibObject8": "monitorScreenLine",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response    
+    
+    def link_monitoring_config(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve link monitoring settings per interface.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed link monitor configuration from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaLinkMonConfigTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "alaLinkMonStatus",
+            "mibObject2": "alaLinkMonTimeWindow",
+            "mibObject3": "alaLinkMonLinkFlapThreshold",
+            "mibObject4": "alaLinkMonLinkErrorThreshold",
+            "mibObject5": "alaLinkMonWaitToRestoreTimer",
+            "mibObject6": "alaLinkMonWaitToShutdownTimer",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def link_monitoring_statistic(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve real-time and cumulative link monitoring statistics for all interfaces.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed link monitor statistics from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaLinkMonStatsTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "alaLinkMonStatsPortState",
+            "mibObject2": "alaLinkMonStatsCurrentLinkFlaps",
+            "mibObject3": "alaLinkMonStatsCurrentErrorFrames",
+            "mibObject4": "alaLinkMonStatsCurrentCRCErrors",
+            "mibObject5": "alaLinkMonStatsCurrentLostFrames",
+            "mibObject6": "alaLinkMonStatsCurrentAlignErrors",
+            "mibObject7": "alaLinkMonStatsCurrentLinkErrors",
+            "mibObject8": "alaLinkMonStatsTotalLinkFlaps",
+            "mibObject9": "alaLinkMonStatsTotalLinkErrors",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
     def get_interface(self, port: str) -> Optional[dict]:
         """
         Retrieve detailed status of a specific port.

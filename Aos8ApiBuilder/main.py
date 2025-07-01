@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.interface.globalPVR()
+result = client.interface.link_monitoring_statistic()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
