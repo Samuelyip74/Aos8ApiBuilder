@@ -6,6 +6,7 @@ from endpoints.ip import IPInterfaceEndpoint
 from endpoints.system import SystemEndpoint
 from endpoints.interface import InterfaceEndpoint
 from endpoints.mvrp import MvrpEndpoint
+from endpoints.mac import MacLearningEndpoint
 
 class AosApiClient:
     """
@@ -47,6 +48,7 @@ class AosApiClient:
         self.system = SystemEndpoint(self)
         self.interface = InterfaceEndpoint(self)
         self.mvrp = MvrpEndpoint(self)
+        self.mac = MacLearningEndpoint(self)
 
     def _login(self):
         """

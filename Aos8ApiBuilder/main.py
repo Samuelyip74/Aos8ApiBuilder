@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.mvrp.mvrp_Vlan_Restriction()
+result = client.mac.showMacAddress()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
