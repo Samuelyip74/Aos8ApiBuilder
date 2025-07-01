@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.interface.status_extended()
+result = client.interface.port_violation_status()
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)

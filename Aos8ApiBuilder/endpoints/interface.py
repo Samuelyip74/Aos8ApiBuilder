@@ -173,6 +173,289 @@ class InterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
     
+    def statistic_packets(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve interface statistics (standard + FC-specific) from ifTable.
+
+        Args:
+            limit (int): Maximum number of results to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed interface stats from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "ifTable",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        mib_objects = [
+            "ifIndex",
+            "ifType",
+            "ifAdminStatus",
+            "ifOperStatus",
+            "ifDescr",
+            "ifMtu",
+            "ifSpeed",
+            "ifPhysAddress",
+            "ifLastChange",
+            "ifInDiscards",
+            "ifInUnknownProtos",
+            "ifInOctets",
+            "ifInUcastPkts",
+            "ifInBroadcastPkts",
+            "ifInMulticastPkts",
+            "alcfcStatsRxUndersizePkts",
+            "alcfcStatsFrameTooLongs",
+            "ifInErrors",
+            "alcfcStatsInvalidCRCs",
+            "alcfcStatsLinkFailures",
+            "alcfcStatsRxBBCreditZeros",
+            "ifHCInOctets",
+            "ifHCInUcastPkts",
+            "ifHCInMulticastPkts",
+            "ifHCInBroadcastPkts",
+            "ifName"
+        ]
+
+        for i, obj in enumerate(mib_objects):
+            params[f"mibObject{i}"] = obj
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def statistic_counter(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve real-time interface traffic rates and pause frame stats.
+
+        Args:
+            limit (int): Maximum number of results to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed interface rate and pause frame stats from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "interfaceStatsTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "outBitsPerSec",
+            "mibObject2": "ifOutPauseFrames",
+            "mibObject3": "ifOutPktsPerSec",
+            "mibObject4": "inBitsPerSec",
+            "mibObject5": "ifInPauseFrames",
+            "mibObject6": "ifInPktsPerSec",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def statistic_collisions(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve Ethernet collision stats using the MIB-based REST API.
+
+        Args:
+            limit (int): Maximum number of results to return. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed Ethernet collision statistics.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alcetherStatsTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "alcetherStatsRxCollisions",
+            "mibObject2": "dot3StatsSingleCollisionFrames",
+            "mibObject3": "dot3StatsMultipleCollisionFrames",
+            "mibObject4": "dot3StatsExcessiveCollisions",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def statistic_packets_counter(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve high-capacity traffic and pause frame counters from alcetherStatsTable.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed traffic and pause frame statistics.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alcetherStatsTable",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        mib_objects = [
+            "ifIndex",
+            "ifHCInOctets",
+            "ifHCOutOctets",
+            "ifHCInUcastPkts",
+            "ifHCOutUcastPkts",
+            "ifHCInMulticastPkts",
+            "ifHCOutMulticastPkts",
+            "ifHCInBroadcastPkts",
+            "ifHCOutBroadcastPkts",
+            "dot3InPauseFrames",
+            "dot3OutPauseFrames"
+        ]
+
+        for i, obj in enumerate(mib_objects):
+            params[f"mibObject{i}"] = obj
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def statistic_errors_counter(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve Ethernet error statistics such as alignment errors, FCS errors, and oversized/undersized frames.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed Ethernet error statistics from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alcetherStatsTable",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        mib_objects = [
+            "ifIndex",
+            "dot3StatsAlignmentErrors",
+            "dot3StatsFCSErrors",
+            "ifInErrors",
+            "ifOutErrors",
+            "alcetherStatsRxUndersizePkts",
+            "dot3StatsFrameTooLongs"
+        ]
+
+        for i, obj in enumerate(mib_objects):
+            params[f"mibObject{i}"] = obj
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def statistic_traffic(self, if_type: int = 6, limit: int = 200) -> ApiResult:
+        """
+        Retrieve high-capacity interface traffic statistics from ifXTable.
+
+        Args:
+            if_type (int): Interface type to filter (default 6 for Ethernet).
+            limit (int): Max number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed traffic stats from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "ifXTable",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "filterObject": "ifType",
+            "filterOperation": "==",
+            "filterValue": str(if_type),
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        mib_objects = [
+            "ifType",
+            "ifIndex",
+            "ifHCInUcastPkts",
+            "ifHCInMulticastPkts",
+            "ifHCInBroadcastPkts",
+            "ifHCInOctets",
+            "ifHCOutUcastPkts",
+            "ifHCOutMulticastPkts",
+            "ifHCOutBroadcastPkts",
+            "ifHCOutOctets"
+        ]
+
+        for i, obj in enumerate(mib_objects):
+            params[f"mibObject{i}"] = obj
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def recovery_port_config(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve PVR configuration for each interface using MIB-based GET.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed PVR configuration data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaPvrConfigTable",
+            "mibObject0": "ifIndex",
+            "mibObject1": "alaPvrRecoveryMax",
+            "mibObject2": "alaPvrRetryTime",
+            "mibObject3": "alaPvrGlobalRetryTime",
+            "mibObject4": "alaPvrGlobalRecoveryMax",
+            "function": "slotPort_ifindex",
+            "object": "ifIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+
+    def port_violation_status(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve port violation events with details like reason, action, and retry status.
+
+        Args:
+            limit (int): Maximum number of records to retrieve. Defaults to 200.
+
+        Returns:
+            ApiResult: Parsed port violation data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "portViolationTable",
+            "mibObject0": "portViolationIfIndex",
+            "mibObject1": "portViolationSource",
+            "mibObject2": "portViolationReason",
+            "mibObject3": "portViolationAction",
+            "mibObject4": "portViolationCfgRetryTime",
+            "mibObject5": "portViolationCfgRecoveryMax",
+            "mibObject6": "portViolationRetryRemain",
+            "mibObject7": "portViolationClearPort",
+            "function": "slotPort_ifindex",
+            "object": "portViolationIfIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        response = self._client.get("/", params=params)
+        return response
+    
     def get_interface(self, port: str) -> Optional[dict]:
         """
         Retrieve detailed status of a specific port.
