@@ -7,6 +7,22 @@ class SystemEndpoint(BaseEndpoint):
     """
     Endpoint to manage system-level configuration on an Alcatel-Lucent OmniSwitch using CLI-based API commands.
     """
+
+
+    def keepAlive(self) -> ApiResult:
+        """
+        Retrieve current trap count from the switch.
+
+        Returns:
+            ApiResult: Parsed trap count data.
+        """
+        params = {
+            "domain": "sqliteQuery",
+            "urn": "trapCount"
+        }
+
+        return self._client.get("/", params=params)
+
     def getSystemInformation(self) -> ApiResult:
         """
         Retrieve system and system service configuration data.
@@ -78,12 +94,12 @@ class SystemEndpoint(BaseEndpoint):
 
     def setDateTime(self, date: Optional[str] = None, time: Optional[str] = None, timezone: Optional[str] = None) -> ApiResult:
         """
-        Update the system contact, name, and location information.
+        Update the system date, time, and timezone information.
 
         Args:
-            contact (str): System contact email or name.
-            name (str): System name (hostname).
-            location (str): System location description.
+            date (str): System date.
+            time (str): System time.
+            timezone (str): System timezone description.
 
         Returns:
             ApiResult: Response from the API.

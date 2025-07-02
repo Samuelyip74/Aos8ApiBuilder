@@ -252,7 +252,171 @@ class ChassisEndpoint(BaseEndpoint):
             "ignoreError": "true"
         }
 
-        return self._client.get("/", params=params)     
+        return self._client.get("/", params=params)    
+
+    def transceiversInfo(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve GBIC/transceiver module information.
+
+        Args:
+            limit (int): Maximum number of entries to return.
+
+        Returns:
+            ApiResult: Parsed response with GBIC module data.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "entPhysicalTable",
+            "mibObject0": "chasEntPhysNiNum",
+            "mibObject1": "chasEntPhysGbicNum",
+            "mibObject2": "entPhysicalMfgName",
+            "mibObject3": "chasEntPhysPartNumber",
+            "mibObject4": "entPhysicalHardwareRev",
+            "mibObject5": "entPhysicalSerialNum",
+            "mibObject6": "entPhysicalMfgDate",
+            "mibObject7": "chasEntPhysWaveLen",
+            "mibObject8": "chasEntPhysAdminStatus",
+            "mibObject9": "chasEntPhysOperStatus",
+            "function": "entPhysIndexModuleType|chassis_entPhysIndex|addChassisIfVcMode",
+            "object": "index|index|chassis_entPhysIndex_1,chasEntPhysNiNum",
+            "filterObject": "entPhysIndexModuleType_0",
+            "filterOperation": "==",
+            "filterValue": "GBIC",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        return self._client.get("/", params=params)  
+
+    def dmmConfig(self) -> ApiResult:
+        """
+        Get global DDM configuration and trap settings.
+
+        Returns:
+            ApiResult: Parsed DDM configuration response.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "ddmConfiguration",
+            "mibObject0": "ddmConfig",
+            "mibObject1": "ddmTrapConfig"
+        }
+
+        return self._client.get("/", params=params)       
+    
+    def fanStatus(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve fan information such as status, speed, and airflow.
+
+        Args:
+            limit (int): Maximum number of entries to retrieve.
+
+        Returns:
+            ApiResult: Fan hardware data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaChasEntPhysFanTable",
+            "mibObject0": "entPhysicalIndex",
+            "mibObject1": "alaChasEntPhysFanLocalIndex",
+            "mibObject2": "alaChasEntPhysFanStatus",
+            "mibObject3": "alaChasEntPhysFanSpeed",
+            "mibObject4": "alaChasEntPhysFanAirflow",
+            "function": "chassisSlot_entPhysicalIndex",
+            "object": "entPhysicalIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        return self._client.get("/", params=params)    
+    
+    def runningDirectory(self, limit: int = 200) -> ApiResult:
+        """
+        Retrieve control module details including versions, status, and synchronization.
+
+        Args:
+            limit (int): Maximum number of entries to return.
+
+        Returns:
+            ApiResult: Control module information from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "chasControlModuleTable",
+            "mibObject0": "entPhysicalIndex",
+            "mibObject1": "chasEntPhysOperStatus",
+            "mibObject2": "chasControlCurrentRunningVersion",
+            "mibObject3": "chasControlNextRunningVersion",
+            "mibObject4": "chasControlCertifyStatus",
+            "mibObject5": "chasControlWorkingVersion",
+            "mibObject6": "chasControlRedundancyTime",
+            "mibObject7": "chasControlSynchronizationStatus",
+            "mibObject8": "configChangeStatus",
+            "function": "chassis_entPhysIndex|getSwitchSecondaryCMMPhysicalIndex|getVCRole|csIsChassisModeVcOrErrStr|chassisSlotWithType_entPhysicalIndex",
+            "object": "index|chassis_entPhysIndex_0|chassis_entPhysIndex_0||entPhysicalIndex",
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        return self._client.get("/", params=params)   
+
+    def getHashControl(self) -> ApiResult:
+        """
+        Retrieve hash configuration parameters including hash mode and non-unicast behavior.
+
+        Returns:
+            ApiResult: Parsed hash control settings from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "alaCapManHashControlCommands",
+            "mibObject0": "alaCapManHashMode",
+            "mibObject1": "alaCapManUdpTcpPortMode",
+            "mibObject2": "alaCapManNonUCHashControl",
+            "mibObject3": "alaCapManNonUCTunnelProtocol",
+            "mibObject4": "alaCapManNonUCSourcePort"
+        }
+
+        return self._client.get("/", params=params)  
+    
+    def getLEDStatus(self, filter_value: str = "CMM", limit: int = 200) -> ApiResult:
+        """
+        Retrieve the list of LED and status information for CMM modules.
+
+        Args:
+            filter_value (str): Filter to apply on entPhysIndexModuleType (e.g., "CMM").
+            limit (int): Maximum number of entries to return.
+
+        Returns:
+            ApiResult: Parsed status data from the switch.
+        """
+        params = {
+            "domain": "mib",
+            "urn": "chasEntPhysicalTable",
+            "chasEntPhysicalTable-mibObject0": "chasEntPhysLedStatusOk1",
+            "chasEntPhysicalTable-mibObject1": "chasEntPhysLedStatusOk2",
+            "chasEntPhysicalTable-mibObject2": "chasEntPhysLedStatusPrimaryCMM",
+            "chasEntPhysicalTable-mibObject3": "chasEntPhysLedStatusSecondaryCMM",
+            "chasEntPhysicalTable-mibObject4": "chasEntPhysLedStatusTemperature",
+            "chasEntPhysicalTable-mibObject5": "chasEntPhysLedStatusFan",
+            "chasEntPhysicalTable-mibObject6": "chasEntPhysLedStatusBackupPS",
+            "chasEntPhysicalTable-mibObject7": "chasEntPhysLedStatusInternalPS",
+            "chasEntPhysicalTable-mibObject8": "chasEntPhysLedStatusControl",
+            "chasEntPhysicalTable-mibObject9": "chasEntPhysLedStatusFabric",
+            "chasEntPhysicalTable-mibObject10": "chasEntPhysLedStatusPS",
+            "chasEntPhysicalTable-mibObject11": "chasEntPhysOperStatus",
+            "chasEntPhysicalTable-mibObject12": "chasEntPhysAdminStatus",
+            "chasEntPhysicalTable-mibObject13": "entPhysicalIndex",
+            "function": "entPhysIndexModuleType|chassisEntSlotArr_entPhysIndex",
+            "object": "entPhysicalIndex|entPhysicalIndex",
+            "filterObject": "entPhysIndexModuleType_0",
+            "filterOperation": "==",
+            "filterValue": filter_value,
+            "limit": str(limit),
+            "ignoreError": "true"
+        }
+
+        return self._client.get("/", params=params)       
 
 
     
