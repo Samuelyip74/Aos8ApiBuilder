@@ -34,8 +34,10 @@ nav:
       - API Endpoints:
           - System: endpoints/system.md     
           - Interface: endpoints/interface.md     
-          - VLAN: endpoints/vlan.md          
-          - VPA: endpoints/vpa.md          
+          - VLAN: endpoints/vlan.md   
+          - MVRP: endpoints/mvrp.md       
+          - VPA: endpoints/vpa.md   
+          - MAC: endpoints/mac.md       
           - IP: endpoints/ip.md   
       - Helper:   
           - Parser: helper/parser.md     

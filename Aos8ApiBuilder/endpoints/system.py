@@ -7,111 +7,98 @@ class SystemEndpoint(BaseEndpoint):
     """
     Endpoint to manage system-level configuration on an Alcatel-Lucent OmniSwitch using CLI-based API commands.
     """
-
-    def list(self):
+    def getSystem(self) -> ApiResult:
         """
-        Retrieve current system configuration including name, contact, location, time, and timezone.
+        Retrieve system and system service configuration data.
 
         Returns:
-            ApiResult: The parsed result of the `show system` command.
+            ApiResult: Parsed response from the switch.
         """
-        response = self._client.get("/cli/aos?cmd=show+system")
-        if response.output:
-            response.output = parse_system_output_json(response.output)
-        return response
+        params = {
+            "domain": "mib",
+            "urn": "system|systemServices|systemBlueToothServices|systemServicesBluetoothTable|systemFips|alaAaaAuthConfig",
+            "mibObject0": "sysDescr",
+            "mibObject1": "sysObjectID",
+            "mibObject2": "sysUpTime",
+            "mibObject3": "sysContact",
+            "mibObject4": "sysName",
+            "mibObject5": "sysLocation",
+            "mibObject6": "systemServicesTimezone",
+            "mibObject7": "systemServicesEnableDST",
+            "mibObject8": "systemServicesTime",
+            "mibObject9": "systemServicesDate",
+            "mibObject10": "systemServicesUsbEnable",
+            "mibObject11": "systemServicesUsbAutoCopyEnable",
+            "mibObject12": "systemServicesUsbCopyConfig",
+            "mibObject13": "systemServicesUsbBackupAdminState",
+            "mibObject14": "systemServicesUsbBackupKey",
+            "mibObject15": "systemServicesUsbBackupHashkey",
+            "mibObject16": "systemServicesAction",
+            "mibObject17": "systemServicesArg1",
+            "mibObject18": "systemServicesBluetoothStatus",
+            "mibObject19": "systemServicesBluetoothEnable",
+            "mibObject20": "systemServicesBluetoothTxPower",
+            "mibObject21": "systemServicesBluetoothStatus",  # Duplicated in original, left as-is
+            "mibObject22": "systemServicesBluetoothChassisId",
+            "mibObject23": "systemFipsAdminState",
+            "mibObject24": "systemFipsOperState",
+            "mibObject25": "alaAaaUbootAuthenticationPassword",
+            "mibObject26": "alaAaaUbootAccess",
+        }
 
-    def set_name(self, name: str) -> ApiResult:
+        return self._client.get("/", params=params)
+    
+
+    def setSystem(self, contact: Optional[str] = None, name: Optional[str] = None, location: Optional[str] = None) -> ApiResult:
         """
-        Set the system name.
+        Update the system contact, name, and location information.
 
         Args:
-            name (str): The desired system name.
+            contact (str): System contact email or name.
+            name (str): System name (hostname).
+            location (str): System location description.
 
         Returns:
-            ApiResult: Result of the operation or the updated system configuration.
+            ApiResult: Response from the API.
         """
-        name_quoted = f'"{name}"'
-        response = self._client.get(f"/cli/aos?cmd=system+name+{name_quoted}")
-        if response.success:
-            return self.list()
-        return response
+        url = "/?domain=mib&urn=system"
+        form_data = {}
 
-    def set_contact(self, contact: str) -> ApiResult:
+        if contact is not None:
+            form_data["mibObject0-T1"] = f"sysContact:{contact}"
+
+        if name is not None:
+            form_data["mibObject1-T1"] = f"sysName:{name}"
+
+        if location is not None:
+            form_data["mibObject2-T1"] = f"sysLocation:{location}"            
+
+        return self._client.post(url, data=form_data)    
+
+
+    def setDateTime(self, date: Optional[str] = None, time: Optional[str] = None, timezone: Optional[str] = None) -> ApiResult:
         """
-        Set the system contact information.
+        Update the system contact, name, and location information.
 
         Args:
-            contact (str): Contact name or information string.
+            contact (str): System contact email or name.
+            name (str): System name (hostname).
+            location (str): System location description.
 
         Returns:
-            ApiResult: Result of the operation or the updated system configuration.
+            ApiResult: Response from the API.
         """
-        contact_quoted = f'"{contact}"'
-        response = self._client.get(f"/cli/aos?cmd=system+contact+{contact_quoted}")
-        if response.success:
-            return self.list()
-        return response
+        url = "/?domain=mib&urn=systemServices"
+        form_data = {}
 
-    def set_location(self, location: str) -> ApiResult:
-        """
-        Set the system location.
+        if date is not None:
+            form_data["mibObject0-T1"] = f"systemServicesDate:{date}"
 
-        Args:
-            location (str): Location string describing where the system is deployed.
+        if time is not None:
+            form_data["mibObject1-T1"] = f"systemServicesTime:{time}"
 
-        Returns:
-            ApiResult: Result of the operation or the updated system configuration.
-        """
-        location_quoted = f'"{location}"'
-        response = self._client.get(f"/cli/aos?cmd=system+location+{location_quoted}")
-        if response.success:
-            return self.list()
-        return response
+        if timezone is not None:
+            form_data["mibObject2-T1"] = f"systemServicesTimezone:{timezone}"            
 
-    def set_date(self, data: str) -> ApiResult:
-        """
-        Set the system date.
+        return self._client.post(url, data=form_data)    
 
-        Args:
-            data (str): Date string in the required CLI format (e.g., "MM/DD/YYYY").
-
-        Returns:
-            ApiResult: Result of the operation or the updated system configuration.
-        """
-        date_quoted = f'"{data}"'
-        response = self._client.get(f"/cli/aos?cmd=system+date+{date_quoted}")
-        if response.success:
-            return self.list()
-        return response
-
-    def set_time(self, time: str) -> ApiResult:
-        """
-        Set the system time.
-
-        Args:
-            time (str): Time string in the required CLI format (e.g., "HH:MM:SS").
-
-        Returns:
-            ApiResult: Result of the operation or the updated system configuration.
-        """
-        time_quoted = f'"{time}"'
-        response = self._client.get(f"/cli/aos?cmd=system+time+{time_quoted}")
-        if response.success:
-            return self.list()
-        return response
-
-    def set_timezone(self, timezone: str) -> ApiResult:
-        """
-        Set the system timezone.
-
-        Args:
-            timezone (str): Timezone string (e.g., "UTC+8", "PST", "GMT+1").
-
-        Returns:
-            ApiResult: Result of the operation or the updated system configuration.
-        """
-        timezone_quoted = f'"{timezone}"'
-        response = self._client.get(f"/cli/aos?cmd=system+timezone+{timezone_quoted}")
-        if response.success:
-            return self.list()
-        return response

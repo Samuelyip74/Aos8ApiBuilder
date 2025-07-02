@@ -1,0 +1,4409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Samuelyip74.github.io/Aos8ApiBuilder/endpoints/interface/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Interface - Aos8APIBuilder for Python Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Interface";
+        var mkdocs_page_input_path = "endpoints\\interface.md";
+        var mkdocs_page_url = "/Aos8ApiBuilder/endpoints/interface/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Aos8APIBuilder for Python Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Aos8APIBuilder Classes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Aos8ApiBuilder</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../api/ApiBuilder/">ApiBuilder</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../api/ApiClient/">ApiClient</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../api/models/">Models</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >API Endpoints</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../system/">System</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Interface</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vlan/">VLAN</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vpa/">VPA</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ip/">IP</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Helper</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../helper/parser/">Parser</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Aos8APIBuilder for Python Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Aos8APIBuilder Classes</li>
+          <li class="breadcrumb-item">API Endpoints</li>
+      <li class="breadcrumb-item active">Interface</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <div class="doc doc-object doc-module">
+
+
+
+<a id="Aos8ApiBuilder.endpoints.interface"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint" class="doc doc-heading">
+            <code>InterfaceEndpoint</code>
+
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="endpoints.base.BaseEndpoint">BaseEndpoint</span></code></p>
+
+
+        <p>Provides interface-related configuration and status management endpoints
+for Alcatel-Lucent OmniSwitch using MIB-based REST API.</p>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.admin_disable" class="doc doc-heading">
+            <code class="highlight language-python">admin_disable(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.admin_disable" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Disable administrative state of the interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p><code>ApiResult</code> with updated interface status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.admin_enable" class="doc doc-heading">
+            <code class="highlight language-python">admin_enable(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.admin_enable" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enable administrative state of the interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p><code>ApiResult</code> with updated interface status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.autoneg_disable" class="doc doc-heading">
+            <code class="highlight language-python">autoneg_disable(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.autoneg_disable" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Disable auto-negotiation on the interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p><code>ApiResult</code> with updated interface status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.autoneg_enable" class="doc doc-heading">
+            <code class="highlight language-python">autoneg_enable(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.autoneg_enable" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enable auto-negotiation on the interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p><code>ApiResult</code> with updated interface status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.clear_statistics" class="doc doc-heading">
+            <code class="highlight language-python">clear_statistics(target, stat_type, cli_only=False)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.clear_statistics" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Clear interface statistics counters (Layer 2 or TDR).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/3/1&rdquo; or &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>stat_type</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;l2-statistics&rdquo; or &ldquo;tdr-statistics&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>cli_only</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Whether to include &ldquo;cli&rdquo; for l2-statistics.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult of the CLI command.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If input is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.clear_violation" class="doc doc-heading">
+            <code class="highlight language-python">clear_violation(target, is_linkagg=False)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.clear_violation" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Clears all the MAC address violation logs for a specified port or link aggregate.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port in the format &lsquo;chassis/slot/port[-port2]&rsquo; or linkagg ID/range like &lsquo;1-2&rsquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>is_linkagg</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If True, clears violation for a linkagg; otherwise, clears for port(s).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.epp_disable" class="doc doc-heading">
+            <code class="highlight language-python">epp_disable(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.epp_disable" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Disable EPP on the interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p><code>ApiResult</code> with updated interface status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.epp_enable" class="doc doc-heading">
+            <code class="highlight language-python">epp_enable(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.epp_enable" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enable EPP on the interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p><code>ApiResult</code> with updated interface status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.flood_control" class="doc doc-heading">
+            <code class="highlight language-python">flood_control(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.flood_control" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve broadcast, unicast, and multicast storm control settings.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed storm control data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.get_interface" class="doc doc-heading">
+            <code class="highlight language-python">get_interface(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.get_interface" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed status of a specific port.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary of parsed interface details or None if the request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.globalPTPConfig" class="doc doc-heading">
+            <code class="highlight language-python">globalPTPConfig()</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.globalPTPConfig" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve the global PTP (Precision Time Protocol) configuration.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed PTP configuration data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.globalPVR" class="doc doc-heading">
+            <code class="highlight language-python">globalPVR()</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.globalPVR" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve global PVR configuration values.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed global PVR configuration from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.link_monitoring_config" class="doc doc-heading">
+            <code class="highlight language-python">link_monitoring_config(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.link_monitoring_config" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve link monitoring settings per interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed link monitor configuration from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.link_monitoring_statistic" class="doc doc-heading">
+            <code class="highlight language-python">link_monitoring_statistic(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.link_monitoring_statistic" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve real-time and cumulative link monitoring statistics for all interfaces.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed link monitor statistics from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.list" class="doc doc-heading">
+            <code class="highlight language-python">list(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.list" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve the list of ESM port configurations using the MIB-based REST API.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed ESM port config data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.portMappingConfig" class="doc doc-heading">
+            <code class="highlight language-python">portMappingConfig(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.portMappingConfig" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve port mapping table entries.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed port mapping data.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.portMappingSession" class="doc doc-heading">
+            <code class="highlight language-python">portMappingSession(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.portMappingSession" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve entries from the Port Mapping Session Table.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed port mapping session data.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_mirroring_destination" class="doc doc-heading">
+            <code class="highlight language-python">port_mirroring_destination(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_mirroring_destination" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve mirror destination port configuration.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of destination entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed mirror destination configuration from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_mirroring_sessions" class="doc doc-heading">
+            <code class="highlight language-python">port_mirroring_sessions(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_mirroring_sessions" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve mirror session configuration and status from the switch.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of sessions to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed mirror session data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_mirroring_source" class="doc doc-heading">
+            <code class="highlight language-python">port_mirroring_source(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_mirroring_source" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve source port configuration for mirror sessions.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of source entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed mirror source port configuration from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_monitoring_config" class="doc doc-heading">
+            <code class="highlight language-python">port_monitoring_config(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_monitoring_config" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve monitor source port configuration from the switch.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed monitor source port data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_monitoring_session" class="doc doc-heading">
+            <code class="highlight language-python">port_monitoring_session(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_monitoring_session" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve monitor session information.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed monitor session configuration from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_violation_status" class="doc doc-heading">
+            <code class="highlight language-python">port_violation_status(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.port_violation_status" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve port violation events with details like reason, action, and retry status.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of records to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed port violation data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.ptpPortConfig" class="doc doc-heading">
+            <code class="highlight language-python">ptpPortConfig(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.ptpPortConfig" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve PTP administrative status for all switch ports.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed PTP port configuration data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.recovery_port_config" class="doc doc-heading">
+            <code class="highlight language-python">recovery_port_config(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.recovery_port_config" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve PVR configuration for each interface using MIB-based GET.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed PVR configuration data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_alias" class="doc doc-heading">
+            <code class="highlight language-python">set_alias(port, alias)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_alias" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set or clear the alias (description) for a single port.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>A single port string (e.g., &ldquo;1/1/1&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>alias</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Alias string (e.g., &ldquo;Uplink to Core&rdquo;) or empty &ldquo;&rdquo; to clear.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>An <code>ApiResult</code> with the updated interface detail.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If a port range is given (not supported by this command).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ddm_status" class="doc doc-heading">
+            <code class="highlight language-python">set_ddm_status(state)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ddm_status" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the Digital Diagnostics Monitoring (DDM) administrative status.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>state</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo; to turn on DDM monitoring; &ldquo;disable&rdquo; to turn it off.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If an invalid state is provided.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_duplex" class="doc doc-heading">
+            <code class="highlight language-python">set_duplex(target, mode)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_duplex" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set duplex mode for a port, port range, or slot.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port (e.g., &ldquo;1/3/1&rdquo;), port range (e.g., &ldquo;1/3/1-4&rdquo;), or slot (e.g., &ldquo;1/3&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mode</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>One of &ldquo;full&rdquo;, &ldquo;half&rdquo;, or &ldquo;auto&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>An <code>ApiResult</code> with updated interface status if applicable.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If duplex mode is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_eee" class="doc doc-heading">
+            <code class="highlight language-python">set_eee(target, state)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_eee" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enables or disables Energy Efficient Ethernet (EEE) on the specified port(s) or slot.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range of ports)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>state</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo; to turn on EEE, &ldquo;disable&rdquo; to turn it off.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If state is not &ldquo;enable&rdquo; or &ldquo;disable&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit" class="doc doc-heading">
+            <code class="highlight language-python">set_flood_limit(target, traffic_type, rate_mode, rate_value, low_threshold=None)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configure flood limit settings for broadcast, multicast, unknown unicast, or all traffic types.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>traffic_type</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;bcast&rdquo;, &ldquo;mcast&rdquo;, &ldquo;uucast&rdquo;, &ldquo;all&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>rate_mode</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;pps&rdquo;, &ldquo;mbps&rdquo;, &ldquo;cap%&rdquo;, &ldquo;enable&rdquo;, &ldquo;disable&rdquo;, &ldquo;default&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>rate_value</code></b>
+                  (<code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;, &#39;default&#39;]]</code>)
+              –
+              <div class="doc-md-description">
+                <p>The value for the selected rate_mode, or &ldquo;enable&rdquo;/&rdquo;disable&rdquo;/&rdquo;default&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>low_threshold</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional low threshold value (must be lower than rate_value, when applicable).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If input validation fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit_action" class="doc doc-heading">
+            <code class="highlight language-python">set_flood_limit_action(target, traffic_type, action)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_flood_limit_action" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configure the action taken when flood rate limits are violated for a given traffic type.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>traffic_type</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;bcast&#39;, &#39;mcast&#39;, &#39;uucast&#39;, &#39;all&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;bcast&rdquo;, &ldquo;mcast&rdquo;, &ldquo;uucast&rdquo;, &ldquo;all&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>action</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;shutdown&#39;, &#39;trap&#39;, &#39;default&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>One of: &ldquo;shutdown&rdquo;, &ldquo;trap&rdquo;, &ldquo;default&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If any argument is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_hybrid_mode" class="doc doc-heading">
+            <code class="highlight language-python">set_hybrid_mode(target, mode)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_hybrid_mode" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the mode of a combo port to either fiber or copper.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range of ports)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mode</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;fiber&#39;, &#39;copper&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;fiber&rdquo; or &ldquo;copper&rdquo;</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If mode is not &ldquo;fiber&rdquo; or &ldquo;copper&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ingress_bandwidth" class="doc doc-heading">
+            <code class="highlight language-python">set_ingress_bandwidth(target, action)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_ingress_bandwidth" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures ingress bandwidth settings on the specified slot or port(s).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>action</code></b>
+                  (<code><span title="typing.Union">Union</span>[<span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;], <span title="int">int</span>]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo;, &ldquo;disable&rdquo;, or an integer Mbps value.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If invalid action value.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_interface" class="doc doc-heading">
+            <code class="highlight language-python">set_interface(port, parameter, value)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_interface" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set an interface parameter and return updated status for all affected ports.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string, e.g., &ldquo;1/1/1&rdquo; or &ldquo;1/1/1-3&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>parameter</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>One of &ldquo;admin-state&rdquo;, &ldquo;autoneg&rdquo;, or &ldquo;epp&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>value</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo; or &ldquo;disable&rdquo;.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>An <code>ApiResult</code> with a list of updated interface statuses.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_link_trap" class="doc doc-heading">
+            <code class="highlight language-python">set_link_trap(target, state)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_link_trap" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enables or disables link trap messages on the specified interface(s).</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target slot (e.g., &ldquo;1/3&rdquo;) or port/port-range (e.g., &ldquo;1/2/1&rdquo;, &ldquo;1/1/1-6&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>state</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;enable&#39;, &#39;disable&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;enable&rdquo; to generate trap messages when port changes state, &ldquo;disable&rdquo; otherwise.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If an invalid state is provided.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_loopback" class="doc doc-heading">
+            <code class="highlight language-python">set_loopback(port, enable=True)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_loopback" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Enables or disables loopback mode for the specified front-panel port.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The front-panel port(s) in the format:
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range of ports)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>enable</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>True</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>True to enable loopback, False to disable using the &lsquo;no&rsquo; form.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_max_frame_size" class="doc doc-heading">
+            <code class="highlight language-python">set_max_frame_size(target, size)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_max_frame_size" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configure the maximum frame size on a port or slot.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Target slot (e.g. &ldquo;1/3&rdquo;) or port/port-range (e.g. &ldquo;1/3/1&rdquo;, &ldquo;1/3/1-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>size</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Frame size in bytes (valid range: 1518 to 9216).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult of the CLI command.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If the target or size is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_portgroup_speed" class="doc doc-heading">
+            <code class="highlight language-python">set_portgroup_speed(port_group_number, slot, group_range, speed)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_portgroup_speed" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the speed of the ports within a port group.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port_group_number</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The port group number (e.g., 1, 2, 3&hellip;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>slot</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The chassis/slot identifier (e.g., &ldquo;1/1&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>group_range</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The group or group range (e.g., &ldquo;1&rdquo;, &ldquo;2-4&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>speed</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;auto&#39;, &#39;25G&#39;, &#39;10G&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>The desired speed for the port group (&ldquo;auto&rdquo;, &ldquo;25G&rdquo;, or &ldquo;10G&rdquo;).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_speed" class="doc doc-heading">
+            <code class="highlight language-python">set_speed(target, speed)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_speed" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set the speed for one or more interfaces.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port or range string, e.g., &ldquo;1/1/1&rdquo; or &ldquo;1/1/1-3&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>speed</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Allowed values include &ldquo;10&rdquo;, &ldquo;100&rdquo;, &hellip;, &ldquo;100000&rdquo;, &ldquo;auto&rdquo;,
+or &ldquo;max 100&rdquo;/&rdquo;max 1000&rdquo;/etc.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>An <code>ApiResult</code> with updated interface status per affected port.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If the speed value is invalid.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_violation_recovery_maximum" class="doc doc-heading">
+            <code class="highlight language-python">set_violation_recovery_maximum(scope, value, target=None)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_violation_recovery_maximum" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the maximum number of recovery attempts for MAC address violation recovery.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>scope</code></b>
+                  (<code><span title="typing.Literal">Literal</span>[&#39;global&#39;, &#39;slot&#39;, &#39;port&#39;]</code>)
+              –
+              <div class="doc-md-description">
+                <p>&ldquo;global&rdquo; applies to all ports, &ldquo;slot&rdquo; applies to a chassis/slot, &ldquo;port&rdquo; applies to a port or range.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>value</code></b>
+                  (<code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="typing.Literal">Literal</span>[&#39;infinite&#39;, &#39;default&#39;]]</code>)
+              –
+              <div class="doc-md-description">
+                <p>Integer (0–50), &ldquo;infinite&rdquo;, or &ldquo;default&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Optional. Required for &ldquo;slot&rdquo; or &ldquo;port&rdquo;. E.g., &lsquo;1/1&rsquo; (slot), &lsquo;1/1/1&rsquo;, or &lsquo;1/1/1-3&rsquo; (ports).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_restore" class="doc doc-heading">
+            <code class="highlight language-python">set_wait_to_restore(target, value)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_restore" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the wait-to-restore timer for the specified slot or port(s).
+This timer delays the notification of a link-up event.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The target interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>value</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Wait-to-restore timer in seconds (0 disables the timer).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If value is negative or target is improperly formatted.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_shutdown" class="doc doc-heading">
+            <code class="highlight language-python">set_wait_to_shutdown(target, value)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.set_wait_to_shutdown" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Configures the wait-to-shutdown timer for the specified slot or port(s).
+This timer delays the notification of a link-down event.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>target</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>The target interface scope. Accepts:
+- &ldquo;slot x/y&rdquo;
+- &ldquo;port x/y/z&rdquo;
+- &ldquo;port x/y/z-a&rdquo; (range)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>value</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Wait-to-shutdown timer in seconds (0 disables the timer).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>ApiResult from the CLI API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Raises:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="ValueError">ValueError</span></code>
+              –
+              <div class="doc-md-description">
+                <p>If value is negative or target is improperly formatted.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_accounting" class="doc doc-heading">
+            <code class="highlight language-python">show_interface_accounting(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_accounting" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed status or accounting of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>accounting</code></b>
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve accounting info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_capability" class="doc doc-heading">
+            <code class="highlight language-python">show_interface_capability(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_capability" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed status or capability of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>capability</code></b>
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve capability info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters" class="doc doc-heading">
+            <code class="highlight language-python">show_interface_counters(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed status or counter of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>accounting</code></b>
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve counter info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters_errors" class="doc doc-heading">
+            <code class="highlight language-python">show_interface_counters_errors(port)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.show_interface_counters_errors" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed error counters of a specific port or port range.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>port</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Port identifier string, e.g., &ldquo;1/1/1&rdquo;, &ldquo;1/1/1-1/1/4&rdquo;, or &ldquo;1/1&rdquo;.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>counter</code></b>
+                  (<code><span title="errors">errors</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>If True, retrieve error counter info instead of detailed status.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+                  <code><span title="models.ApiResult">ApiResult</span></code>
+              –
+              <div class="doc-md-description">
+                <p>A dictionary (or list of dicts) of parsed interface data, or None if request fails.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_collisions" class="doc doc-heading">
+            <code class="highlight language-python">statistic_collisions(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_collisions" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve Ethernet collision stats using the MIB-based REST API.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed Ethernet collision statistics.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_counter" class="doc doc-heading">
+            <code class="highlight language-python">statistic_counter(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_counter" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve real-time interface traffic rates and pause frame stats.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed interface rate and pause frame stats from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_errors_counter" class="doc doc-heading">
+            <code class="highlight language-python">statistic_errors_counter(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_errors_counter" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve Ethernet error statistics such as alignment errors, FCS errors, and oversized/undersized frames.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed Ethernet error statistics from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_packets" class="doc doc-heading">
+            <code class="highlight language-python">statistic_packets(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_packets" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve interface statistics (standard + FC-specific) from ifTable.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed interface stats from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_packets_counter" class="doc doc-heading">
+            <code class="highlight language-python">statistic_packets_counter(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_packets_counter" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve high-capacity traffic and pause frame counters from alcetherStatsTable.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed traffic and pause frame statistics.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_traffic" class="doc doc-heading">
+            <code class="highlight language-python">statistic_traffic(if_type=6, limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.statistic_traffic" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve high-capacity interface traffic statistics from ifXTable.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>if_type</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>6</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Interface type to filter (default 6 for Ethernet).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Max number of entries to retrieve. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed traffic stats from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.status" class="doc doc-heading">
+            <code class="highlight language-python">status(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.status" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve detailed ESM port operational status using the MIB-based REST API.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed data from the switch response.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.status_extended" class="doc doc-heading">
+            <code class="highlight language-python">status_extended(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.status_extended" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve ESM port performance and ingress settings using MIB GET.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of results to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed data containing max frame size, speed, ingress rate limits, etc.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.tdrStats" class="doc doc-heading">
+            <code class="highlight language-python">tdrStats(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.interface.InterfaceEndpoint.tdrStats" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve cable diagnostics for all Ethernet switch ports.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of entries to return. Defaults to 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed TDR port diagnostics data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../system/" class="btn btn-neutral float-left" title="System"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vlan/" class="btn btn-neutral float-right" title="VLAN">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../system/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../vlan/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
