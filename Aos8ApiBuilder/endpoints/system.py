@@ -7,7 +7,7 @@ class SystemEndpoint(BaseEndpoint):
     """
     Endpoint to manage system-level configuration on an Alcatel-Lucent OmniSwitch using CLI-based API commands.
     """
-    def getSystem(self) -> ApiResult:
+    def getSystemInformation(self) -> ApiResult:
         """
         Retrieve system and system service configuration data.
 

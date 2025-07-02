@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Samuelyip74.github.io/Aos8ApiBuilder/helper/parser/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Samuelyip74.github.io/Aos8ApiBuilder/endpoints/mvrp/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Parser - Aos8APIBuilder for Python Documentation</title>
+    <title>MVRP - Aos8APIBuilder for Python Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Parser";
-        var mkdocs_page_input_path = "helper\\parser.md";
-        var mkdocs_page_url = "/Aos8ApiBuilder/helper/parser/";
+        var mkdocs_page_name = "MVRP";
+        var mkdocs_page_input_path = "endpoints\\mvrp.md";
+        var mkdocs_page_url = "/Aos8ApiBuilder/endpoints/mvrp/";
       </script>
     
     <!--[if lt IE 9]>
@@ -56,31 +56,31 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" >API Endpoints</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/system/">System</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" >API Endpoints</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../system/">System</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/interface/">Interface</a>
+                <li class="toctree-l2"><a class="reference internal" href="../interface/">Interface</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/lacp/">LACP</a>
+                <li class="toctree-l2"><a class="reference internal" href="../lacp/">LACP</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/vlan/">VLAN</a>
+                <li class="toctree-l2"><a class="reference internal" href="../vlan/">VLAN</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/mvrp/">MVRP</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MVRP</a>
+    <ul class="current">
+    </ul>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/vpa/">VPA</a>
+                <li class="toctree-l2"><a class="reference internal" href="../vpa/">VPA</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/mac/">MAC</a>
+                <li class="toctree-l2"><a class="reference internal" href="../mac/">MAC</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../endpoints/ip/">IP</a>
+                <li class="toctree-l2"><a class="reference internal" href="../ip/">IP</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" >Helper</a>
-    <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">Parser</a>
-    <ul class="current">
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" >Helper</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../helper/parser/">Parser</a>
                 </li>
     </ul>
                   </li>
@@ -100,8 +100,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Aos8APIBuilder Classes</li>
-          <li class="breadcrumb-item">Helper</li>
-      <li class="breadcrumb-item active">Parser</li>
+          <li class="breadcrumb-item">API Endpoints</li>
+      <li class="breadcrumb-item active">MVRP</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -114,8 +114,44 @@
 
 
 
-<a id="Aos8ApiBuilder.helper"></a>
+<a id="Aos8ApiBuilder.endpoints.mvrp"></a>
     <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint" class="doc doc-heading">
+            <code>MvrpEndpoint</code>
+
+
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="endpoints.base.BaseEndpoint">BaseEndpoint</span></code></p>
+
+
+        <p>Endpoint for managing MVRP configuration.</p>
+
 
 
 
@@ -138,15 +174,56 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="Aos8ApiBuilder.helper.parse_interface_accounting" class="doc doc-heading">
-            <code class="highlight language-python">parse_interface_accounting(output)</code>
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.globalMVRP" class="doc doc-heading">
+            <code class="highlight language-python">globalMVRP()</code>
 
-<a href="#Aos8ApiBuilder.helper.parse_interface_accounting" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.globalMVRP" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Parses the CLI output of &lsquo;show interfaces port <port> accounting&rsquo; into a dictionary.</p>
+        <p>Retrieve global MVRP configuration settings.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>MVRP global status and VLAN limit configuration.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrpPortConfig" class="doc doc-heading">
+            <code class="highlight language-python">mvrpPortConfig(limit=200)</code>
+
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrpPortConfig" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve MVRP port configuration table.</p>
 
 
 <table class="field-list">
@@ -160,11 +237,13 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>output</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
               –
               <div class="doc-md-description">
-                <p>CLI output as a string.</p>
+                <p>Maximum number of rows to return (default is 200).</p>
               </div>
             </li>
         </ul>
@@ -184,10 +263,10 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-                  <code><span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="int">int</span>]</code>
-              –
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
               <div class="doc-md-description">
-                <p>Dictionary mapping each metric to its integer value.</p>
+                <p>The MVRP port configuration per interface.</p>
               </div>
             </li>
         </ul>
@@ -203,15 +282,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="Aos8ApiBuilder.helper.parse_interface_counters" class="doc doc-heading">
-            <code class="highlight language-python">parse_interface_counters(output)</code>
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_Vlan_Restriction" class="doc doc-heading">
+            <code class="highlight language-python">mvrp_Vlan_Restriction(limit=200)</code>
 
-<a href="#Aos8ApiBuilder.helper.parse_interface_counters" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_Vlan_Restriction" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Parses &lsquo;show interfaces port <port> counters&rsquo; CLI output into a dictionary.</p>
+        <p>Retrieve MVRP VLAN restriction configuration entries where restrictions are set.</p>
 
 
 <table class="field-list">
@@ -225,11 +304,13 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>output</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
               –
               <div class="doc-md-description">
-                <p>CLI raw string from the command.</p>
+                <p>Maximum number of rows to retrieve (default 200).</p>
               </div>
             </li>
         </ul>
@@ -249,10 +330,10 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-                  <code><span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="int">int</span>]</code>
-              –
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
               <div class="doc-md-description">
-                <p>Dictionary of counters with their values.</p>
+                <p>Parsed data with restricted VLANs.</p>
               </div>
             </li>
         </ul>
@@ -268,15 +349,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="Aos8ApiBuilder.helper.parse_interface_counters_errors" class="doc doc-heading">
-            <code class="highlight language-python">parse_interface_counters_errors(output)</code>
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_stats" class="doc doc-heading">
+            <code class="highlight language-python">mvrp_stats(port_status=1, limit=200)</code>
 
-<a href="#Aos8ApiBuilder.helper.parse_interface_counters_errors" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_stats" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Parses &lsquo;show interfaces port <port> counters errors&rsquo; CLI output into a dictionary.</p>
+        <p>Retrieve MVRP port statistics with an optional port status filter.</p>
 
 
 <table class="field-list">
@@ -290,11 +371,23 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>output</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>port_status</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>1</code>
+)
               –
               <div class="doc-md-description">
-                <p>CLI output string.</p>
+                <p>Filter for <code>alaMvrpPortStatus</code> (default is 1).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Max number of rows to retrieve (default is 200).</p>
               </div>
             </li>
         </ul>
@@ -314,10 +407,10 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-                  <code><span title="typing.Dict">Dict</span>[<span title="str">str</span>, <span title="float">float</span>]</code>
-              –
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
               <div class="doc-md-description">
-                <p>Dictionary with error counter names and numeric values (float or int).</p>
+                <p>Parsed MVRP port statistics.</p>
               </div>
             </li>
         </ul>
@@ -325,126 +418,6 @@
     </tr>
   </tbody>
 </table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="Aos8ApiBuilder.helper.parse_interface_detail" class="doc doc-heading">
-            <code class="highlight language-python">parse_interface_detail(cli_output)</code>
-
-<a href="#Aos8ApiBuilder.helper.parse_interface_detail" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Parses &lsquo;show interface detail&rsquo; CLI output including Rx and Tx subsections.</p>
-<p>:param cli_output: Raw CLI output as a string
-:return: Dictionary with top-level and Rx/Tx values</p>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="Aos8ApiBuilder.helper.parse_interface_status" class="doc doc-heading">
-            <code class="highlight language-python">parse_interface_status(cli_output)</code>
-
-<a href="#Aos8ApiBuilder.helper.parse_interface_status" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Parses &lsquo;show interfaces&rsquo; status CLI output.</p>
-<p>:param cli_output: Raw CLI output as a string
-:return: List of dictionaries per interface row</p>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="Aos8ApiBuilder.helper.parse_ip_interface_output" class="doc doc-heading">
-            <code class="highlight language-python">parse_ip_interface_output(cli_output)</code>
-
-<a href="#Aos8ApiBuilder.helper.parse_ip_interface_output" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Parses the &lsquo;show ip interface&rsquo; CLI output into a list of dictionaries.</p>
-<p>:param cli_output: Raw CLI output as a string
-:return: List of dictionaries with parsed interface data</p>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="Aos8ApiBuilder.helper.parse_output_json" class="doc doc-heading">
-            <code class="highlight language-python">parse_output_json(output)</code>
-
-<a href="#Aos8ApiBuilder.helper.parse_output_json" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Parses CLI table output with headers and fixed-format rows.</p>
-<p>:param output: Raw CLI output as a string
-:return: List of dictionaries mapping headers to values</p>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="Aos8ApiBuilder.helper.parse_system_output_json" class="doc doc-heading">
-            <code class="highlight language-python">parse_system_output_json(cli_output)</code>
-
-<a href="#Aos8ApiBuilder.helper.parse_system_output_json" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Parses CLI output with section headers and key-value pairs into a nested dictionary.</p>
-<p>:param cli_output: Raw CLI output as a string
-:return: Dictionary representing parsed output</p>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="Aos8ApiBuilder.helper.parse_vlan_output_json" class="doc doc-heading">
-            <code class="highlight language-python">parse_vlan_output_json(output)</code>
-
-<a href="#Aos8ApiBuilder.helper.parse_vlan_output_json" class="headerlink" title="Permanent link">&para;</a></h2>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Parses VLAN CLI output in table format.</p>
-<p>:param output: Raw CLI output as a string
-:return: List of dictionaries per VLAN entry</p>
-
 
     </div>
 
@@ -457,11 +430,21 @@
     </div>
 
 </div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../endpoints/ip/" class="btn btn-neutral float-left" title="IP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vlan/" class="btn btn-neutral float-left" title="VLAN"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vpa/" class="btn btn-neutral float-right" title="VPA">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -484,8 +467,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../endpoints/ip/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../vlan/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../vpa/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Samuelyip74.github.io/Aos8ApiBuilder/endpoints/system/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Samuelyip74.github.io/Aos8ApiBuilder/endpoints/mac/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>System - Aos8APIBuilder for Python Documentation</title>
+    <title>MAC - Aos8APIBuilder for Python Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "System";
-        var mkdocs_page_input_path = "endpoints\\system.md";
-        var mkdocs_page_url = "/Aos8ApiBuilder/endpoints/system/";
+        var mkdocs_page_name = "MAC";
+        var mkdocs_page_input_path = "endpoints\\mac.md";
+        var mkdocs_page_url = "/Aos8ApiBuilder/endpoints/mac/";
       </script>
     
     <!--[if lt IE 9]>
@@ -58,9 +58,7 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" >API Endpoints</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">System</a>
-    <ul class="current">
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../system/">System</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../interface/">Interface</a>
                 </li>
@@ -72,7 +70,9 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../vpa/">VPA</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../mac/">MAC</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MAC</a>
+    <ul class="current">
+    </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ip/">IP</a>
                 </li>
@@ -101,7 +101,7 @@
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Aos8APIBuilder Classes</li>
           <li class="breadcrumb-item">API Endpoints</li>
-      <li class="breadcrumb-item active">System</li>
+      <li class="breadcrumb-item active">MAC</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -114,7 +114,7 @@
 
 
 
-<a id="Aos8ApiBuilder.endpoints.system"></a>
+<a id="Aos8ApiBuilder.endpoints.mac"></a>
     <div class="doc doc-contents first">
 
 
@@ -138,11 +138,11 @@
 
 
 
-<h2 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint" class="doc doc-heading">
-            <code>SystemEndpoint</code>
+<h2 id="Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint" class="doc doc-heading">
+            <code>MacLearningEndpoint</code>
 
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents ">
@@ -150,7 +150,7 @@
               Bases: <code><span title="endpoints.base.BaseEndpoint">BaseEndpoint</span></code></p>
 
 
-        <p>Endpoint to manage system-level configuration on an Alcatel-Lucent OmniSwitch using CLI-based API commands.</p>
+        <p>Endpoint for managing MVRP configuration.</p>
 
 
 
@@ -174,15 +174,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="doc doc-heading">
-            <code class="highlight language-python">getSystemInformation()</code>
+<h3 id="Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint.globalMacLearning" class="doc doc-heading">
+            <code class="highlight language-python">globalMacLearning()</code>
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint.globalMacLearning" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Retrieve system and system service configuration data.</p>
+        <p>Retrieves the system MAC address aging value.</p>
 
 
 <table class="field-list">
@@ -199,7 +199,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Parsed response from the switch.</p>
+                <p>Contains the <code>slMacAgingValue</code> if successful.</p>
               </div>
             </li>
         </ul>
@@ -215,15 +215,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="doc doc-heading">
-            <code class="highlight language-python">setDateTime(date=None, time=None, timezone=None)</code>
+<h3 id="Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint.macPortConfiguration" class="doc doc-heading">
+            <code class="highlight language-python">macPortConfiguration(limit=200)</code>
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint.macPortConfiguration" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Update the system contact, name, and location information.</p>
+        <p>Retrieve MAC learning control status per interface.</p>
 
 
 <table class="field-list">
@@ -237,27 +237,13 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>contact</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
               –
               <div class="doc-md-description">
-                <p>System contact email or name.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>name</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>System name (hostname).</p>
-              </div>
-            </li>
-            <li>
-              <b><code>location</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>System location description.</p>
+                <p>Maximum number of results to return.</p>
               </div>
             </li>
         </ul>
@@ -280,7 +266,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Response from the API.</p>
+                <p>Parsed response containing interface MAC learning control statuses.</p>
               </div>
             </li>
         </ul>
@@ -296,15 +282,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="doc doc-heading">
-            <code class="highlight language-python">setSystem(contact=None, name=None, location=None)</code>
+<h3 id="Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint.showMacAddress" class="doc doc-heading">
+            <code class="highlight language-python">showMacAddress(limit=200)</code>
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.mac.MacLearningEndpoint.showMacAddress" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Update the system contact, name, and location information.</p>
+        <p>Retrieve global MAC address records.</p>
 
 
 <table class="field-list">
@@ -318,33 +304,13 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>contact</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>None</code>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
 )
               –
               <div class="doc-md-description">
-                <p>System contact email or name.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>name</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>System name (hostname).</p>
-              </div>
-            </li>
-            <li>
-              <b><code>location</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>System location description.</p>
+                <p>Maximum number of results to return.</p>
               </div>
             </li>
         </ul>
@@ -367,7 +333,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Response from the API.</p>
+                <p>Contains parsed global MAC address entries.</p>
               </div>
             </li>
         </ul>
@@ -400,8 +366,8 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../api/models/" class="btn btn-neutral float-left" title="Models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../interface/" class="btn btn-neutral float-right" title="Interface">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../vpa/" class="btn btn-neutral float-left" title="VPA"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ip/" class="btn btn-neutral float-right" title="IP">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -424,10 +390,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../api/models/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../vpa/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../interface/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../ip/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

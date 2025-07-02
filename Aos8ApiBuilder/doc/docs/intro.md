@@ -1,6 +1,6 @@
 ### Aos8ApiBuilder
 
-The Aos8ApiBuilder class provides an interface to construct, configure, and manage API endpoint groups for interacting with Alcatel-Lucent OmniSwitch devices using the AOS8 CLI over HTTP. It acts as the main orchestrator for initializing the client and organizing the available API modules.
+The Aos8ApiBuilder class provides an interface to construct, configure, and manage API endpoint groups for interacting with Alcatel-Lucent OmniSwitch devices using the AOS8 MIB-Based or CLI over HTTP. It acts as the main orchestrator for initializing the client and organizing the available API modules.
 
 The builder is made up of two key classes and one data model:
 
