@@ -33,6 +33,7 @@ nav:
           - Models: api/models.md
       - API Endpoints:
           - System: endpoints/system.md     
+          - Chassis: endpoints/chassis.md
           - Interface: endpoints/interface.md    
           - LACP: endpoints/lacp.md   
           - VLAN: endpoints/vlan.md   
