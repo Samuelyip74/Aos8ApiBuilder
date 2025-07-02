@@ -1,16 +1,14 @@
 Metadata-Version: 2.4
 Name: aos8_api
-Version: 8.9.3.post2
+Version: 8.9.3.post3
 Summary: OmniSwitch RestFUL API for Python
 Author-email: Samuel Yip <kahyean.yip@gmail.com>
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Requires-Dist: httpx>=0.24.1
-Requires-Dist: requests>=2.31.0
-Requires-Dist: pydantic>=2.0
-Requires-Dist: pybreaker>=0.7.0
-Requires-Dist: backoff>=2.2.1
+Requires-Dist: httpx==0.28.1
+Requires-Dist: dataclasses==0.6
+Requires-Dist: dataclasses-json==0.6.7
 Dynamic: license-file
 
 
@@ -23,9 +21,13 @@ Dynamic: license-file
 ## ✨ Supported APIs
 
 - System
+- Chassis
 - Interface
-- VLAN 
+- LACP
+- VLAN
+- MVRP 
 - VPA
+- MAC
 - IP
 
 ---
@@ -36,11 +38,35 @@ Dynamic: license-file
 
 ```python
     dependencies = [
-        "httpx>=0.24.1",
-        "requests>=2.31.0",
-        "pydantic>=2.0",
-        "pybreaker>=0.7.0",
-        "backoff>=2.2.1"
+        anyio==4.9.0
+        certifi==2025.6.15
+        click==8.2.1
+        colorama==0.4.6
+        ghp-import==2.1.0
+        griffe==1.7.3
+        h11==0.16.0
+        httpcore==1.0.9
+        httpx==0.28.1
+        idna==3.10
+        Jinja2==3.1.6
+        Markdown==3.8.2
+        MarkupSafe==3.0.2
+        mergedeep==1.3.4
+        mkdocs==1.6.1
+        mkdocs-autorefs==1.4.2
+        mkdocs-get-deps==0.2.0
+        mkdocstrings==0.29.1
+        mkdocstrings-python==1.16.12
+        packaging==25.0
+        pathspec==0.12.1
+        platformdirs==4.3.8
+        pymdown-extensions==10.16
+        python-dateutil==2.9.0.post0
+        PyYAML==6.0.2
+        pyyaml_env_tag==1.1
+        six==1.17.0
+        sniffio==1.3.1
+        watchdog==6.0.0
     ]
 ```
 
@@ -93,7 +119,8 @@ Please check out the details documentation at https://samuelyip74.github.io/Aos8
 |------------------|------------|-----------------------------|
 | v8.9.03          | 2025-05-28 | Initial release             |
 | v8.9.03post1     | 2025-05-28 | Interface, IP API added     |
-
+| v8.9.03post2     | 2025-05-28 | MVRP, System, MAC added     |
+| v8.9.03post3     | 2025-05-28 | chassis added               |
 
 ---
 
