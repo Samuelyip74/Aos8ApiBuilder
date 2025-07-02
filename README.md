@@ -107,7 +107,8 @@ Please check out the details documentation at https://samuelyip74.github.io/Aos8
 | v8.9.03          | 2025-05-28 | Initial release             |
 | v8.9.03post1     | 2025-05-28 | Interface, IP API added     |
 | v8.9.03post2     | 2025-05-28 | MVRP, System, MAC added     |
-| v8.9.03post3     | 2025-05-28 | chassis added               |
+| v8.9.03post3     | 2025-06-01 | chassis API added           |
+| v8.9.03post4     | 2025-06-02 | CLI API added               |
 
 ---
 

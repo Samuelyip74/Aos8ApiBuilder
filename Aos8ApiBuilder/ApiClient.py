@@ -1,5 +1,6 @@
 import httpx
 from models import ApiResult
+from endpoints.cli import CLIEndpoint
 from endpoints.vlan import VlanEndpoint
 from endpoints.vpa import VlanPortAssociation
 from endpoints.ip import IPInterfaceEndpoint
@@ -42,6 +43,7 @@ class AosApiClient:
         )
         self._login()
 
+        self.cli = CLIEndpoint(self)
         self.vlan = VlanEndpoint(self)
         self.vpa = VlanPortAssociation(self)
         self.ip = IPInterfaceEndpoint(self)

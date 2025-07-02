@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.mac.showMacAddress()
+result = client.cli.sendCommand("show configuration snapshot")
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.data)
