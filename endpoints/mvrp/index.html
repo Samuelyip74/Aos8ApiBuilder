@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Samuelyip74.github.io/Aos8ApiBuilder/endpoints/vpa/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://Samuelyip74.github.io/Aos8ApiBuilder/endpoints/mvrp/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>VPA - Aos8APIBuilder for Python Documentation</title>
+    <title>MVRP - Aos8APIBuilder for Python Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,9 +13,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "VPA";
-        var mkdocs_page_input_path = "endpoints\\vpa.md";
-        var mkdocs_page_url = "/Aos8ApiBuilder/endpoints/vpa/";
+        var mkdocs_page_name = "MVRP";
+        var mkdocs_page_input_path = "endpoints\\mvrp.md";
+        var mkdocs_page_url = "/Aos8ApiBuilder/endpoints/mvrp/";
       </script>
     
     <!--[if lt IE 9]>
@@ -68,11 +68,11 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../vlan/">VLAN</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../mvrp/">MVRP</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="#">VPA</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MVRP</a>
     <ul class="current">
     </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../vpa/">VPA</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../mac/">MAC</a>
                 </li>
@@ -103,7 +103,7 @@
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Aos8APIBuilder Classes</li>
           <li class="breadcrumb-item">API Endpoints</li>
-      <li class="breadcrumb-item active">VPA</li>
+      <li class="breadcrumb-item active">MVRP</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -116,7 +116,7 @@
 
 
 
-<a id="Aos8ApiBuilder.endpoints.vpa"></a>
+<a id="Aos8ApiBuilder.endpoints.mvrp"></a>
     <div class="doc doc-contents first">
 
 
@@ -140,11 +140,11 @@
 
 
 
-<h2 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation" class="doc doc-heading">
-            <code>VlanPortAssociation</code>
+<h2 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint" class="doc doc-heading">
+            <code>MvrpEndpoint</code>
 
 
-<a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents ">
@@ -152,7 +152,7 @@
               Bases: <code><span title="endpoints.base.BaseEndpoint">BaseEndpoint</span></code></p>
 
 
-        <p>Endpoint for managing VLAN-port associations via the AOS CLI API.</p>
+        <p>Endpoint for managing MVRP configuration.</p>
 
 
 
@@ -176,15 +176,56 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.create" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create</span><span class="p">(</span><span class="n">port_id</span><span class="p">,</span> <span class="n">vlan_id</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;untagged&#39;</span><span class="p">)</span></code>
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.globalMVRP" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">globalMVRP</span><span class="p">()</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.create" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.globalMVRP" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Add a port to a VLAN with the specified tagging mode via MIB POST API.</p>
+        <p>Retrieve global MVRP configuration settings.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>MVRP global status and VLAN limit configuration.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrpPortConfig" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mvrpPortConfig</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrpPortConfig" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve MVRP port configuration table.</p>
 
 
 <table class="field-list">
@@ -198,29 +239,13 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>port_id</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Port identifier (e.g., &ldquo;1/1/22&rdquo;).</p>
-              </div>
-            </li>
-            <li>
-              <b><code>vlan_id</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>VLAN ID to associate with the port.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>mode</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>&#39;untagged&#39;</code>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
 )
               –
               <div class="doc-md-description">
-                <p>&ldquo;untagged&rdquo; or &ldquo;tagged&rdquo;. Defaults to &ldquo;untagged&rdquo;.</p>
+                <p>Maximum number of rows to return (default is 200).</p>
               </div>
             </li>
         </ul>
@@ -243,7 +268,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Retrieve all port associations for a given VLAN using a GET request.</p>
+                <p>The MVRP port configuration per interface.</p>
               </div>
             </li>
         </ul>
@@ -259,15 +284,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.delete" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">port_id</span><span class="p">,</span> <span class="n">vlan_id</span><span class="p">)</span></code>
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_Vlan_Restriction" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mvrp_Vlan_Restriction</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.delete" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_Vlan_Restriction" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Remove a port from a VLAN.</p>
+        <p>Retrieve MVRP VLAN restriction configuration entries where restrictions are set.</p>
 
 
 <table class="field-list">
@@ -281,102 +306,13 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>port_id</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Port identifier.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>vlan_id</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>VLAN ID to disassociate from the port.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Retrieve all port associations for a given VLAN using a GET request.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.edit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">edit</span><span class="p">(</span><span class="n">port_id</span><span class="p">,</span> <span class="n">vlan_id</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;untagged&#39;</span><span class="p">)</span></code>
-
-<a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.edit" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Modify a port&rsquo;s tagging mode in a VLAN.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>port_id</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Port identifier.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>vlan_id</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>VLAN ID.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>mode</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>&#39;untagged&#39;</code>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
 )
               –
               <div class="doc-md-description">
-                <p>New tagging mode (&ldquo;untagged&rdquo; or &ldquo;tagged&rdquo;). Defaults to &ldquo;untagged&rdquo;.</p>
+                <p>Maximum number of rows to retrieve (default 200).</p>
               </div>
             </li>
         </ul>
@@ -399,7 +335,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Retrieve all port associations for a given VLAN using a GET request.</p>
+                <p>Parsed data with restricted VLANs.</p>
               </div>
             </li>
         </ul>
@@ -415,15 +351,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.list_by_vlan" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">list_by_vlan</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">)</span></code>
+<h3 id="Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_stats" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mvrp_stats</span><span class="p">(</span><span class="n">port_status</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.vpa.VlanPortAssociation.list_by_vlan" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.mvrp.MvrpEndpoint.mvrp_stats" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Retrieve all port associations for a given VLAN using a GET request.</p>
+        <p>Retrieve MVRP port statistics with an optional port status filter.</p>
 
 
 <table class="field-list">
@@ -437,11 +373,23 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>vlan_id</code></b>
-                  (<code><span title="int">int</span></code>)
+              <b><code>port_status</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>1</code>
+)
               –
               <div class="doc-md-description">
-                <p>VLAN ID to filter the VPA table.</p>
+                <p>Filter for <code>alaMvrpPortStatus</code> (default is 1).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Max number of rows to retrieve (default is 200).</p>
               </div>
             </li>
         </ul>
@@ -461,9 +409,10 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>              –
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
               <div class="doc-md-description">
-                <p>Parsed data from the VPA table for the specified VLAN.</p>
+                <p>Parsed MVRP port statistics.</p>
               </div>
             </li>
         </ul>
@@ -496,8 +445,8 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../mvrp/" class="btn btn-neutral float-left" title="MVRP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../mac/" class="btn btn-neutral float-right" title="MAC">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../vlan/" class="btn btn-neutral float-left" title="VLAN"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../vpa/" class="btn btn-neutral float-right" title="VPA">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -520,10 +469,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../mvrp/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../vlan/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../mac/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../vpa/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

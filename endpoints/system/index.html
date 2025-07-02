@@ -62,11 +62,19 @@
     <ul class="current">
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chassis/">Chassis</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../interface/">Interface</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../lacp/">LACP</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../vlan/">VLAN</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mvrp/">MVRP</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../vpa/">VPA</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../mac/">MAC</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ip/">IP</a>
                 </li>
@@ -168,15 +176,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.list" class="doc doc-heading">
-            <code class="highlight language-python">list()</code>
+<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">getSystemInformation</span><span class="p">()</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.list" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Retrieve current system configuration including name, contact, location, time, and timezone.</p>
+        <p>Retrieve system and system service configuration data.</p>
 
 
 <table class="field-list">
@@ -190,9 +198,10 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>              –
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
               <div class="doc-md-description">
-                <p>The parsed result of the <code>show system</code> command.</p>
+                <p>Parsed response from the switch.</p>
               </div>
             </li>
         </ul>
@@ -208,15 +217,143 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_contact" class="doc doc-heading">
-            <code class="highlight language-python">set_contact(contact)</code>
+<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.keepAlive" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">keepAlive</span><span class="p">()</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_contact" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.keepAlive" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Set the system contact information.</p>
+        <p>Retrieve current trap count from the switch.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed trap count data.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">setDateTime</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timezone</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update the system date, time, and timezone information.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>date</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>System date.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>time</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>System time.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>timezone</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>System timezone description.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Response from the API.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">setSystem</span><span class="p">(</span><span class="n">contact</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update the system contact, name, and location information.</p>
 
 
 <table class="field-list">
@@ -231,205 +368,32 @@
         <ul class="first simple">
             <li>
               <b><code>contact</code></b>
-                  (<code><span title="str">str</span></code>)
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
               –
               <div class="doc-md-description">
-                <p>Contact name or information string.</p>
+                <p>System contact email or name.</p>
               </div>
             </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Result of the operation or the updated system configuration.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_date" class="doc doc-heading">
-            <code class="highlight language-python">set_date(data)</code>
-
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_date" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Set the system date.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>data</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Date string in the required CLI format (e.g., &ldquo;MM/DD/YYYY&rdquo;).</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Result of the operation or the updated system configuration.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_location" class="doc doc-heading">
-            <code class="highlight language-python">set_location(location)</code>
-
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_location" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Set the system location.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>location</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Location string describing where the system is deployed.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Result of the operation or the updated system configuration.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_name" class="doc doc-heading">
-            <code class="highlight language-python">set_name(name)</code>
-
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_name" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Set the system name.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
             <li>
               <b><code>name</code></b>
-                  (<code><span title="str">str</span></code>)
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
               –
               <div class="doc-md-description">
-                <p>The desired system name.</p>
+                <p>System name (hostname).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>location</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>System location description.</p>
               </div>
             </li>
         </ul>
@@ -452,137 +416,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Result of the operation or the updated system configuration.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_time" class="doc doc-heading">
-            <code class="highlight language-python">set_time(time)</code>
-
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_time" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Set the system time.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>time</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Time string in the required CLI format (e.g., &ldquo;HH:MM:SS&rdquo;).</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Result of the operation or the updated system configuration.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_timezone" class="doc doc-heading">
-            <code class="highlight language-python">set_timezone(timezone)</code>
-
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.set_timezone" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Set the system timezone.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>timezone</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Timezone string (e.g., &ldquo;UTC+8&rdquo;, &ldquo;PST&rdquo;, &ldquo;GMT+1&rdquo;).</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Result of the operation or the updated system configuration.</p>
+                <p>Response from the API.</p>
               </div>
             </li>
         </ul>
@@ -616,7 +450,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../../api/models/" class="btn btn-neutral float-left" title="Models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../interface/" class="btn btn-neutral float-right" title="Interface">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../chassis/" class="btn btn-neutral float-right" title="Chassis">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -642,7 +476,7 @@
       <span><a href="../../api/models/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../interface/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../chassis/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
