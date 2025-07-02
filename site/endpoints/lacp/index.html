@@ -60,6 +60,8 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../system/">System</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chassis/">Chassis</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../interface/">Interface</a>
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">LACP</a>
@@ -114,7 +116,7 @@
 
 
 
-<a id="Aos8ApiBuilder.endpoints.system"></a>
+<a id="Aos8ApiBuilder.endpoints.lacp"></a>
     <div class="doc doc-contents first">
 
 
@@ -138,11 +140,11 @@
 
 
 
-<h2 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint" class="doc doc-heading">
-            <code>SystemEndpoint</code>
+<h2 id="Aos8ApiBuilder.endpoints.lacp.LACPEndpoint" class="doc doc-heading">
+            <code>LACPEndpoint</code>
 
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#Aos8ApiBuilder.endpoints.lacp.LACPEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents ">
@@ -174,16 +176,52 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="doc doc-heading">
-            <code class="highlight language-python">getSystemInformation()</code>
+<h3 id="Aos8ApiBuilder.endpoints.lacp.LACPEndpoint.getLACP" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">getLACP</span><span class="p">(</span><span class="n">lacp_type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.lacp.LACPEndpoint.getLACP" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Retrieve system and system service configuration data.</p>
+        <p>Retrieve link aggregation configurations filtered by LACP type.</p>
 
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>lacp_type</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>0 = Static, 1 = LACP. Default is 0 (static).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Max number of rows to retrieve. Default is 200.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <table class="field-list">
   <colgroup>
@@ -199,7 +237,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Parsed response from the switch.</p>
+                <p>Contains LAG configurations.</p>
               </div>
             </li>
         </ul>
@@ -215,15 +253,15 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="doc doc-heading">
-            <code class="highlight language-python">setDateTime(date=None, time=None, timezone=None)</code>
+<h3 id="Aos8ApiBuilder.endpoints.lacp.LACPEndpoint.lacpStats" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">lacpStats</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#Aos8ApiBuilder.endpoints.lacp.LACPEndpoint.lacpStats" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Update the system contact, name, and location information.</p>
+        <p>Retrieve per-port statistics for link aggregation.</p>
 
 
 <table class="field-list">
@@ -237,27 +275,13 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>contact</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>limit</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>200</code>
+)
               –
               <div class="doc-md-description">
-                <p>System contact email or name.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>name</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>System name (hostname).</p>
-              </div>
-            </li>
-            <li>
-              <b><code>location</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>System location description.</p>
+                <p>Maximum number of results to return.</p>
               </div>
             </li>
         </ul>
@@ -280,94 +304,7 @@
 <b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
 )              –
               <div class="doc-md-description">
-                <p>Response from the API.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="doc doc-heading">
-            <code class="highlight language-python">setSystem(contact=None, name=None, location=None)</code>
-
-<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Update the system contact, name, and location information.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>contact</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>System contact email or name.</p>
-              </div>
-            </li>
-            <li>
-              <b><code>name</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>System name (hostname).</p>
-              </div>
-            </li>
-            <li>
-              <b><code>location</code></b>
-                  (<code><span title="str">str</span></code>, default:
-                      <code>None</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>System location description.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
-)              –
-              <div class="doc-md-description">
-                <p>Response from the API.</p>
+                <p>Contains statistics for LAG member ports.</p>
               </div>
             </li>
         </ul>

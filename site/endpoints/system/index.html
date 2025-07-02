@@ -62,6 +62,8 @@
     <ul class="current">
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../chassis/">Chassis</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../interface/">Interface</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../lacp/">LACP</a>
@@ -175,7 +177,7 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="doc doc-heading">
-            <code class="highlight language-python">getSystemInformation()</code>
+            <code class="highlight language-python"><span class="n">getSystemInformation</span><span class="p">()</span></code>
 
 <a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.getSystemInformation" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -215,15 +217,56 @@
 <div class="doc doc-object doc-function">
 
 
+<h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.keepAlive" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">keepAlive</span><span class="p">()</span></code>
+
+<a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.keepAlive" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Retrieve current trap count from the switch.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+)              –
+              <div class="doc-md-description">
+                <p>Parsed trap count data.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="doc doc-heading">
-            <code class="highlight language-python">setDateTime(date=None, time=None, timezone=None)</code>
+            <code class="highlight language-python"><span class="n">setDateTime</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timezone</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setDateTime" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
-        <p>Update the system contact, name, and location information.</p>
+        <p>Update the system date, time, and timezone information.</p>
 
 
 <table class="field-list">
@@ -237,27 +280,33 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>contact</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>date</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
               –
               <div class="doc-md-description">
-                <p>System contact email or name.</p>
+                <p>System date.</p>
               </div>
             </li>
             <li>
-              <b><code>name</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>time</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
               –
               <div class="doc-md-description">
-                <p>System name (hostname).</p>
+                <p>System time.</p>
               </div>
             </li>
             <li>
-              <b><code>location</code></b>
-                  (<code><span title="str">str</span></code>)
+              <b><code>timezone</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>None</code>
+)
               –
               <div class="doc-md-description">
-                <p>System location description.</p>
+                <p>System timezone description.</p>
               </div>
             </li>
         </ul>
@@ -297,7 +346,7 @@
 
 
 <h3 id="Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="doc doc-heading">
-            <code class="highlight language-python">setSystem(contact=None, name=None, location=None)</code>
+            <code class="highlight language-python"><span class="n">setSystem</span><span class="p">(</span><span class="n">contact</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#Aos8ApiBuilder.endpoints.system.SystemEndpoint.setSystem" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -401,7 +450,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../../api/models/" class="btn btn-neutral float-left" title="Models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../interface/" class="btn btn-neutral float-right" title="Interface">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../chassis/" class="btn btn-neutral float-right" title="Chassis">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -427,7 +476,7 @@
       <span><a href="../../api/models/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../interface/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../chassis/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
