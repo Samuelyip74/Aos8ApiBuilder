@@ -71,7 +71,7 @@
 
 ```python
 
-    from ApiBuilder import AosApiClientBuilder
+    from aos8_api.ApiBuilder import AosApiClientBuilder
 
     client = (
         AosApiClientBuilder()
