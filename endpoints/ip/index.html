@@ -40,13 +40,13 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Aos8APIBuilder Classes</span></p>
+              <p class="caption"><span class="caption-text">aos8_api Classes</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../../intro/">Introduction</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">Getting Started</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" >Aos8ApiBuilder</a>
+                  <li class="toctree-l1"><a class="reference internal" >aos8_api</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../api/ApiBuilder/">ApiBuilder</a>
                 </li>
@@ -101,7 +101,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Aos8APIBuilder Classes</li>
+          <li class="breadcrumb-item">aos8_api Classes</li>
           <li class="breadcrumb-item">API Endpoints</li>
       <li class="breadcrumb-item active">IP</li>
     <li class="wy-breadcrumbs-aside">
@@ -116,7 +116,7 @@
 
 
 
-<a id="Aos8ApiBuilder.endpoints.ip"></a>
+<a id="aos8_api.endpoints.ip"></a>
     <div class="doc doc-contents first">
 
 
@@ -140,16 +140,16 @@
 
 
 
-<h2 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint" class="doc doc-heading">
+<h2 id="aos8_api.endpoints.ip.IPInterfaceEndpoint" class="doc doc-heading">
             <code>IPInterfaceEndpoint</code>
 
 
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#aos8_api.endpoints.ip.IPInterfaceEndpoint" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="endpoints.base.BaseEndpoint">BaseEndpoint</span></code></p>
+              Bases: <code><span title="aos8_api.endpoints.base.BaseEndpoint">BaseEndpoint</span></code></p>
 
 
         <p>Endpoint to manage IP interfaces on an Alcatel-Lucent OmniSwitch using CLI-based API calls.</p>
@@ -176,10 +176,10 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_IP_Interface" class="doc doc-heading">
+<h3 id="aos8_api.endpoints.ip.IPInterfaceEndpoint.create_IP_Interface" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">create_IP_Interface</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;Vlan&#39;</span><span class="p">,</span> <span class="n">vlan_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encap</span><span class="o">=</span><span class="s1">&#39;e2&#39;</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_IP_Interface" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#aos8_api.endpoints.ip.IPInterfaceEndpoint.create_IP_Interface" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
@@ -266,7 +266,12 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+<b><code>ApiResult</code></b>(                  <code><a class="autorefs autorefs-internal" title="ApiResult
+
+
+  
+      dataclass
+   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
 )              –
               <div class="doc-md-description">
                 <p>Result of the creation operation or error response.</p>
@@ -285,10 +290,10 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_name_interface" class="doc doc-heading">
+<h3 id="aos8_api.endpoints.ip.IPInterfaceEndpoint.create_name_interface" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">create_name_interface</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.create_name_interface" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#aos8_api.endpoints.ip.IPInterfaceEndpoint.create_name_interface" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
@@ -331,7 +336,12 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+<b><code>ApiResult</code></b>(                  <code><a class="autorefs autorefs-internal" title="ApiResult
+
+
+  
+      dataclass
+   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
 )              –
               <div class="doc-md-description">
                 <p>The API response.</p>
@@ -350,10 +360,10 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.delete" class="doc doc-heading">
+<h3 id="aos8_api.endpoints.ip.IPInterfaceEndpoint.delete" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">delete</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.delete" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#aos8_api.endpoints.ip.IPInterfaceEndpoint.delete" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
@@ -396,7 +406,12 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+<b><code>ApiResult</code></b>(                  <code><a class="autorefs autorefs-internal" title="ApiResult
+
+
+  
+      dataclass
+   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
 )              –
               <div class="doc-md-description">
                 <p>Result of the deletion operation or error response.</p>
@@ -415,10 +430,10 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.edit_IP_Interface" class="doc doc-heading">
+<h3 id="aos8_api.endpoints.ip.IPInterfaceEndpoint.edit_IP_Interface" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">edit_IP_Interface</span><span class="p">(</span><span class="n">ifindex</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vlan_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">forward</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">local_proxy_arp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encapsulation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">primary</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.edit_IP_Interface" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#aos8_api.endpoints.ip.IPInterfaceEndpoint.edit_IP_Interface" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
@@ -517,7 +532,12 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>ApiResult</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+<b><code>ApiResult</code></b>(                  <code><a class="autorefs autorefs-internal" title="ApiResult
+
+
+  
+      dataclass
+   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
 )              –
               <div class="doc-md-description">
                 <p>Result of the creation operation or error response.</p>
@@ -536,10 +556,10 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.list" class="doc doc-heading">
+<h3 id="aos8_api.endpoints.ip.IPInterfaceEndpoint.list" class="doc doc-heading">
             <code class="highlight language-python"><span class="nb">list</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code>
 
-<a href="#Aos8ApiBuilder.endpoints.ip.IPInterfaceEndpoint.list" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#aos8_api.endpoints.ip.IPInterfaceEndpoint.list" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
@@ -584,7 +604,12 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-<b><code>dict</code></b>(                  <code><span title="models.ApiResult">ApiResult</span></code>
+<b><code>dict</code></b>(                  <code><a class="autorefs autorefs-internal" title="ApiResult
+
+
+  
+      dataclass
+   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
 )              –
               <div class="doc-md-description">
                 <p>Dictionary of IP interface entries, keyed by ifIndex.</p>
