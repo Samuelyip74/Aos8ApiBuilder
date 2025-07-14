@@ -247,76 +247,6 @@ for Alcatel-Lucent OmniSwitch using MIB-based REST API.</p>
 <div class="doc doc-object doc-function">
 
 
-<h3 id="aos8_api.endpoints.interface.InterfaceEndpoint.admin_enable" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">admin_enable</span><span class="p">(</span><span class="n">port</span><span class="p">)</span></code>
-
-<a href="#aos8_api.endpoints.interface.InterfaceEndpoint.admin_enable" class="headerlink" title="Permanent link">&para;</a></h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>Enable administrative state of the interface.</p>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b><code>port</code></b>
-                  (<code><span title="str">str</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Port or range string.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Returns:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-                  <code><a class="autorefs autorefs-internal" title="ApiResult
-
-
-  
-      dataclass
-   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
-              –
-              <div class="doc-md-description">
-                <p><code>ApiResult</code> with updated interface status.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
 <h3 id="aos8_api.endpoints.interface.InterfaceEndpoint.autoneg_disable" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">autoneg_disable</span><span class="p">(</span><span class="n">port</span><span class="p">)</span></code>
 
@@ -1938,6 +1868,164 @@ for Alcatel-Lucent OmniSwitch using MIB-based REST API.</p>
 )              –
               <div class="doc-md-description">
                 <p>Parsed PVR configuration data from the switch.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="aos8_api.endpoints.interface.InterfaceEndpoint.setInterfaceAdminStatus" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">setInterfaceAdminStatus</span><span class="p">(</span><span class="n">ifindex</span><span class="p">,</span> <span class="n">admin_status</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+<a href="#aos8_api.endpoints.interface.InterfaceEndpoint.setInterfaceAdminStatus" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set the administrative status of a specific interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>ifindex</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Interface index (e.g., &ldquo;1001&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>admin_status</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>1</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Desired administrative status (1 = up, 2 = down). Defaults to 1 (down).</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><a class="autorefs autorefs-internal" title="ApiResult
+
+
+  
+      dataclass
+   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
+)              –
+              <div class="doc-md-description">
+                <p>API response indicating success or failure.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="aos8_api.endpoints.interface.InterfaceEndpoint.setInterfaceAlias" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">setInterfaceAlias</span><span class="p">(</span><span class="n">ifindex</span><span class="p">,</span> <span class="n">alias</span><span class="p">)</span></code>
+
+<a href="#aos8_api.endpoints.interface.InterfaceEndpoint.setInterfaceAlias" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Set the Alias  of a specific interface.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>ifindex</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Interface index (e.g., &ldquo;1001&rdquo;).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>Alias</code></b>
+                  (<code><span title="str">str</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Alias of the interface</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>ApiResult</code></b>(                  <code><a class="autorefs autorefs-internal" title="ApiResult
+
+
+  
+      dataclass
+   (aos8_api.models.ApiResult)" href="../../api/models/#aos8_api.models.ApiResult">ApiResult</a></code>
+)              –
+              <div class="doc-md-description">
+                <p>API response indicating success or failure.</p>
               </div>
             </li>
         </ul>
