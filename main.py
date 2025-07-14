@@ -8,11 +8,11 @@ client = (
     .setPassword("switch123")
     .build()
 )
-
-result = client.interface.setInterfaceAdminStatus(ifindex="1023", admin_status=2)
+result = client.interface.setInterfaceAlias(ifindex="1001", alias=" ")
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.output)
+    client.close()
 else:
     print(f"❌ Operation failed (diag={result.diag}): {result.error}")
 

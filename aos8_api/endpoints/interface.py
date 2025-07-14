@@ -820,6 +820,29 @@ class InterfaceEndpoint(BaseEndpoint):
             return result
         else:
             return response
+        
+    def setInterfaceAlias(self, ifindex: str, alias: str) -> ApiResult:
+        """
+        Set the Alias  of a specific interface.
+
+        Args:
+            ifindex (str): Interface index (e.g., "1001").
+            Alias (str): Alias of the interface
+
+        Returns:
+            ApiResult: API response indicating success or failure.
+        """
+        url = "/?domain=mib&urn=ifXTable"
+        form_data = {
+            "mibObject0": f"ifIndex:|{ifindex}",
+            "mibObject1": f"ifAlias:{alias}"
+        }
+        response = self._client.post(url, data=form_data)
+        if response.success:
+            result = self.list()
+            return result
+        else:
+            return response        
 
 ### CLI Based
 

@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: aos8_api
-Version: 8.9.3.post12
+Version: 8.9.3.post13
 Summary: OmniSwitch RestFUL API for Python
 Author-email: Samuel Yip <kahyean.yip@gmail.com>
 Requires-Python: >=3.8
