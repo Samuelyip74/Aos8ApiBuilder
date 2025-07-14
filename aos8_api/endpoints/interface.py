@@ -797,6 +797,32 @@ class InterfaceEndpoint(BaseEndpoint):
         response = self._client.get("/", params=params)
         return response
 
+
+    def setInterfaceAdminStatus(self, ifindex: str, admin_status: int = 1) -> ApiResult:
+        """
+        Set the administrative status of a specific interface.
+
+        Args:
+            ifindex (str): Interface index (e.g., "1001").
+            admin_status (int): Desired administrative status (1 = up, 2 = down). Defaults to 1 (down).
+
+        Returns:
+            ApiResult: API response indicating success or failure.
+        """
+        url = "/?domain=mib&urn=ifTable"
+        form_data = {
+            "mibObject0": f"ifIndex:|{ifindex}",
+            "mibObject1": f"ifAdminStatus:{admin_status}"
+        }
+        response = self._client.post(url, data=form_data)
+        if response.success:
+            result = self.list()
+            return result
+        else:
+            return response
+
+### CLI Based
+
     def get_interface(self, port: str) -> Optional[dict]:
         """
         Retrieve detailed status of a specific port.
@@ -1630,18 +1656,6 @@ class InterfaceEndpoint(BaseEndpoint):
             base_cmd += "+cli"
 
         return self._client.get(f"/cli/aos?cmd={base_cmd}")
-
-    def admin_enable(self, port: str) -> ApiResult:
-        """
-        Enable administrative state of the interface.
-
-        Args:
-            port: Port or range string.
-
-        Returns:
-            `ApiResult` with updated interface status.
-        """
-        return self.set_interface(port, "admin-state", "enable")
 
     def admin_disable(self, port: str) -> ApiResult:
         """

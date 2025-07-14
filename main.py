@@ -9,7 +9,7 @@ client = (
     .build()
 )
 
-result = client.cli.sendCommand("show configuration snapshot")
+result = client.interface.setInterfaceAdminStatus(ifindex="1023", admin_status=2)
 if result.success:
     print("✅ Operation successfully")
     pprint.pprint(result.output)
